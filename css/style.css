@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  color: #999999;
+  background: #111111;
+  margin: 3% 10% 0 10%;
+  /* overflow:hidden; */ }
+
+a {
+  color: #808c99;
+  text-decoration: none; }
+
+a:hover {
+  color: #a3baee; }
+
+.theme-url {
+  color: #777788; }
+
+.magfoto-id {
+  color: #777788; }
+
+.sassy {
+  color: #998099; }
+
+#quote {
+  font-size: 44px;
+  line-height: 50px;
+  color: #333333;
+  display: block; }
+
+#quote #brand {
+  color: #9999aa; }
+
+#quote #idee {
+  color: #444455; }
+
+#footer {
+  display: block; }
+
+.legal {
+  font-size: 12px;
+  color: #333333; }
+
+/*# sourceMappingURL=structure.css.map */
