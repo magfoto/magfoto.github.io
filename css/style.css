@@ -1,45 +1,543 @@
-@charset "UTF-8";
+:root {
+	--font-color: rgba(134, 153, 169, 1);
+	--bg-color: rgba(29, 30, 35, 1);
+	--code-bg: hsla(215,100%,80%,0.25);
+	--code-bg0: hsla(215,100%,80%,0);
+	--code-txt: hsla(200,100%,60%,1);
+	--h-txt: hsla(200,50%,60%,1);
+	--op-bg: yellow;
+	--op: 50%;
+	--cw: 100px;
+	--caption: 10pt;
+}
 
 body {
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
-  color: #999999;
-  background: #111111;
-  margin: 3% 10% 0 10%;
-  /* overflow:hidden; */ }
+	font-size:   13pt;
+	counter-reset: codes mods streams sidenotes;
+	color: var(--font-color);
+	background-color: var(--bg-color);
+	background-image: url(#icn);
+	font-family: "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.4;
+	margin: 5%;
+}
+
+.layout {
+	display: grid;
+	grid-template-areas: 'ico light' 'container .';
+}
+
+nav {
+	padding-bottom: 50px;
+}
+nav .active {
+	background: rgba(100,100,100,0.25);
+}
+
+.overv {
+	font-size: 2em;
+}
+
+.lts {
+	grid-area: light;
+	/* filter: brightness(120%); */
+	float: right;
+}
+
+.stouf {
+	grid-area: container;
+}
+
+.flx {
+	display: flex;
+}
+
+.bt {
+	font-size: var(--caption);
+	position: relative;
+	bottom: 42px;
+	left: 12px;
+	text-align: left;
+}
+
+.flx > a {
+	padding: 4px;
+}
+
+.flx a img {
+	width: 100%;
+	opacity: 25%;
+	max-height: 400px;
+	border: 1px solid rgba(0,0,0,0.);
+	border-radius: 8px;
+}
+
+.flx a:hover img {
+	transition: opacity 0.75s;
+	opacity: 100%;
+}
+
+.exts {
+	width: 1500px;
+	font-size: .75em;
+}
+
+.exts a {
+	border: 1px solid rgbc(0,0,0,0);
+	border-radius: 4px;
+	background-color: hsla(191,100%,60%,0.25);
+	color: hsla(192,100%,60%,0.75);
+	padding: 0px 10px 0px 10px;
+	margin: 2px;
+}
+
+.exts img {
+	max-height: 25px;
+}
+
+.orcid {
+	background-color: hsla(0,0,0,0);
+}
+
+.logo {
+	grid-area: ico;
+}
+
+.logo, .lts {
+	max-width: 250px;
+	max-height: 100px;
+	padding-bottom: 50px;
+}
+
+/* Style functions */
+
+.pad {
+	padding: 0px 10px 0px 10px;
+}
+
+
+/* Code and Text Formatting */
+
+pre, code, tt {
+	font-size: 0.9em;
+	line-height: 1.5;
+}
+
+pre {
+	color:         #fff;
+	text-align:    left;
+	line-height:   1.2em;
+	//overflow-x:    scroll;
+	background:    #282c34;
+	padding:       20pt;
+	margin:        20pt 0;
+	border-radius: 3pt;
+	white-space:   pre-wrap;
+	tab-size:      4;
+}
+
+code {
+	padding:    0.1em 0.3em;
+	margin-right: 5px;
+	background-color: var(--code-bg0);
+  color: var(--code-txt);
+  border: none;
+	border-radius: 2px;
+}
+
+.code-Orca {
+	background-color: var(--code-bg0);
+}
+
+.mod {
+  background-color: hsla(210,100%,60%,0.5);
+}
+
+.routes {
+  display: block;
+}
+
+.routes::after {
+  padding-top: 25px;
+  content: '* A TOTAL OF ' counter(codes) ' CODES.';
+}
+
+.routes > div code {
+  counter-increment: codes;
+}
+
+.syntax-all {
+	color: #e6c07b;
+}
+
+.syntax-entity {
+	color: #abb2bf;
+}
+
+.syntax-tag {
+	color: #818896;
+}
+
+.syntax-keyword {
+	color: #818896;
+}
+
+.syntax-parameter {
+	color: #56b6c2;
+}
+
+.syntax-string {
+	color: #61aeee;
+}
+
+.syntax-constant {
+	color: #c678dd;
+}
+
+.syntax-variable {
+	color: #98c379;
+}
+
+.syntax-escape {
+	font-weight: bold;
+	color: #e06c75;
+}
+
+.syntax-comment {
+	color: #999;
+}
+
+.syntax-error {
+	color: #d19a66;
+}
+
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	color: lightblue;
+}
+
+h1 {
+	font-size:     3em;
+	line-height:   1;
+	margin-bottom: 0.5em;
+	margin-top:    2em;
+	color: var(--h-txt);
+}
+
+h2 {
+	font-size:     2em;
+	margin-bottom: 0.75em;
+	margin-top:    1.5em;
+	color: var(--h-txt);
+}
+
+h3 {
+	font-size:   1.5em;
+	line-height: 1;
+	margin-top:  1.5em;
+}
+
+h4 {
+	font-size:     1.2em;
+	line-height:   1.25;
+	margin-bottom: 1.25em;
+}
+
+h5 {
+	font-size:     1em;
+	line-height:   1.25;
+	margin-bottom: 1.25em;
+}
+
+h6 {
+	font-size:   1em;
+	font-weight: bold;
+}
+
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
+	margin: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+video {
+    width: 100%;
+    object-fit: scale-down;
+}
+
+p {
+	margin: 0 0 1.5em;
+}
+
+article {
+	padding-bottom: 25px;
+	max-width: 750px;
+}
+
+article::after {
+  /* content: "-◊--------------------"; */
+  font-size: 8pt;
+}
+
+b:before {
+  content: "> ";
+}
+
+blockquote::before {
+  content: "> ";
+  color: rgba(225, 225, 225, 0.8);
+}
+
+blockquote {
+  font-style: italic;
+  color: rgba(0, 191, 255, 0.8);
+	margin: 1.5em;
+}
+
+/* Custom Tufte sidenote style */
+
+sup {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.9rem;
+  padding: 2.5px;
+  margin: 5px;
+}
+
+sub { top: 0.4rem; }
+
+sup.sidenote-number {
+  font-size: 0.9rem;
+  counter-increment: sidenotes;
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+  outline: none;
+}
+
+sup.sidenote-number::after {
+  content: '[' counter(sidenotes) ']';
+  vertical-align: super;
+  margin-left: 2px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sidenote::before {
+  content: '[ ' counter(sidenotes) ' ] ';
+}
+
+i {
+  color: rgba(200, 153, 169, 1);
+}
+
+.sidenote, .marginnote {
+  float: right;
+  clear: right;
+  margin-right: -60%;
+  width: 50%;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.0rem;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 1.96;
+  vertical-align: baseline;
+  position: relative;
+}
+/* end of custom Tufte sidenote style */
 
 a {
-  color: #808c99;
-  text-decoration: none; }
+  color: rgba(0, 191, 255, 0.8);
+	text-decoration: none;
+}
 
-a:hover {
-  color: #a3baee; }
+a:focus, a:hover {
+  color: rgba(30, 144, 255, 0.8);
+}
 
-.theme-url {
-  color: #777788; }
 
-.magfoto-id {
-  color: #777788; }
 
-.sassy {
-  color: #998099; }
+hr {
+  border: 1px dotted rgba(100,100,100,0.8);
+}
 
-#quote {
-  font-size: 44px;
-  line-height: 50px;
-  color: #333333;
-  display: block; }
+strong, dfn {
+	font-weight: bold;
+}
 
-#quote #brand {
-  color: #9999aa; }
+em, dfn {
+	font-style: italic;
+}
 
-#quote #idee {
-  color: #444455; }
+del {
+	color: #666;
+}
 
-#footer {
-  display: block; }
+li ul, li ol {
+	margin: 0;
+}
+
+ul, ol {
+	margin:       0 3em 1.5em 1.5em;
+	padding-left: 1.5em;
+}
+
+ul {
+	list-style-type: disc;
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+figure {
+	margin:     1.5em 0;
+	width:      100%;
+	text-align: center;
+}
+
+figcaption {
+	font-size:     0.75em;
+	padding:       0.5em 2em;
+	margin-bottom: 2em;
+}
+
+figure img {
+	margin-bottom: 0px;
+}
+
+hr {
+	border:        0px;
+	border-top:    1px solid #333;
+	border-bottom: 1px solid #666;
+	margin-top:    4em;
+	margin-bottom: 2em;
+}
+
+h1 + hr {
+	margin-top: 2em;
+}
+
+ol#footnotes {
+	font-size:   0.75em;
+	padding-top: 1.5em;
+	margin-top:  3em;
+	margin-left: 0;
+}
+
+ol#footnotes:before {
+	content:        "———";
+	letter-spacing: -4px;
+	margin-left:    -1.5em;
+}
+
+ol p, ul p {
+	margin-bottom: 0px;
+}
+
+li {
+	margin-bottom: 0.75em;
+	margin-top:    0.75em;
+	color: slategray;
+}
+
+footer, footer::before {
+  content: "-◊- ";
+  font-size: 8pt;
+  color: white;
+}
+
+footer > small {
+  font-size: 8pt;
+  color: gray;
+  padding-top: 35px;
+  padding-bottom: 50px;
+}
 
 .legal {
-  font-size: 12px;
-  color: #333333; }
+  padding-top: 100px;
+  color: white;
+}
 
-/*# sourceMappingURL=structure.css.map */
+
+/* Mark (copy highlighting) Colours */
+
+
+.red {
+  background-color: hsla(0,100%,60%,0.25);
+  color: hsla(25,100%,60%,0.75);
+}
+
+.green {
+  background-color: hsla(160,100%,80%,0.25);
+  color: hsla(100,100%,40%,0.75);
+}
+
+.blue {
+  background-color: hsla(215,100%,80%,0.25);
+  color: hsla(190,100%,40%,0.75);
+}
+
+.magenta {
+  background-color: hsla(331,100%,60%,0.25);
+  color: hsla(325,100%,70%,0.75);
+}
+
+.cyan {
+  background-color: hsla(191,100%,60%,0.25);
+  color: hsla(192,100%,60%,0.75);
+}
+
+.yellow {
+  background-color: hsla(40,90%,75%,0.75);
+  color: hsla(192,0%,0%,0.75);
+}
+
+mark {
+  background-color: rgba(30,144,255,0.8);
+  padding: 0 4px 0 4px;
+}
+
+.bw {
+  background-color: white;
+  color: black;
+}
+
+.wb {
+  background-color: black;
+  color: white;
+}
+
+
+/* Media */
+
+
+@media screen and (max-width: 768px) {
+	body {
+		margin:30px;
+	}
+}
+
+@media screen and (max-width: 736px),
+       screen and (max-width: 808px) and (max-height: 414px) {
+	body {
+		margin:20px;
+	}
+
+	ul,ol {
+		margin: 0;
+	}
+
+	h1 {
+		font-size: 2em;
+	}
+
+	h2 {
+		font-size: 1.8em;
+	}
+}
