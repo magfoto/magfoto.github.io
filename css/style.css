@@ -83,10 +83,10 @@ nav .active {
 }
 
 .exts a {
-	border: 1px solid rgbc(0,0,0,0);
+	border: 1px solid rgba(0,0,0,0);
 	border-radius: 4px;
-	background-color: hsla(191,100%,60%,0.25);
-	color: hsla(192,100%,60%,0.75);
+	background-color: hsla(211,100%,60%,0.25);
+	color: hsla(194,100%,60%,0.75);
 	padding: 0px 10px 0px 10px;
 	margin: 2px;
 }
@@ -99,8 +99,12 @@ nav .active {
 	background-color: hsla(0,0,0,0);
 }
 
+
 .logo {
 	grid-area: ico;
+	max-width: 40%;
+  filter: saturate(2);
+  filter: brightness(1.45);
 }
 
 .logo, .lts {
