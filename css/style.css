@@ -27,7 +27,7 @@ body {
 	grid-template-areas: 'ico light' 'container .';
 }
 
-.vkey {
+.vkey > text {
 	/* null */
 	color: red;
 }
