@@ -27,6 +27,10 @@ body {
 	grid-template-areas: 'ico light' 'container .';
 }
 
+.vkey {
+	font-size: 0.3;
+}
+
 nav {
 	padding-bottom: 50px;
 }
