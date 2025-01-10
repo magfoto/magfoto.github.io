@@ -1,704 +1,1614 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>o-sigv 2025</title>
-<style>
-    /* cspell:disable-file */
-    /* webkit printing magic: print all background colors */
-    html {
-        -webkit-print-color-adjust: exact;
-    }
-    * {
-        box-sizing: border-box;
-        -webkit-print-color-adjust: exact;
-    }
-    
-    html,
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    @media only screen {
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>o-sigv 2025</title>
+    <style>
+        /* cspell:disable-file */
+        /* webkit printing magic: print all background colors */
+        html {
+            -webkit-print-color-adjust: exact;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+        }
+
+        html,
         body {
-            margin: 2em auto;
-            max-width: 900px;
-            color: rgb(55, 53, 47);
+            margin: 0;
+            padding: 0;
         }
-    }
-    
-    body {
-        line-height: 1.5;
-        white-space: pre-wrap;
-    }
-    
-    a,
-    a.visited {
-        color: inherit;
-        text-decoration: underline;
-    }
-    
-    .pdf-relative-link-path {
-        font-size: 80%;
-        color: #444;
-    }
-    
-    h1,
-    h2,
-    h3 {
-        letter-spacing: -0.01em;
-        line-height: 1.2;
-        font-weight: 600;
-        margin-bottom: 0;
-    }
-    
-    .page-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-top: 0;
-        margin-bottom: 0.75em;
-    }
-    
-    h1 {
-        font-size: 1.875rem;
-        margin-top: 1.875rem;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-        margin-top: 1.5rem;
-    }
-    
-    h3 {
-        font-size: 1.25rem;
-        margin-top: 1.25rem;
-    }
-    
-    .source {
-        border: 1px solid #ddd;
-        border-radius: 3px;
-        padding: 1.5em;
-        word-break: break-all;
-    }
-    
-    .callout {
-        border-radius: 3px;
-        padding: 1rem;
-    }
-    
-    figure {
-        margin: 1.25em 0;
-        page-break-inside: avoid;
-    }
-    
-    figcaption {
-        opacity: 0.5;
-        font-size: 85%;
-        margin-top: 0.5em;
-    }
-    
-    mark {
-        background-color: transparent;
-    }
-    
-    .indented {
-        padding-left: 1.5em;
-    }
-    
-    hr {
-        background: transparent;
-        display: block;
-        width: 100%;
-        height: 1px;
-        visibility: visible;
-        border: none;
-        border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-    }
-    
-    img {
-        max-width: 100%;
-    }
-    
-    @media only print {
+
+        @media only screen {
+            body {
+                margin: 2em auto;
+                max-width: 900px;
+                color: rgb(55, 53, 47);
+            }
+        }
+
+        body {
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        .vkey {
+            font-size: 1.25em;
+        }
+
+        a,
+        a.visited {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .pdf-relative-link-path {
+            font-size: 80%;
+            color: #444;
+        }
+
+        h1,
+        h2,
+        h3 {
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 0.75em;
+        }
+
+        h1 {
+            font-size: 1.875rem;
+            margin-top: 1.875rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.25rem;
+        }
+
+        .source {
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 1.5em;
+            word-break: break-all;
+        }
+
+        .callout {
+            border-radius: 3px;
+            padding: 1rem;
+        }
+
+        figure {
+            margin: 1.25em 0;
+            page-break-inside: avoid;
+        }
+
+        figcaption {
+            opacity: 0.5;
+            font-size: 85%;
+            margin-top: 0.5em;
+        }
+
+        mark {
+            background-color: transparent;
+        }
+
+        .indented {
+            padding-left: 1.5em;
+        }
+
+        hr {
+            background: transparent;
+            display: block;
+            width: 100%;
+            height: 1px;
+            visibility: visible;
+            border: none;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+        }
+
         img {
-            max-height: 100vh;
-            object-fit: contain;
+            max-width: 100%;
         }
-    }
-    
-    @page {
-        margin: 1in;
-    }
-    
-    .collection-content {
-        font-size: 0.875rem;
-    }
-    
-    .column-list {
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .column {
-        padding: 0 1em;
-    }
-    
-    .column:first-child {
-        padding-left: 0;
-    }
-    
-    .column:last-child {
-        padding-right: 0;
-    }
-    
-    .table_of_contents-item {
-        display: block;
-        font-size: 0.875rem;
-        line-height: 1.3;
-        padding: 0.125rem;
-    }
-    
-    .table_of_contents-indent-1 {
-        margin-left: 1.5rem;
-    }
-    
-    .table_of_contents-indent-2 {
-        margin-left: 3rem;
-    }
-    
-    .table_of_contents-indent-3 {
-        margin-left: 4.5rem;
-    }
-    
-    .table_of_contents-link {
-        text-decoration: none;
-        opacity: 0.7;
-        border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-    }
-    
-    table,
-    th,
-    td {
-        border: 1px solid rgba(55, 53, 47, 0.09);
-        border-collapse: collapse;
-    }
-    
-    table {
-        border-left: none;
-        border-right: none;
-    }
-    
-    th,
-    td {
-        font-weight: normal;
-        padding: 0.25em 0.5em;
-        line-height: 1.5;
-        min-height: 1.5em;
-        text-align: left;
-    }
-    
-    th {
-        color: lightblue;
-    }
-    
-    ol,
-    ul {
-        margin: 0;
-        margin-block-start: 0.6em;
-        margin-block-end: 0.6em;
-    }
-    
-    li > ol:first-child,
-    li > ul:first-child {
-        margin-block-start: 0.6em;
-    }
-    
-    ul > li {
-        list-style: disc;
-    }
-    
-    ul.to-do-list {
-        padding-inline-start: 0;
-    }
-    
-    ul.to-do-list > li {
-        list-style: none;
-    }
-    
-    .to-do-children-checked {
-        text-decoration: line-through;
-        opacity: 0.375;
-    }
-    
-    ul.toggle > li {
-        list-style: none;
-    }
-    
-    ul {
-        padding-inline-start: 1.7em;
-    }
-    
-    ul > li {
-        padding-left: 0.1em;
-    }
-    
-    ol {
-        padding-inline-start: 1.6em;
-    }
-    
-    ol > li {
-        padding-left: 0.2em;
-    }
-    
-    .mono ol {
-        padding-inline-start: 2em;
-    }
-    
-    .mono ol > li {
-        text-indent: -0.4em;
-    }
-    
-    .toggle {
-        padding-inline-start: 0em;
-        list-style-type: none;
-    }
-    
-    /* Indent toggle children */
-    .toggle > li > details {
-        padding-left: 1.7em;
-    }
-    
-    .toggle > li > details > summary {
-        margin-left: -1.1em;
-    }
-    
-    .selected-value {
-        display: inline-block;
-        padding: 0 0.5em;
-        background: rgba(206, 205, 202, 0.5);
-        border-radius: 3px;
-        margin-right: 0.5em;
-        margin-top: 0.3em;
-        margin-bottom: 0.3em;
-        white-space: nowrap;
-    }
-    
-    .collection-title {
-        display: inline-block;
-        margin-right: 1em;
-    }
-    
-    .page-description {
-        margin-bottom: 2em;
-    }
-    
-    .simple-table {
-        margin-top: 1em;
-        font-size: 0.875rem;
-        empty-cells: show;
-    }
-    .simple-table td {
-        height: 29px;
-        min-width: 120px;
-    }
-    
-    .simple-table th {
-        height: 29px;
-        min-width: 120px;
-    }
-    
-    /* .simple-table-header-color {
+
+        @media only print {
+            img {
+                max-height: 100vh;
+                object-fit: contain;
+            }
+        }
+
+        @page {
+            margin: 1in;
+        }
+
+        .collection-content {
+            font-size: 0.875rem;
+        }
+
+        .column-list {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .column {
+            padding: 0 1em;
+        }
+
+        .column:first-child {
+            padding-left: 0;
+        }
+
+        .column:last-child {
+            padding-right: 0;
+        }
+
+        .table_of_contents-item {
+            display: block;
+            font-size: 0.875rem;
+            line-height: 1.3;
+            padding: 0.125rem;
+        }
+
+        .table_of_contents-indent-1 {
+            margin-left: 1.5rem;
+        }
+
+        .table_of_contents-indent-2 {
+            margin-left: 3rem;
+        }
+
+        .table_of_contents-indent-3 {
+            margin-left: 4.5rem;
+        }
+
+        .table_of_contents-link {
+            text-decoration: none;
+            opacity: 0.7;
+            border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid rgba(55, 53, 47, 0.09);
+            border-collapse: collapse;
+        }
+
+        table {
+            border-left: none;
+            border-right: none;
+        }
+
+        th,
+        td {
+            font-weight: normal;
+            padding: 0.25em 0.5em;
+            line-height: 1.5;
+            min-height: 1.5em;
+            text-align: left;
+        }
+
+        th {
+            color: lightblue;
+        }
+
+        ol,
+        ul {
+            margin: 0;
+            margin-block-start: 0.6em;
+            margin-block-end: 0.6em;
+        }
+
+        li>ol:first-child,
+        li>ul:first-child {
+            margin-block-start: 0.6em;
+        }
+
+        ul>li {
+            list-style: disc;
+        }
+
+        ul.to-do-list {
+            padding-inline-start: 0;
+        }
+
+        ul.to-do-list>li {
+            list-style: none;
+        }
+
+        .to-do-children-checked {
+            text-decoration: line-through;
+            opacity: 0.375;
+        }
+
+        ul.toggle>li {
+            list-style: none;
+        }
+
+        ul {
+            padding-inline-start: 1.7em;
+        }
+
+        ul>li {
+            padding-left: 0.1em;
+        }
+
+        ol {
+            padding-inline-start: 1.6em;
+        }
+
+        ol>li {
+            padding-left: 0.2em;
+        }
+
+        .mono ol {
+            padding-inline-start: 2em;
+        }
+
+        .mono ol>li {
+            text-indent: -0.4em;
+        }
+
+        .toggle {
+            padding-inline-start: 0em;
+            list-style-type: none;
+        }
+
+        /* Indent toggle children */
+        .toggle>li>details {
+            padding-left: 1.7em;
+        }
+
+        .toggle>li>details>summary {
+            margin-left: -1.1em;
+        }
+
+        .selected-value {
+            display: inline-block;
+            padding: 0 0.5em;
+            background: rgba(206, 205, 202, 0.5);
+            border-radius: 3px;
+            margin-right: 0.5em;
+            margin-top: 0.3em;
+            margin-bottom: 0.3em;
+            white-space: nowrap;
+        }
+
+        .collection-title {
+            display: inline-block;
+            margin-right: 1em;
+        }
+
+        .page-description {
+            margin-bottom: 2em;
+        }
+
+        .simple-table {
+            margin-top: 1em;
+            font-size: 0.875rem;
+            empty-cells: show;
+        }
+
+        .simple-table td {
+            height: 29px;
+            min-width: 120px;
+        }
+
+        .simple-table th {
+            height: 29px;
+            min-width: 120px;
+        }
+
+        /* .simple-table-header-color {
         background: rgb(247, 246, 243);
         color: black;
     } */
-    .simple-table-header {
-        font-weight: 500;
-    }
-    
-    time {
-        opacity: 0.5;
-    }
-    
-    .icon {
-        display: inline-block;
-        max-width: 1.2em;
-        max-height: 1.2em;
-        text-decoration: none;
-        vertical-align: text-bottom;
-        margin-right: 0.5em;
-    }
-    
-    img.icon {
-        border-radius: 3px;
-    }
-    
-    .user-icon {
-        width: 1.5em;
-        height: 1.5em;
-        border-radius: 100%;
-        margin-right: 0.5rem;
-    }
-    
-    .user-icon-inner {
-        font-size: 0.8em;
-    }
-    
-    .text-icon {
-        border: 1px solid #000;
-        text-align: center;
-    }
-    
-    .page-cover-image {
-        display: block;
-        object-fit: cover;
-        width: 100%;
-        max-height: 30vh;
-    }
-    
-    .page-header-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-    
-    .page-header-icon-with-cover {
-        margin-top: -0.72em;
-        margin-left: 0.07em;
-    }
-    
-    .page-header-icon img {
-        border-radius: 3px;
-    }
-    
-    .link-to-page {
-        margin: 1em 0;
-        padding: 0;
-        border: none;
-        font-weight: 500;
-    }
-    
-    p > .user {
-        opacity: 0.5;
-    }
-    
-    td > .user,
-    td > time {
-        white-space: nowrap;
-    }
-    
-    input[type="checkbox"] {
-        transform: scale(1.5);
-        margin-right: 0.6em;
-        vertical-align: middle;
-    }
-    
-    p {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-    }
-    
-    .image {
-        border: none;
-        margin: 1.5em 0;
-        padding: 0;
-        border-radius: 0;
-        text-align: center;
-    }
-    
-    .code,
-    code {
-        background: rgba(135, 131, 120, 0.15);
-        border-radius: 3px;
-        padding: 0.2em 0.4em;
-        border-radius: 3px;
-        font-size: 85%;
-        tab-size: 2;
-    }
-    
-    code {
-        color: #eb5757;
-    }
-    
-    .code {
-        padding: 1.5em 1em;
-    }
-    
-    .code-wrap {
-        white-space: pre-wrap;
-        word-break: break-all;
-    }
-    
-    .code > code {
-        background: none;
-        padding: 0;
-        font-size: 100%;
-        color: inherit;
-    }
-    
-    blockquote {
-        font-size: 1.25em;
-        margin: 1em 0;
-        padding-left: 1em;
-        border-left: 3px solid rgb(55, 53, 47);
-    }
-    
-    .bookmark {
-        text-decoration: none;
-        max-height: 8em;
-        padding: 0;
-        display: flex;
-        width: 100%;
-        align-items: stretch;
-    }
-    
-    .bookmark-title {
-        font-size: 0.85em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        height: 1.75em;
-        white-space: nowrap;
-    }
-    
-    .bookmark-text {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    .bookmark-info {
-        flex: 4 1 180px;
-        padding: 12px 14px 14px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    
-    .bookmark-image {
-        width: 33%;
-        flex: 1 1 180px;
-        display: block;
-        position: relative;
-        object-fit: cover;
-        border-radius: 1px;
-    }
-    
-    .bookmark-description {
-        color: rgba(55, 53, 47, 0.6);
-        font-size: 0.75em;
-        overflow: hidden;
-        max-height: 4.5em;
-        word-break: break-word;
-    }
-    
-    .bookmark-href {
-        font-size: 0.75em;
-        margin-top: 0.25em;
-    }
-    
-    .sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-    .code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-    .serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-    .mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-    .pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-    .pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-    .pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-    .pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-    .pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-    .pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-    .pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-    .pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-    .pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-    .pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-    .pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-    .pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-    .pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-    .pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-    .pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-    .pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-    .highlight-default {
-        color: rgba(55, 53, 47, 1);
-    }
-    .highlight-gray {
-        color: lightblue;
-    }
-    .highlight-brown {
-        color: rgba(159, 107, 83, 1);
-        fill: rgba(159, 107, 83, 1);
-    }
-    .highlight-orange {
-        color: rgba(217, 115, 13, 1);
-        fill: rgba(217, 115, 13, 1);
-    }
-    .highlight-yellow {
-        color: rgba(203, 145, 47, 1);
-        fill: rgba(203, 145, 47, 1);
-    }
-    .highlight-teal {
-        color: rgba(68, 131, 97, 1);
-        fill: rgba(68, 131, 97, 1);
-    }
-    .highlight-blue {
-        color: rgba(51, 126, 169, 1);
-        fill: rgba(51, 126, 169, 1);
-    }
-    .highlight-purple {
-        color: rgba(144, 101, 176, 1);
-        fill: rgba(144, 101, 176, 1);
-    }
-    .highlight-pink {
-        color: rgba(193, 76, 138, 1);
-        fill: rgba(193, 76, 138, 1);
-    }
-    .highlight-red {
-        color: rgba(212, 76, 71, 1);
-        fill: rgba(212, 76, 71, 1);
-    }
-    .highlight-default_background {
-        color: rgba(55, 53, 47, 1);
-    }
-    .highlight-gray_background {
-        background: rgba(241, 241, 239, 1);
-    }
-    .highlight-brown_background {
-        background: rgba(244, 238, 238, 1);
-    }
-    .highlight-orange_background {
-        background: rgba(251, 236, 221, 1);
-    }
-    .highlight-yellow_background {
-        background: rgba(251, 243, 219, 1);
-    }
-    .highlight-teal_background {
-        background: rgba(237, 243, 236, 1);
-    }
-    .highlight-blue_background {
-        background: rgba(231, 243, 248, 1);
-    }
-    .highlight-purple_background {
-        background: rgba(244, 240, 247, 0.8);
-    }
-    .highlight-pink_background {
-        background: rgba(249, 238, 243, 0.8);
-    }
-    .highlight-red_background {
-        background: rgba(253, 235, 236, 1);
-    }
-    .block-color-default {
-        color: inherit;
-        fill: inherit;
-    }
-    .block-color-gray {
-        color: rgba(120, 119, 116, 1);
-        fill: rgba(120, 119, 116, 1);
-    }
-    .block-color-brown {
-        color: rgba(159, 107, 83, 1);
-        fill: rgba(159, 107, 83, 1);
-    }
-    .block-color-orange {
-        color: rgba(217, 115, 13, 1);
-        fill: rgba(217, 115, 13, 1);
-    }
-    .block-color-yellow {
-        color: rgba(203, 145, 47, 1);
-        fill: rgba(203, 145, 47, 1);
-    }
-    .block-color-teal {
-        color: rgba(68, 131, 97, 1);
-        fill: rgba(68, 131, 97, 1);
-    }
-    .block-color-blue {
-        color: rgba(51, 126, 169, 1);
-        fill: rgba(51, 126, 169, 1);
-    }
-    .block-color-purple {
-        color: rgba(144, 101, 176, 1);
-        fill: rgba(144, 101, 176, 1);
-    }
-    .block-color-pink {
-        color: rgba(193, 76, 138, 1);
-        fill: rgba(193, 76, 138, 1);
-    }
-    .block-color-red {
-        color: rgba(212, 76, 71, 1);
-        fill: rgba(212, 76, 71, 1);
-    }
-    .block-color-default_background {
-        color: inherit;
-        fill: inherit;
-    }
-    .block-color-gray_background {
-        background: rgba(241, 241, 239, 1);
-    }
-    .block-color-brown_background {
-        background: rgba(244, 238, 238, 1);
-    }
-    .block-color-orange_background {
-        background: rgba(251, 236, 221, 1);
-    }
-    .block-color-yellow_background {
-        background: rgba(251, 243, 219, 0.05);
-    }
-    .block-color-teal_background {
-        background: rgba(237, 243, 236, 1);
-    }
-    .block-color-blue_background {
-        background: rgba(231, 243, 248, 0.05);
-    }
-    .block-color-purple_background {
-        background: rgba(244, 240, 247, 0.8);
-    }
-    .block-color-pink_background {
-        background: rgba(249, 238, 243, 0.8);
-    }
-    .block-color-red_background {
-        background: rgba(253, 235, 236, 1);
-    }
-    .select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
-    .select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-    .select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-    .select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-    .select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-    .select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
-    .select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
-    .select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-    .select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-    .select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-    .select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-    .select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
-    .select-value-color-pageGlass { background-color: undefined; }
-    .select-value-color-washGlass { background-color: undefined; }
-    
-    .checkbox {
-        display: inline-flex;
-        vertical-align: text-bottom;
-        width: 16;
-        height: 16;
-        background-size: 16px;
-        margin-left: 2px;
-        margin-right: 5px;
-    }
-    
-    .checkbox-on {
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-    }
-    
-    .checkbox-off {
-        background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-    }
-        
+        .simple-table-header {
+            font-weight: 500;
+        }
+
+        time {
+            opacity: 0.5;
+        }
+
+        .icon {
+            display: inline-block;
+            max-width: 1.2em;
+            max-height: 1.2em;
+            text-decoration: none;
+            vertical-align: text-bottom;
+            margin-right: 0.5em;
+        }
+
+        img.icon {
+            border-radius: 3px;
+        }
+
+        .user-icon {
+            width: 1.5em;
+            height: 1.5em;
+            border-radius: 100%;
+            margin-right: 0.5rem;
+        }
+
+        .user-icon-inner {
+            font-size: 0.8em;
+        }
+
+        .text-icon {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        .page-cover-image {
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            max-height: 30vh;
+        }
+
+        .page-header-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header-icon-with-cover {
+            margin-top: -0.72em;
+            margin-left: 0.07em;
+        }
+
+        .page-header-icon img {
+            border-radius: 3px;
+        }
+
+        .link-to-page {
+            margin: 1em 0;
+            padding: 0;
+            border: none;
+            font-weight: 500;
+        }
+
+        p>.user {
+            opacity: 0.5;
+        }
+
+        td>.user,
+        td>time {
+            white-space: nowrap;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.5);
+            margin-right: 0.6em;
+            vertical-align: middle;
+        }
+
+        p {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .image {
+            border: none;
+            margin: 1.5em 0;
+            padding: 0;
+            border-radius: 0;
+            text-align: center;
+        }
+
+        .code,
+        code {
+            background: rgba(135, 131, 120, 0.15);
+            border-radius: 3px;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 85%;
+            tab-size: 2;
+        }
+
+        code {
+            color: #eb5757;
+        }
+
+        .code {
+            padding: 1.5em 1em;
+        }
+
+        .code-wrap {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .code>code {
+            background: none;
+            padding: 0;
+            font-size: 100%;
+            color: inherit;
+        }
+
+        blockquote {
+            font-size: 1.25em;
+            margin: 1em 0;
+            padding-left: 1em;
+            border-left: 3px solid rgb(55, 53, 47);
+        }
+
+        .bookmark {
+            text-decoration: none;
+            max-height: 8em;
+            padding: 0;
+            display: flex;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .bookmark-title {
+            font-size: 0.85em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 1.75em;
+            white-space: nowrap;
+        }
+
+        .bookmark-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bookmark-info {
+            flex: 4 1 180px;
+            padding: 12px 14px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bookmark-image {
+            width: 33%;
+            flex: 1 1 180px;
+            display: block;
+            position: relative;
+            object-fit: cover;
+            border-radius: 1px;
+        }
+
+        .bookmark-description {
+            color: rgba(55, 53, 47, 0.6);
+            font-size: 0.75em;
+            overflow: hidden;
+            max-height: 4.5em;
+            word-break: break-word;
+        }
+
+        .bookmark-href {
+            font-size: 0.75em;
+            margin-top: 0.25em;
+        }
+
+        .sans {
+            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        .code {
+            font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+        }
+
+        .serif {
+            font-family: Lyon-Text, Georgia, ui-serif, serif;
+        }
+
+        .mono {
+            font-family: iawriter-mono, Nitti, Menlo, Courier, monospace;
+        }
+
+        .pdf .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .sans {
+            font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR';
+        }
+
+        .pdf .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .code {
+            font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+        }
+
+        .pdf .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .serif {
+            font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR';
+        }
+
+        .pdf .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP';
+        }
+
+        .pdf:lang(zh-CN) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC';
+        }
+
+        .pdf:lang(zh-TW) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC';
+        }
+
+        .pdf:lang(ko-KR) .mono {
+            font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR';
+        }
+
+        .highlight-default {
+            color: rgba(55, 53, 47, 1);
+        }
+
+        .highlight-gray {
+            color: lightblue;
+        }
+
+        .highlight-brown {
+            color: rgba(159, 107, 83, 1);
+            fill: rgba(159, 107, 83, 1);
+        }
+
+        .highlight-orange {
+            color: rgba(217, 115, 13, 1);
+            fill: rgba(217, 115, 13, 1);
+        }
+
+        .highlight-yellow {
+            color: rgba(203, 145, 47, 1);
+            fill: rgba(203, 145, 47, 1);
+        }
+
+        .highlight-teal {
+            color: rgba(68, 131, 97, 1);
+            fill: rgba(68, 131, 97, 1);
+        }
+
+        .highlight-blue {
+            color: rgba(51, 126, 169, 1);
+            fill: rgba(51, 126, 169, 1);
+        }
+
+        .highlight-purple {
+            color: rgba(144, 101, 176, 1);
+            fill: rgba(144, 101, 176, 1);
+        }
+
+        .highlight-pink {
+            color: rgba(193, 76, 138, 1);
+            fill: rgba(193, 76, 138, 1);
+        }
+
+        .highlight-red {
+            color: rgba(212, 76, 71, 1);
+            fill: rgba(212, 76, 71, 1);
+        }
+
+        .highlight-default_background {
+            color: rgba(55, 53, 47, 1);
+        }
+
+        .highlight-gray_background {
+            background: rgba(241, 241, 239, 1);
+        }
+
+        .highlight-brown_background {
+            background: rgba(244, 238, 238, 1);
+        }
+
+        .highlight-orange_background {
+            background: rgba(251, 236, 221, 1);
+        }
+
+        .highlight-yellow_background {
+            background: rgba(251, 243, 219, 1);
+        }
+
+        .highlight-teal_background {
+            background: rgba(237, 243, 236, 1);
+        }
+
+        .highlight-blue_background {
+            background: rgba(231, 243, 248, 1);
+        }
+
+        .highlight-purple_background {
+            background: rgba(244, 240, 247, 0.8);
+        }
+
+        .highlight-pink_background {
+            background: rgba(249, 238, 243, 0.8);
+        }
+
+        .highlight-red_background {
+            background: rgba(253, 235, 236, 1);
+        }
+
+        .block-color-default {
+            color: inherit;
+            fill: inherit;
+        }
+
+        .block-color-gray {
+            color: rgba(120, 119, 116, 1);
+            fill: rgba(120, 119, 116, 1);
+        }
+
+        .block-color-brown {
+            color: rgba(159, 107, 83, 1);
+            fill: rgba(159, 107, 83, 1);
+        }
+
+        .block-color-orange {
+            color: rgba(217, 115, 13, 1);
+            fill: rgba(217, 115, 13, 1);
+        }
+
+        .block-color-yellow {
+            color: rgba(203, 145, 47, 1);
+            fill: rgba(203, 145, 47, 1);
+        }
+
+        .block-color-teal {
+            color: rgba(68, 131, 97, 1);
+            fill: rgba(68, 131, 97, 1);
+        }
+
+        .block-color-blue {
+            color: rgba(51, 126, 169, 1);
+            fill: rgba(51, 126, 169, 1);
+        }
+
+        .block-color-purple {
+            color: rgba(144, 101, 176, 1);
+            fill: rgba(144, 101, 176, 1);
+        }
+
+        .block-color-pink {
+            color: rgba(193, 76, 138, 1);
+            fill: rgba(193, 76, 138, 1);
+        }
+
+        .block-color-red {
+            color: rgba(212, 76, 71, 1);
+            fill: rgba(212, 76, 71, 1);
+        }
+
+        .block-color-default_background {
+            color: inherit;
+            fill: inherit;
+        }
+
+        .block-color-gray_background {
+            background: rgba(241, 241, 239, 1);
+        }
+
+        .block-color-brown_background {
+            background: rgba(244, 238, 238, 1);
+        }
+
+        .block-color-orange_background {
+            background: rgba(251, 236, 221, 1);
+        }
+
+        .block-color-yellow_background {
+            background: rgba(251, 243, 219, 0.05);
+        }
+
+        .block-color-teal_background {
+            background: rgba(237, 243, 236, 1);
+        }
+
+        .block-color-blue_background {
+            background: rgba(231, 243, 248, 0.05);
+        }
+
+        .block-color-purple_background {
+            background: rgba(244, 240, 247, 0.8);
+        }
+
+        .block-color-pink_background {
+            background: rgba(249, 238, 243, 0.8);
+        }
+
+        .block-color-red_background {
+            background: rgba(253, 235, 236, 1);
+        }
+
+        .select-value-color-uiBlue {
+            background-color: rgba(35, 131, 226, .07);
+        }
+
+        .select-value-color-pink {
+            background-color: rgba(245, 224, 233, 1);
+        }
+
+        .select-value-color-purple {
+            background-color: rgba(232, 222, 238, 1);
+        }
+
+        .select-value-color-green {
+            background-color: rgba(219, 237, 219, 1);
+        }
+
+        .select-value-color-gray {
+            background-color: rgba(227, 226, 224, 1);
+        }
+
+        .select-value-color-transparentGray {
+            background-color: rgba(227, 226, 224, 0);
+        }
+
+        .select-value-color-translucentGray {
+            background-color: rgba(0, 0, 0, 0.06);
+        }
+
+        .select-value-color-orange {
+            background-color: rgba(250, 222, 201, 1);
+        }
+
+        .select-value-color-brown {
+            background-color: rgba(238, 224, 218, 1);
+        }
+
+        .select-value-color-red {
+            background-color: rgba(255, 226, 221, 1);
+        }
+
+        .select-value-color-yellow {
+            background-color: rgba(253, 236, 200, 1);
+        }
+
+        .select-value-color-blue {
+            background-color: rgba(211, 229, 239, 1);
+        }
+
+        .select-value-color-pageGlass {
+            background-color: undefined;
+        }
+
+        .select-value-color-washGlass {
+            background-color: undefined;
+        }
+
+        .checkbox {
+            display: inline-flex;
+            vertical-align: text-bottom;
+            width: 16;
+            height: 16;
+            background-size: 16px;
+            margin-left: 2px;
+            margin-right: 5px;
+        }
+
+        .checkbox-on {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+        }
+
+        .checkbox-off {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+        }
     </style>
     <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body><article id="177bd928-3fa6-8095-bb68-c374b5af71ba" class="page sans"><header><h1 class="page-title">o-sigv 2025</h1><p class="page-description"></p></header><div class="page-body"><div id="177bd928-3fa6-805d-ad7c-c301550b19b6" class="column-list"><div id="0860582d-398b-46a6-8fff-f27fa94f0d6d" style="width:100%" class="column"><table id="38c01857-e28a-4cb1-bcf0-c49dda3b4b7d" class="simple-table"><thead class="simple-table-header"><tr id="a5ec73cc-1d5a-4a41-a6a8-ece793c94f26"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">`</th><th id="]JP?" class="simple-table-header-color simple-table-header">ANIM</th><th id="Ci?o" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="zMkk" class="simple-table-header-color simple-table-header"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="bd7235ba-58f0-4024-b775-4787a8a89886"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">t</th><td id="]JP?" class="">turn</td><td id="Ci?o" class="" style="width:35px"></td><td id="zMkk" class="">` t i 2 i</td></tr><tr id="3800f414-d076-4460-a24a-ec5e45fbbdd9"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">s</th><td id="]JP?" class="">scaleto</td><td id="Ci?o" class="" style="width:35px"></td><td id="zMkk" class="">` s 1 1 1 a</td></tr><tr id="93f0b134-235d-45e2-b144-1664631f096f"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">m</th><td id="]JP?" class="">moveto</td><td id="Ci?o" class="" style="width:35px"></td><td id="zMkk" class="">` m i i i s</td></tr><tr id="a0e56852-c6ea-4b8f-8b54-56859d4ad855"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">r</th><td id="]JP?" class="">rotateto</td><td id="Ci?o" class="" style="width:35px"></td><td id="zMkk" class="">` r i 0 i</td></tr><tr id="3582aa11-11fa-432e-a7f9-b9243411e991"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">e</th><td id="]JP?" class="">ease</td><td id="Ci?o" class="" style="width:35px"></td><td id="zMkk" class="">` e 9</td></tr><tr id="2673512a-8456-4d98-a5fe-ede84fb7001d"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px"><strong>f</strong></th><td id="]JP?" class="">ease function</td><td id="Ci?o" class="" style="width:35px"></td><td id="zMkk" class="">` f 0</td></tr></tbody></table><p id="f7a62b99-4e40-475d-8e29-54bd304673c0" class="">
-    </p><table id="832dd7d5-36ef-4b3e-a774-7bcf1e814c84" class="simple-table"><thead class="simple-table-header"><tr id="dc138418-4e7f-4de1-b1f4-43393a67b13a"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">^</th><th id="]JP?" class="simple-table-header-color simple-table-header">TRANS</th><th id="Tej[" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="sY@_" class="simple-table-header-color simple-table-header" style="width:118px"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="b2f53d71-d6c4-47e7-9190-1b10b7e9a5c9"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">o</th><td id="]JP?" class="">morph ^</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ o 0 i a</td></tr><tr id="63ffecff-21c7-4136-87ea-cd6bc8303861"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">s</th><td id="]JP?" class="">shape</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ s 2 6</td></tr><tr id="c1dbb005-bbb6-4df0-a92c-24b5a961a90c"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">d</th><td id="]JP?" class="">dimensions</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ d 1 j j</td></tr><tr id="7e09b114-308e-4131-b77b-60ea5add9ecc"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">e</th><td id="]JP?" class="">draw element</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ e 4</td></tr><tr id="f339b8f2-9ad5-40fe-93ea-a2688bc6efe5"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">a</th><td id="]JP?" class="">object aio ^</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ a 8</td></tr><tr id="be14d27d-138d-4a20-b697-617aee3a7e32"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">p</th><td id="]JP?" class="">poly mode</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ p 0 0</td></tr><tr id="b73f7461-e14c-4b73-88ac-2c0f478873f2"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">c</th><td id="]JP?" class="">cull face</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ c 0 1</td></tr><tr id="9cc116d6-6443-4865-8d20-4eae64c8a82d"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">0</th><td id="]JP?" class="">point size</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ 0 4</td></tr><tr id="0ee62031-31a5-408f-9bdb-63786158ccea"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">1</th><td id="]JP?" class="">line width</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ 1 i</td></tr><tr id="b321337d-6fb3-4abd-8ac9-0d6e0fe273a9"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">f</th><td id="]JP?" class="">proc period</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ f a</td></tr><tr id="353121ff-51de-4e36-817c-feaefebbeac0"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">x</th><td id="]JP?" class="">proc scale</td><td id="Tej[" class="" style="width:35px"></td><td id="sY@_" class="" style="width:118px">^ x i</td></tr></tbody></table><p id="9f7b4bd3-f1dc-4a74-ba97-a107302521af" class="">
-    </p><table id="0c916941-a8c4-4df7-9b58-756e5414a974" class="simple-table"><thead class="simple-table-header"><tr id="608bad32-88a5-47cd-8645-ad0ce19fc203"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">º</th><th id="pr@c" class="simple-table-header-color simple-table-header">LIGHTS</th><th id="^^&lt;`" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="vv{w" class="simple-table-header-color simple-table-header"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="4fd63b47-2810-443e-99cd-7a2e70bba4fa"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">n</th><td id="pr@c" class="">new light</td><td id="^^&lt;`" class="" style="width:35px"></td><td id="vv{w" class="">º n</td></tr><tr id="c26cdd09-0395-40a0-a39c-b968ab1f677f"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">e</th><td id="pr@c" class="">enable</td><td id="^^&lt;`" class="" style="width:35px"></td><td id="vv{w" class="">º e 0</td></tr><tr id="d53759ac-deef-4230-b1d9-149060eadf0c"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">a</th><td id="pr@c" class="">activate</td><td id="^^&lt;`" class="" style="width:35px"></td><td id="vv{w" class="">º a 1</td></tr><tr id="ac481ca4-e260-4735-a2e6-a891ac77666a"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">v</th><td id="pr@c" class="">visible</td><td id="^^&lt;`" class="" style="width:35px"></td><td id="vv{w" class="">º v 0</td></tr><tr id="05a293e7-1980-46d1-97ae-5abe5c8f2ddd"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">r</th><td id="pr@c" class="">random diffuse</td><td id="^^&lt;`" class="" style="width:35px"></td><td id="vv{w" class="">º r 0</td></tr><tr id="ab06fb46-fd15-43eb-95be-9e47706acac8"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">c</th><td id="pr@c" class="">diffuse (color)</td><td id="^^&lt;`" class="" style="width:35px"></td><td id="vv{w" class="">º c a b 2</td></tr><tr id="8f59b776-8b32-408b-a34e-bb5c9d860a36"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">d</th><td id="pr@c" class="">delete light</td><td id="^^&lt;`" class="" style="width:35px"></td><td id="vv{w" class="">º d 2</td></tr></tbody></table><p id="d45738e1-087a-44ff-b68e-f5521524a0e1" class="">
-    </p><table id="d9bef51a-b561-45c1-bcee-b8d33c9db1bc" class="simple-table"><thead class="simple-table-header"><tr id="fb894b7e-24ad-4c09-be7f-d09fa12b61c8"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">∆</th><th id="LtPD" class="simple-table-header-color simple-table-header">SERIAL</th><th id="z:x?" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="Zvpu" class="simple-table-header-color simple-table-header"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="f1263c8c-3eea-4c57-95de-c30e71b6dd9b"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">v</th><td id="LtPD" class="">crow<strong> </strong>volts</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class=""><strong>∆ c r</strong></td></tr><tr id="30939d9d-b140-4809-ad13-23faa94c0dcb"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">i</th><td id="LtPD" class=""><strong>crow input</strong></td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class=""><strong>∆ l m 1 1</strong></td></tr><tr id="b7fcbbe4-f4df-4b7e-84f8-abc933a17e6d"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">p</th><td id="LtPD" class=""><strong>gpio pulse</strong></td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class=""><strong>∆ p d 7</strong></td></tr><tr id="e7697223-8e7a-447a-9d38-9e2571541f75"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">a</th><td id="LtPD" class=""><strong>gpio analog</strong></td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class=""><strong>∆ a 4 s</strong></td></tr><tr id="5ec53992-92b3-4303-897d-e493ea13644c"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">m</th><td id="LtPD" class=""><strong>mcu message</strong></td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class=""><strong>∆ m 1</strong></td></tr><tr id="f8b4dd78-4907-4f2a-aa8e-72f59af683a2"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">c</th><td id="LtPD" class="">crow open</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class="">∆ c</td></tr></tbody></table><p id="3975cc8d-4c3f-40e2-9af2-66e119de1709" class="">
-    </p><table id="531738cd-615f-4d9a-82e5-37d391e01b27" class="simple-table"><thead class="simple-table-header"><tr id="f66c2932-fca1-4630-bd95-1bc90e56c474"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">∞</th><th id="LtPD" class="simple-table-header-color simple-table-header">CHAO</th><th id="`?{M" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="Zvpu" class="simple-table-header-color simple-table-header"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="15d3c181-f160-4994-bbd9-aae9f0b6cd90"><th id="\Fzj" class="block-color-yellow_background simple-table-header" style="width:35px">s</th><td id="LtPD" class="block-color-yellow_background">lz sample</td><td id="`?{M" class="block-color-yellow_background" style="width:35px"></td><td id="Zvpu" class="block-color-yellow_background">∞ s</td></tr><tr id="b63c978e-6cab-4cc0-b350-338910aeb8e7"><th id="\Fzj" class="block-color-yellow_background simple-table-header" style="width:35px">1</th><td id="LtPD" class="block-color-yellow_background">lz activate</td><td id="`?{M" class="block-color-yellow_background" style="width:35px"></td><td id="Zvpu" class="block-color-yellow_background">∞ 1</td></tr><tr id="6cece054-1c73-4165-a545-32d4f9cf411c"><th id="\Fzj" class="block-color-yellow_background simple-table-header" style="width:35px">p</th><td id="LtPD" class="block-color-yellow_background">lz particles dim</td><td id="`?{M" class="block-color-yellow_background" style="width:35px"></td><td id="Zvpu" class="block-color-yellow_background">∞ p 7 7</td></tr><tr id="10bce4ae-344f-4c6b-b7cb-c70889841109"><th id="\Fzj" class="block-color-yellow_background simple-table-header" style="width:35px">e</th><td id="LtPD" class="block-color-yellow_background">lz ^ equation</td><td id="`?{M" class="block-color-yellow_background" style="width:35px"></td><td id="Zvpu" class="block-color-yellow_background">∞ e</td></tr><tr id="7ef330f9-eb26-4c33-8f61-b2cda90002b6"><th id="\Fzj" class="block-color-yellow_background simple-table-header" style="width:35px">a</th><td id="LtPD" class="block-color-yellow_background">lz a value</td><td id="`?{M" class="block-color-yellow_background" style="width:35px"></td><td id="Zvpu" class="block-color-yellow_background">∞ a 4</td></tr><tr id="47ade2b3-ed2f-47d0-ad7b-85faac183d3c"><th id="\Fzj" class="block-color-yellow_background simple-table-header" style="width:35px">b</th><td id="LtPD" class="block-color-yellow_background">lz b value</td><td id="`?{M" class="block-color-yellow_background" style="width:35px"></td><td id="Zvpu" class="block-color-yellow_background">∞ b a</td></tr><tr id="74aa2416-69bb-4674-bc52-fb1279925add"><th id="\Fzj" class="block-color-yellow_background simple-table-header" style="width:35px">c</th><td id="LtPD" class="block-color-yellow_background">lz c value</td><td id="`?{M" class="block-color-yellow_background" style="width:35px"></td><td id="Zvpu" class="block-color-yellow_background">∞ c 1</td></tr><tr id="d690e302-6d7b-4db0-8d96-ec1710987991"><th id="\Fzj" class="block-color-yellow_background simple-table-header" style="width:35px">d</th><td id="LtPD" class="block-color-yellow_background">lz dt value</td><td id="`?{M" class="block-color-yellow_background" style="width:35px"></td><td id="Zvpu" class="block-color-yellow_background">∞ d 0</td></tr><tr id="deaa7851-65fe-4304-abce-b17cc8e1204b"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">i</th><td id="LtPD" class="">lz data value</td><td id="`?{M" class="" style="width:35px"></td><td id="Zvpu" class="">∞ i 0 0 7</td></tr><tr id="53424c68-bd2e-4a7d-9968-e5ac908f8eb1"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px"></th><td id="LtPD" class=""></td><td id="`?{M" class="" style="width:35px"></td><td id="Zvpu" class=""></td></tr></tbody></table><p id="177bd928-3fa6-80d3-9d30-cef0830fb7c6" class="">
-    </p><table id="177bd928-3fa6-80ab-8751-cf1a91f7871c" class="simple-table"><thead class="simple-table-header"><tr id="34853cd6-ef20-471a-af43-f5b32915c9c3"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">ß</th><th id="LtPD" class="simple-table-header-color simple-table-header">BUFFER</th><th id="z:x?" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="Zvpu" class="simple-table-header-color simple-table-header"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="3db0555e-bf0b-4c44-9627-e46cc054d191"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">#</th><td id="LtPD" class="">start buffer</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class="">5</td></tr><tr id="3922e628-4034-4e96-8967-d7191bb71259"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">l</th><td id="LtPD" class="">loop</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class="">l 0</td></tr><tr id="b1a435c4-4b44-4f57-8181-74221b7c953b"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">s</th><td id="LtPD" class="">set buffer</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class="">s 3</td></tr><tr id="47899ea5-fb7a-4740-8163-23922c4908a1"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">p</th><td id="LtPD" class="">pause buffer</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class="">p</td></tr><tr id="681412ca-70c7-4715-b664-03cbf700f1cc"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">r</th><td id="LtPD" class="">resume buffer</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class="">r</td></tr><tr id="53b1edd7-e019-4b5c-add6-bb49cde40815"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">o</th><td id="LtPD" class="">select sample</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class="">o 4</td></tr><tr id="177bd928-3fa6-8042-916b-e4448d7259f9"><th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">m</th><td id="LtPD" class="">midi connect</td><td id="z:x?" class="" style="width:35px"></td><td id="Zvpu" class="">m0</td></tr></tbody></table></div><div id="ff9df789-83b9-458a-9355-3ff52b945129" style="width:100%" class="column"><table id="8d796322-12dd-46e3-8b92-cd558b0a7070" class="simple-table"><thead class="simple-table-header"><tr id="cb1b1d8c-c5ee-4e94-a165-0243e09d12ab"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">|</th><th id="]JP?" class="simple-table-header-color simple-table-header">MAT</th><th id="WSYI" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="hxyp" class="simple-table-header-color simple-table-header"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="e3e8b3d8-2b33-4aa9-b56d-3b306554ad22"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">m</th><td id="]JP?" class="">material specs</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| m a 9 2</td></tr><tr id="a0e66b8c-98ef-4461-be44-d2cc8ea2f3eb"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">d</th><td id="]JP?" class="">diffuse tex</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| d 2</td></tr><tr id="64e47ec2-eaa3-4ce8-8121-1edb0b596223"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">h</th><td id="]JP?" class="">heightmap tex</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| h 3</td></tr><tr id="2d68772c-d0b8-4861-896a-d9ac355ec89e"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">n</th><td id="]JP?" class="">normals tex</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| n 1</td></tr><tr id="2a4fe923-c63d-46e4-8f77-421ec7196904"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">e</th><td id="]JP?" class="">emission tex</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| e 1</td></tr><tr id="7cf6f30a-4efa-4e6b-a8e9-9a2baf7f8226"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">b</th><td id="]JP?" class="">bfg</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| b</td></tr><tr id="ae3acf0b-60cc-424d-b609-52bdf9d82fae"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">f</th><td id="]JP?" class="">fog</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| f 1</td></tr><tr id="c692b466-3c51-416d-a064-bf277034f3c4"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">g</th><td id="]JP?" class="">drawgroup</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| g 2</td></tr><tr id="5944c951-40f3-494f-91a7-f7f57c8787e5"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">t</th><td id="]JP?" class="">texgroup</td><td id="WSYI" class="" style="width:35px"></td><td id="hxyp" class="">| t 0 1</td></tr></tbody></table><p id="9e5d8988-1590-45ff-877f-af61d10f2a25" class="">
-    </p><table id="884fce94-85d3-49a7-8bf0-92858248ae4f" class="simple-table"><thead class="simple-table-header"><tr id="216a255e-8021-45dd-ab77-11b6dff997a0"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">_</th><th id="]JP?" class="simple-table-header-color simple-table-header">AUDIO</th><th id="b`WY" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="F=`V" class="simple-table-header-color simple-table-header"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="cf20719c-5b7c-4e5a-8009-03400ad50a3f"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">p</th><td id="]JP?" class="">aio peak thresh</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ p a</td></tr><tr id="fe2d29fc-ed34-4f8c-ad37-69ec6d020bcb"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">l</th><td id="]JP?" class="">aio peak ramp</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ l 9</td></tr><tr id="5a10eee0-5d98-4695-b902-52c0661c78d7"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">o</th><td id="]JP?" class="">auto aio object</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ o 1</td></tr><tr id="27cfc222-b22c-4fce-a794-e58f0b6ca54c"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">1</th><td id="]JP?" class="">aio pwr</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ 1 1</td></tr><tr id="d1069432-a40f-47d2-aea7-6350dc1c2735"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">m</th><td id="]JP?" class="">nature mode</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ m t</td></tr><tr id="8bd01109-5415-4749-a349-6a8381df8ec7"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">x</th><td id="]JP?" class="">nature mult</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ x a</td></tr><tr id="aacc5f38-ba90-4dbe-9406-92f1c4b70738"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">q</th><td id="]JP?" class="">nature peak</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ q 8</td></tr><tr id="5791baef-1750-43d5-91e8-c7ad69aa920e"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">b</th><td id="]JP?" class="">nature biquad</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ b 0 3 a 2 a</td></tr><tr id="0cfad473-9950-4270-a305-434ce1028d67"><th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">s</th><td id="]JP?" class="">nature sense</td><td id="b`WY" class="" style="width:35px"></td><td id="F=`V" class="">_ s 0 1</td></tr><tr id="039da899-6f73-4f72-a68a-06687b231505"><th id="Zab^" class="block-color-yellow_background simple-table-header" style="width:35px">v</th><td id="]JP?" class="block-color-yellow_background">midi vst plug</td><td id="b`WY" class="block-color-yellow_background" style="width:35px"></td><td id="F=`V" class="block-color-yellow_background">_ v 1 5</td></tr><tr id="43f30cd2-2a95-4410-bd46-a5f27983d109"><th id="Zab^" class="block-color-yellow_background simple-table-header" style="width:35px">v</th><td id="]JP?" class="block-color-yellow_background">midi vst open</td><td id="b`WY" class="block-color-yellow_background" style="width:35px"></td><td id="F=`V" class="block-color-yellow_background">_ v 0 1 1</td></tr><tr id="22b4b97c-6510-4826-8d93-ab95c6149885"><th id="Zab^" class="block-color-yellow_background simple-table-header" style="width:35px">v</th><td id="]JP?" class="block-color-yellow_background">midi vst program</td><td id="b`WY" class="block-color-yellow_background" style="width:35px"></td><td id="F=`V" class="block-color-yellow_background">_ v 1 p 3</td></tr></tbody></table><p id="177bd928-3fa6-8072-9017-f0441f920935" class="">
-    </p><p id="c18256c8-c7a1-4fb0-9311-90a2edcc0027" class="">Using _ audio command <em>midi vst plug</em> and a number for a buffer container (there are only four midi channels for a VST: 1, 2, 3, and 4), allows you to choose an VST instrument from your machine. After which, writing the Orca characters _ v 0 2, (notice channel number is 0) opens your instruments GUI (in this case the VST instrument in channel 2).</p><p id="177bd928-3fa6-801c-ae5d-f50aa0c8d5ff" class="">
-    </p><table id="e5ef998b-6796-4546-a616-cb5aaa605805" class="simple-table"><thead class="simple-table-header"><tr id="10539697-0a5c-4671-9cb6-d344eb4c4004"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">…</th><th id="pr@c" class="simple-table-header-color simple-table-header">SYSTEM</th><th id="xro&gt;" class="simple-table-header-color simple-table-header" style="width:35px"></th><th id="vv{w" class="simple-table-header-color simple-table-header"><mark class="highlight-gray">Notation</mark></th></tr></thead><tbody><tr id="b6363718-5897-4216-9801-cc297c530e14"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">n</th><td id="pr@c" class="">new object</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… n 0</td></tr><tr id="f8ce3f18-d131-4fcb-97df-6cb99be01a23"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">z</th><td id="pr@c" class="">zap object</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… z p</td></tr><tr id="84c0b86f-1380-4af4-93d9-692c2213a42b"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">f</th><td id="pr@c" class="">focus object</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… f m</td></tr><tr id="c43e0d39-ba68-48b9-b079-323bd91adffd"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">c</th><td id="pr@c" class="">clear</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… c 1</td></tr><tr id="f7d30363-11a1-4745-a459-92746dd78781"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">m</th><td id="pr@c" class="">material mode</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… m 3</td></tr><tr id="ab704027-d5c4-484a-a358-cf1537ab0ce1"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">x</th><td id="pr@c" class="">exit</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… x 0</td></tr><tr id="1a847e86-b669-4083-b0da-2c4b8bdf2fd7"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">b</th><td id="pr@c" class="">wrld border</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… b 0</td></tr><tr id="137142da-dca9-4677-b5f9-faf092d86dd2"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">e</th><td id="pr@c" class="">wrld exec zoom</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… e 1</td></tr><tr id="c54b8790-f060-4de3-9a22-33b051c9bd37"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">q</th><td id="pr@c" class="">fx pass</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… q 0 </td></tr><tr id="33468646-d723-43bb-9b05-420dce7abc56"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">w</th><td id="pr@c" class="">wrld window pos</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… w 0</td></tr><tr id="7a8ff5c2-3b3c-4ec9-bb95-44151f439ed3"><th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">s</th><td id="pr@c" class="">cmd enable</td><td id="xro&gt;" class="" style="width:35px"></td><td id="vv{w" class="">… s 1</td></tr><tr id="187f8cbc-9b1d-4f6e-ad85-88e7614d1a8d"><th id="]nAL" class="block-color-blue_background simple-table-header" style="width:35px">t</th><td id="pr@c" class="block-color-blue_background">tilde (~) set</td><td id="xro&gt;" class="block-color-blue_background" style="width:35px"></td><td id="vv{w" class="block-color-blue_background">… t s 4</td></tr><tr id="0d0c3845-bc5f-41e8-8de6-f6fd0c767eb6"><th id="]nAL" class="block-color-blue_background simple-table-header" style="width:35px">t</th><td id="pr@c" class="block-color-blue_background">tilde (~) src</td><td id="xro&gt;" class="block-color-blue_background" style="width:35px"></td><td id="vv{w" class="block-color-blue_background">… t r 6</td></tr><tr id="78dd7929-3953-4d0a-8035-d6803711ccf8"><th id="]nAL" class="block-color-blue_background simple-table-header" style="width:35px">t</th><td id="pr@c" class="block-color-blue_background">tilde (~) link</td><td id="xro&gt;" class="block-color-blue_background" style="width:35px"></td><td id="vv{w" class="block-color-blue_background">… t l 1</td></tr><tr id="d7b67c15-3379-44a0-881d-f1507eb6038d"><th id="]nAL" class="block-color-blue_background simple-table-header" style="width:35px">t</th><td id="pr@c" class="block-color-blue_background">tilde (~) tail</td><td id="xro&gt;" class="block-color-blue_background" style="width:35px"></td><td id="vv{w" class="block-color-blue_background">… t t 2</td></tr></tbody></table><p id="7b7df8ec-757b-4f4e-9feb-6350cee46bdc" class="">
-    </p><p id="c206bdeb-e834-414d-8a88-7b867634658e" class="">The ∆ gpio serial commands are meant to be used primarily via a securely connected (SSH) RaspberryPi, and thus controlling its GPIO pins with the Python library <a href="https://gpiozero.readthedocs.io/">gpiozero</a>. (Blueberry Framework)</p><p id="22d7915e-889c-46ed-abad-dbac24706122" class=""><a href="https://static.raspberrypi.org/files/education/posters/GPIO_Zero_Cheatsheet.pdf">Cheatsheet</a></p><p id="06067917-3846-42ec-b2f4-185f53c8c65f" class="">
-    </p><p id="804dffce-dd56-413a-8e08-97140d90c3ce" class="">The ∞ chao commands sequence a set of preset instructions for the Lorenz attractor command and shader.</p><p id="177bd928-3fa6-80ab-ac82-feba2d7a2369" class="">
-    </p><p id="177bd928-3fa6-807a-9604-cabc42c722e8" class="">
-    </p><p id="177bd928-3fa6-800a-9dc9-ef41816eb552" class="">
-    </p></div></div><p id="177bd928-3fa6-80b0-bb5d-efa31edf9f49" class="">
-    </p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+
+<body>
+    <article id="177bd928-3fa6-8095-bb68-c374b5af71ba" class="page sans">
+        <header>
+            <h1 class="page-title">o-sigv 2025</h1>
+            <p class="page-description"></p>
+        </header>
+        <div class="page-body">
+            <div id="177bd928-3fa6-805d-ad7c-c301550b19b6" class="column-list">
+                <div id="0860582d-398b-46a6-8fff-f27fa94f0d6d" style="width:100%" class="column">
+                    <table id="38c01857-e28a-4cb1-bcf0-c49dda3b4b7d" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="a5ec73cc-1d5a-4a41-a6a8-ece793c94f26">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header vkey" style="width:35px">`
+                                </th>
+                                <th id="]JP?" class="simple-table-header-color simple-table-header">ANIM</th>
+                                <th id="Ci?o" class="simple-table-header-color simple-table-header" style="width:35px">
+                                </th>
+                                <th id="zMkk" class="simple-table-header-color simple-table-header"><mark
+                                        class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="bd7235ba-58f0-4024-b775-4787a8a89886">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">t
+                                </th>
+                                <td id="]JP?" class="">turn</td>
+                                <td id="Ci?o" class="" style="width:35px"></td>
+                                <td id="zMkk" class="">` t i 2 i</td>
+                            </tr>
+                            <tr id="3800f414-d076-4460-a24a-ec5e45fbbdd9">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">s
+                                </th>
+                                <td id="]JP?" class="">scaleto</td>
+                                <td id="Ci?o" class="" style="width:35px"></td>
+                                <td id="zMkk" class="">` s 1 1 1 a</td>
+                            </tr>
+                            <tr id="93f0b134-235d-45e2-b144-1664631f096f">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">m
+                                </th>
+                                <td id="]JP?" class="">moveto</td>
+                                <td id="Ci?o" class="" style="width:35px"></td>
+                                <td id="zMkk" class="">` m i i i s</td>
+                            </tr>
+                            <tr id="a0e56852-c6ea-4b8f-8b54-56859d4ad855">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">r
+                                </th>
+                                <td id="]JP?" class="">rotateto</td>
+                                <td id="Ci?o" class="" style="width:35px"></td>
+                                <td id="zMkk" class="">` r i 0 i</td>
+                            </tr>
+                            <tr id="3582aa11-11fa-432e-a7f9-b9243411e991">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">e
+                                </th>
+                                <td id="]JP?" class="">ease</td>
+                                <td id="Ci?o" class="" style="width:35px"></td>
+                                <td id="zMkk" class="">` e 9</td>
+                            </tr>
+                            <tr id="2673512a-8456-4d98-a5fe-ede84fb7001d">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">
+                                    <strong>f</strong></th>
+                                <td id="]JP?" class="">ease function</td>
+                                <td id="Ci?o" class="" style="width:35px"></td>
+                                <td id="zMkk" class="">` f 0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="f7a62b99-4e40-475d-8e29-54bd304673c0" class="">
+                    </p>
+                    <table id="832dd7d5-36ef-4b3e-a774-7bcf1e814c84" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="dc138418-4e7f-4de1-b1f4-43393a67b13a">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header vkey" style="width:35px">^
+                                </th>
+                                <th id="]JP?" class="simple-table-header-color simple-table-header">TRANS</th>
+                                <th id="Tej[" class="simple-table-header-color simple-table-header" style="width:35px">
+                                </th>
+                                <th id="sY@_" class="simple-table-header-color simple-table-header" style="width:118px">
+                                    <mark class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="b2f53d71-d6c4-47e7-9190-1b10b7e9a5c9">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">o
+                                </th>
+                                <td id="]JP?" class="">morph ^</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ o 0 i a</td>
+                            </tr>
+                            <tr id="63ffecff-21c7-4136-87ea-cd6bc8303861">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">s
+                                </th>
+                                <td id="]JP?" class="">shape</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ s 2 6</td>
+                            </tr>
+                            <tr id="c1dbb005-bbb6-4df0-a92c-24b5a961a90c">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">d
+                                </th>
+                                <td id="]JP?" class="">dimensions</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ d 1 j j</td>
+                            </tr>
+                            <tr id="7e09b114-308e-4131-b77b-60ea5add9ecc">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">e
+                                </th>
+                                <td id="]JP?" class="">draw element</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ e 4</td>
+                            </tr>
+                            <tr id="f339b8f2-9ad5-40fe-93ea-a2688bc6efe5">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">a
+                                </th>
+                                <td id="]JP?" class="">object aio ^</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ a 8</td>
+                            </tr>
+                            <tr id="be14d27d-138d-4a20-b697-617aee3a7e32">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">p
+                                </th>
+                                <td id="]JP?" class="">poly mode</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ p 0 0</td>
+                            </tr>
+                            <tr id="b73f7461-e14c-4b73-88ac-2c0f478873f2">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">c
+                                </th>
+                                <td id="]JP?" class="">cull face</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ c 0 1</td>
+                            </tr>
+                            <tr id="9cc116d6-6443-4865-8d20-4eae64c8a82d">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">0
+                                </th>
+                                <td id="]JP?" class="">point size</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ 0 4</td>
+                            </tr>
+                            <tr id="0ee62031-31a5-408f-9bdb-63786158ccea">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">1
+                                </th>
+                                <td id="]JP?" class="">line width</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ 1 i</td>
+                            </tr>
+                            <tr id="b321337d-6fb3-4abd-8ac9-0d6e0fe273a9">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">f
+                                </th>
+                                <td id="]JP?" class="">proc period</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ f a</td>
+                            </tr>
+                            <tr id="353121ff-51de-4e36-817c-feaefebbeac0">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">x
+                                </th>
+                                <td id="]JP?" class="">proc scale</td>
+                                <td id="Tej[" class="" style="width:35px"></td>
+                                <td id="sY@_" class="" style="width:118px">^ x i</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="9f7b4bd3-f1dc-4a74-ba97-a107302521af" class="">
+                    </p>
+                    <table id="0c916941-a8c4-4df7-9b58-756e5414a974" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="608bad32-88a5-47cd-8645-ad0ce19fc203">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header vkey" style="width:35px">º
+                                </th>
+                                <th id="pr@c" class="simple-table-header-color simple-table-header">LIGHTS</th>
+                                <th id="^^&lt;`" class="simple-table-header-color simple-table-header"
+                                    style="width:35px"></th>
+                                <th id="vv{w" class="simple-table-header-color simple-table-header"><mark
+                                        class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="4fd63b47-2810-443e-99cd-7a2e70bba4fa">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">n
+                                </th>
+                                <td id="pr@c" class="">new light</td>
+                                <td id="^^&lt;`" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">º n</td>
+                            </tr>
+                            <tr id="c26cdd09-0395-40a0-a39c-b968ab1f677f">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">e
+                                </th>
+                                <td id="pr@c" class="">enable</td>
+                                <td id="^^&lt;`" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">º e 0</td>
+                            </tr>
+                            <tr id="d53759ac-deef-4230-b1d9-149060eadf0c">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">a
+                                </th>
+                                <td id="pr@c" class="">activate</td>
+                                <td id="^^&lt;`" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">º a 1</td>
+                            </tr>
+                            <tr id="ac481ca4-e260-4735-a2e6-a891ac77666a">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">v
+                                </th>
+                                <td id="pr@c" class="">visible</td>
+                                <td id="^^&lt;`" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">º v 0</td>
+                            </tr>
+                            <tr id="05a293e7-1980-46d1-97ae-5abe5c8f2ddd">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">r
+                                </th>
+                                <td id="pr@c" class="">random diffuse</td>
+                                <td id="^^&lt;`" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">º r 0</td>
+                            </tr>
+                            <tr id="ab06fb46-fd15-43eb-95be-9e47706acac8">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">c
+                                </th>
+                                <td id="pr@c" class="">diffuse (color)</td>
+                                <td id="^^&lt;`" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">º c a b 2</td>
+                            </tr>
+                            <tr id="8f59b776-8b32-408b-a34e-bb5c9d860a36">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">d
+                                </th>
+                                <td id="pr@c" class="">delete light</td>
+                                <td id="^^&lt;`" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">º d 2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="d45738e1-087a-44ff-b68e-f5521524a0e1" class="">
+                    </p>
+                    <table id="d9bef51a-b561-45c1-bcee-b8d33c9db1bc" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="fb894b7e-24ad-4c09-be7f-d09fa12b61c8">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header vkey" style="width:35px">∆
+                                </th>
+                                <th id="LtPD" class="simple-table-header-color simple-table-header">SERIAL</th>
+                                <th id="z:x?" class="simple-table-header-color simple-table-header" style="width:35px">
+                                </th>
+                                <th id="Zvpu" class="simple-table-header-color simple-table-header"><mark
+                                        class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="f1263c8c-3eea-4c57-95de-c30e71b6dd9b">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">v
+                                </th>
+                                <td id="LtPD" class="">crow<strong> </strong>volts</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class=""><strong>∆ c r</strong></td>
+                            </tr>
+                            <tr id="30939d9d-b140-4809-ad13-23faa94c0dcb">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">i
+                                </th>
+                                <td id="LtPD" class=""><strong>crow input</strong></td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class=""><strong>∆ l m 1 1</strong></td>
+                            </tr>
+                            <tr id="b7fcbbe4-f4df-4b7e-84f8-abc933a17e6d">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">p
+                                </th>
+                                <td id="LtPD" class=""><strong>gpio pulse</strong></td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class=""><strong>∆ p d 7</strong></td>
+                            </tr>
+                            <tr id="e7697223-8e7a-447a-9d38-9e2571541f75">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">a
+                                </th>
+                                <td id="LtPD" class=""><strong>gpio analog</strong></td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class=""><strong>∆ a 4 s</strong></td>
+                            </tr>
+                            <tr id="5ec53992-92b3-4303-897d-e493ea13644c">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">m
+                                </th>
+                                <td id="LtPD" class=""><strong>mcu message</strong></td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class=""><strong>∆ m 1</strong></td>
+                            </tr>
+                            <tr id="f8b4dd78-4907-4f2a-aa8e-72f59af683a2">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">c
+                                </th>
+                                <td id="LtPD" class="">crow open</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">∆ c</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="3975cc8d-4c3f-40e2-9af2-66e119de1709" class="">
+                    </p>
+                    <table id="531738cd-615f-4d9a-82e5-37d391e01b27" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="f66c2932-fca1-4630-bd95-1bc90e56c474">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header vkey" style="width:35px">∞
+                                </th>
+                                <th id="LtPD" class="simple-table-header-color simple-table-header">CHAO</th>
+                                <th id="`?{M" class="simple-table-header-color simple-table-header" style="width:35px">
+                                </th>
+                                <th id="Zvpu" class="simple-table-header-color simple-table-header"><mark
+                                        class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="15d3c181-f160-4994-bbd9-aae9f0b6cd90">
+                                <th id="\Fzj" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">s</th>
+                                <td id="LtPD" class="block-color-yellow_background">lz sample</td>
+                                <td id="`?{M" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="Zvpu" class="block-color-yellow_background">∞ s</td>
+                            </tr>
+                            <tr id="b63c978e-6cab-4cc0-b350-338910aeb8e7">
+                                <th id="\Fzj" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">1</th>
+                                <td id="LtPD" class="block-color-yellow_background">lz activate</td>
+                                <td id="`?{M" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="Zvpu" class="block-color-yellow_background">∞ 1</td>
+                            </tr>
+                            <tr id="6cece054-1c73-4165-a545-32d4f9cf411c">
+                                <th id="\Fzj" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">p</th>
+                                <td id="LtPD" class="block-color-yellow_background">lz particles dim</td>
+                                <td id="`?{M" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="Zvpu" class="block-color-yellow_background">∞ p 7 7</td>
+                            </tr>
+                            <tr id="10bce4ae-344f-4c6b-b7cb-c70889841109">
+                                <th id="\Fzj" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">e</th>
+                                <td id="LtPD" class="block-color-yellow_background">lz ^ equation</td>
+                                <td id="`?{M" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="Zvpu" class="block-color-yellow_background">∞ e</td>
+                            </tr>
+                            <tr id="7ef330f9-eb26-4c33-8f61-b2cda90002b6">
+                                <th id="\Fzj" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">a</th>
+                                <td id="LtPD" class="block-color-yellow_background">lz a value</td>
+                                <td id="`?{M" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="Zvpu" class="block-color-yellow_background">∞ a 4</td>
+                            </tr>
+                            <tr id="47ade2b3-ed2f-47d0-ad7b-85faac183d3c">
+                                <th id="\Fzj" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">b</th>
+                                <td id="LtPD" class="block-color-yellow_background">lz b value</td>
+                                <td id="`?{M" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="Zvpu" class="block-color-yellow_background">∞ b a</td>
+                            </tr>
+                            <tr id="74aa2416-69bb-4674-bc52-fb1279925add">
+                                <th id="\Fzj" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">c</th>
+                                <td id="LtPD" class="block-color-yellow_background">lz c value</td>
+                                <td id="`?{M" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="Zvpu" class="block-color-yellow_background">∞ c 1</td>
+                            </tr>
+                            <tr id="d690e302-6d7b-4db0-8d96-ec1710987991">
+                                <th id="\Fzj" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">d</th>
+                                <td id="LtPD" class="block-color-yellow_background">lz dt value</td>
+                                <td id="`?{M" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="Zvpu" class="block-color-yellow_background">∞ d 0</td>
+                            </tr>
+                            <tr id="deaa7851-65fe-4304-abce-b17cc8e1204b">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">i
+                                </th>
+                                <td id="LtPD" class="">lz data value</td>
+                                <td id="`?{M" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">∞ i 0 0 7</td>
+                            </tr>
+                            <tr id="53424c68-bd2e-4a7d-9968-e5ac908f8eb1">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">
+                                </th>
+                                <td id="LtPD" class=""></td>
+                                <td id="`?{M" class="" style="width:35px"></td>
+                                <td id="Zvpu" class=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="177bd928-3fa6-80d3-9d30-cef0830fb7c6" class="">
+                    </p>
+                    <table id="177bd928-3fa6-80ab-8751-cf1a91f7871c" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="34853cd6-ef20-471a-af43-f5b32915c9c3">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">ß
+                                </th>
+                                <th id="LtPD" class="simple-table-header-color simple-table-header vkey">BUFFER</th>
+                                <th id="z:x?" class="simple-table-header-color simple-table-header" style="width:35px">
+                                </th>
+                                <th id="Zvpu" class="simple-table-header-color simple-table-header"><mark
+                                        class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="3db0555e-bf0b-4c44-9627-e46cc054d191">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">#
+                                </th>
+                                <td id="LtPD" class="">start buffer</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">5</td>
+                            </tr>
+                            <tr id="3922e628-4034-4e96-8967-d7191bb71259">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">l
+                                </th>
+                                <td id="LtPD" class="">loop</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">l 0</td>
+                            </tr>
+                            <tr id="b1a435c4-4b44-4f57-8181-74221b7c953b">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">s
+                                </th>
+                                <td id="LtPD" class="">set buffer</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">s 3</td>
+                            </tr>
+                            <tr id="47899ea5-fb7a-4740-8163-23922c4908a1">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">p
+                                </th>
+                                <td id="LtPD" class="">pause buffer</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">p</td>
+                            </tr>
+                            <tr id="681412ca-70c7-4715-b664-03cbf700f1cc">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">r
+                                </th>
+                                <td id="LtPD" class="">resume buffer</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">r</td>
+                            </tr>
+                            <tr id="53b1edd7-e019-4b5c-add6-bb49cde40815">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">o
+                                </th>
+                                <td id="LtPD" class="">select sample</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">o 4</td>
+                            </tr>
+                            <tr id="177bd928-3fa6-8042-916b-e4448d7259f9">
+                                <th id="\Fzj" class="simple-table-header-color simple-table-header" style="width:35px">m
+                                </th>
+                                <td id="LtPD" class="">midi connect</td>
+                                <td id="z:x?" class="" style="width:35px"></td>
+                                <td id="Zvpu" class="">m0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="ff9df789-83b9-458a-9355-3ff52b945129" style="width:100%" class="column">
+                    <table id="8d796322-12dd-46e3-8b92-cd558b0a7070" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="cb1b1d8c-c5ee-4e94-a165-0243e09d12ab">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header vkey" style="width:35px">|
+                                </th>
+                                <th id="]JP?" class="simple-table-header-color simple-table-header">MAT</th>
+                                <th id="WSYI" class="simple-table-header-color simple-table-header" style="width:35px">
+                                </th>
+                                <th id="hxyp" class="simple-table-header-color simple-table-header"><mark
+                                        class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="e3e8b3d8-2b33-4aa9-b56d-3b306554ad22">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">m
+                                </th>
+                                <td id="]JP?" class="">material specs</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| m a 9 2</td>
+                            </tr>
+                            <tr id="a0e66b8c-98ef-4461-be44-d2cc8ea2f3eb">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">d
+                                </th>
+                                <td id="]JP?" class="">diffuse tex</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| d 2</td>
+                            </tr>
+                            <tr id="64e47ec2-eaa3-4ce8-8121-1edb0b596223">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">h
+                                </th>
+                                <td id="]JP?" class="">heightmap tex</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| h 3</td>
+                            </tr>
+                            <tr id="2d68772c-d0b8-4861-896a-d9ac355ec89e">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">n
+                                </th>
+                                <td id="]JP?" class="">normals tex</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| n 1</td>
+                            </tr>
+                            <tr id="2a4fe923-c63d-46e4-8f77-421ec7196904">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">e
+                                </th>
+                                <td id="]JP?" class="">emission tex</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| e 1</td>
+                            </tr>
+                            <tr id="7cf6f30a-4efa-4e6b-a8e9-9a2baf7f8226">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">b
+                                </th>
+                                <td id="]JP?" class="">bfg</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| b</td>
+                            </tr>
+                            <tr id="ae3acf0b-60cc-424d-b609-52bdf9d82fae">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">f
+                                </th>
+                                <td id="]JP?" class="">fog</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| f 1</td>
+                            </tr>
+                            <tr id="c692b466-3c51-416d-a064-bf277034f3c4">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">g
+                                </th>
+                                <td id="]JP?" class="">drawgroup</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| g 2</td>
+                            </tr>
+                            <tr id="5944c951-40f3-494f-91a7-f7f57c8787e5">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">t
+                                </th>
+                                <td id="]JP?" class="">texgroup</td>
+                                <td id="WSYI" class="" style="width:35px"></td>
+                                <td id="hxyp" class="">| t 0 1</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="9e5d8988-1590-45ff-877f-af61d10f2a25" class="">
+                    </p>
+                    <table id="884fce94-85d3-49a7-8bf0-92858248ae4f" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="216a255e-8021-45dd-ab77-11b6dff997a0">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header vkey" style="width:35px">_
+                                </th>
+                                <th id="]JP?" class="simple-table-header-color simple-table-header">AUDIO</th>
+                                <th id="b`WY" class="simple-table-header-color simple-table-header" style="width:35px">
+                                </th>
+                                <th id="F=`V" class="simple-table-header-color simple-table-header"><mark
+                                        class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="cf20719c-5b7c-4e5a-8009-03400ad50a3f">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">p
+                                </th>
+                                <td id="]JP?" class="">aio peak thresh</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ p a</td>
+                            </tr>
+                            <tr id="fe2d29fc-ed34-4f8c-ad37-69ec6d020bcb">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">l
+                                </th>
+                                <td id="]JP?" class="">aio peak ramp</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ l 9</td>
+                            </tr>
+                            <tr id="5a10eee0-5d98-4695-b902-52c0661c78d7">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">o
+                                </th>
+                                <td id="]JP?" class="">auto aio object</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ o 1</td>
+                            </tr>
+                            <tr id="27cfc222-b22c-4fce-a794-e58f0b6ca54c">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">1
+                                </th>
+                                <td id="]JP?" class="">aio pwr</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ 1 1</td>
+                            </tr>
+                            <tr id="d1069432-a40f-47d2-aea7-6350dc1c2735">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">m
+                                </th>
+                                <td id="]JP?" class="">nature mode</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ m t</td>
+                            </tr>
+                            <tr id="8bd01109-5415-4749-a349-6a8381df8ec7">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">x
+                                </th>
+                                <td id="]JP?" class="">nature mult</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ x a</td>
+                            </tr>
+                            <tr id="aacc5f38-ba90-4dbe-9406-92f1c4b70738">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">q
+                                </th>
+                                <td id="]JP?" class="">nature peak</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ q 8</td>
+                            </tr>
+                            <tr id="5791baef-1750-43d5-91e8-c7ad69aa920e">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">b
+                                </th>
+                                <td id="]JP?" class="">nature biquad</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ b 0 3 a 2 a</td>
+                            </tr>
+                            <tr id="0cfad473-9950-4270-a305-434ce1028d67">
+                                <th id="Zab^" class="simple-table-header-color simple-table-header" style="width:35px">s
+                                </th>
+                                <td id="]JP?" class="">nature sense</td>
+                                <td id="b`WY" class="" style="width:35px"></td>
+                                <td id="F=`V" class="">_ s 0 1</td>
+                            </tr>
+                            <tr id="039da899-6f73-4f72-a68a-06687b231505">
+                                <th id="Zab^" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">v</th>
+                                <td id="]JP?" class="block-color-yellow_background">midi vst plug</td>
+                                <td id="b`WY" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="F=`V" class="block-color-yellow_background">_ v 1 5</td>
+                            </tr>
+                            <tr id="43f30cd2-2a95-4410-bd46-a5f27983d109">
+                                <th id="Zab^" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">v</th>
+                                <td id="]JP?" class="block-color-yellow_background">midi vst open</td>
+                                <td id="b`WY" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="F=`V" class="block-color-yellow_background">_ v 0 1 1</td>
+                            </tr>
+                            <tr id="22b4b97c-6510-4826-8d93-ab95c6149885">
+                                <th id="Zab^" class="block-color-yellow_background simple-table-header"
+                                    style="width:35px">v</th>
+                                <td id="]JP?" class="block-color-yellow_background">midi vst program</td>
+                                <td id="b`WY" class="block-color-yellow_background" style="width:35px"></td>
+                                <td id="F=`V" class="block-color-yellow_background">_ v 1 p 3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="177bd928-3fa6-8072-9017-f0441f920935" class="">
+                    </p>
+                    <p id="c18256c8-c7a1-4fb0-9311-90a2edcc0027" class="">Using _ audio command <em>midi vst plug</em>
+                        and a number for a buffer container (there are only four midi channels for a VST: 1, 2, 3, and
+                        4), allows you to choose an VST instrument from your machine. After which, writing the Orca
+                        characters _ v 0 2, (notice channel number is 0) opens your instruments GUI (in this case the
+                        VST instrument in channel 2).</p>
+                    <p id="177bd928-3fa6-801c-ae5d-f50aa0c8d5ff" class="">
+                    </p>
+                    <table id="e5ef998b-6796-4546-a616-cb5aaa605805" class="simple-table">
+                        <thead class="simple-table-header">
+                            <tr id="10539697-0a5c-4671-9cb6-d344eb4c4004">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header vkey" style="width:35px">…
+                                </th>
+                                <th id="pr@c" class="simple-table-header-color simple-table-header">SYSTEM</th>
+                                <th id="xro&gt;" class="simple-table-header-color simple-table-header"
+                                    style="width:35px"></th>
+                                <th id="vv{w" class="simple-table-header-color simple-table-header"><mark
+                                        class="highlight-gray">Notation</mark></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="b6363718-5897-4216-9801-cc297c530e14">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">n
+                                </th>
+                                <td id="pr@c" class="">new object</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… n 0</td>
+                            </tr>
+                            <tr id="f8ce3f18-d131-4fcb-97df-6cb99be01a23">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">z
+                                </th>
+                                <td id="pr@c" class="">zap object</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… z p</td>
+                            </tr>
+                            <tr id="84c0b86f-1380-4af4-93d9-692c2213a42b">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">f
+                                </th>
+                                <td id="pr@c" class="">focus object</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… f m</td>
+                            </tr>
+                            <tr id="c43e0d39-ba68-48b9-b079-323bd91adffd">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">c
+                                </th>
+                                <td id="pr@c" class="">clear</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… c 1</td>
+                            </tr>
+                            <tr id="f7d30363-11a1-4745-a459-92746dd78781">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">m
+                                </th>
+                                <td id="pr@c" class="">material mode</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… m 3</td>
+                            </tr>
+                            <tr id="ab704027-d5c4-484a-a358-cf1537ab0ce1">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">x
+                                </th>
+                                <td id="pr@c" class="">exit</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… x 0</td>
+                            </tr>
+                            <tr id="1a847e86-b669-4083-b0da-2c4b8bdf2fd7">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">b
+                                </th>
+                                <td id="pr@c" class="">wrld border</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… b 0</td>
+                            </tr>
+                            <tr id="137142da-dca9-4677-b5f9-faf092d86dd2">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">e
+                                </th>
+                                <td id="pr@c" class="">wrld exec zoom</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… e 1</td>
+                            </tr>
+                            <tr id="c54b8790-f060-4de3-9a22-33b051c9bd37">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">q
+                                </th>
+                                <td id="pr@c" class="">fx pass</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… q 0 </td>
+                            </tr>
+                            <tr id="33468646-d723-43bb-9b05-420dce7abc56">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">w
+                                </th>
+                                <td id="pr@c" class="">wrld window pos</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… w 0</td>
+                            </tr>
+                            <tr id="7a8ff5c2-3b3c-4ec9-bb95-44151f439ed3">
+                                <th id="]nAL" class="simple-table-header-color simple-table-header" style="width:35px">s
+                                </th>
+                                <td id="pr@c" class="">cmd enable</td>
+                                <td id="xro&gt;" class="" style="width:35px"></td>
+                                <td id="vv{w" class="">… s 1</td>
+                            </tr>
+                            <tr id="187f8cbc-9b1d-4f6e-ad85-88e7614d1a8d">
+                                <th id="]nAL" class="block-color-blue_background simple-table-header"
+                                    style="width:35px">t</th>
+                                <td id="pr@c" class="block-color-blue_background">tilde (~) set</td>
+                                <td id="xro&gt;" class="block-color-blue_background" style="width:35px"></td>
+                                <td id="vv{w" class="block-color-blue_background">… t s 4</td>
+                            </tr>
+                            <tr id="0d0c3845-bc5f-41e8-8de6-f6fd0c767eb6">
+                                <th id="]nAL" class="block-color-blue_background simple-table-header"
+                                    style="width:35px">t</th>
+                                <td id="pr@c" class="block-color-blue_background">tilde (~) src</td>
+                                <td id="xro&gt;" class="block-color-blue_background" style="width:35px"></td>
+                                <td id="vv{w" class="block-color-blue_background">… t r 6</td>
+                            </tr>
+                            <tr id="78dd7929-3953-4d0a-8035-d6803711ccf8">
+                                <th id="]nAL" class="block-color-blue_background simple-table-header"
+                                    style="width:35px">t</th>
+                                <td id="pr@c" class="block-color-blue_background">tilde (~) link</td>
+                                <td id="xro&gt;" class="block-color-blue_background" style="width:35px"></td>
+                                <td id="vv{w" class="block-color-blue_background">… t l 1</td>
+                            </tr>
+                            <tr id="d7b67c15-3379-44a0-881d-f1507eb6038d">
+                                <th id="]nAL" class="block-color-blue_background simple-table-header"
+                                    style="width:35px">t</th>
+                                <td id="pr@c" class="block-color-blue_background">tilde (~) tail</td>
+                                <td id="xro&gt;" class="block-color-blue_background" style="width:35px"></td>
+                                <td id="vv{w" class="block-color-blue_background">… t t 2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p id="7b7df8ec-757b-4f4e-9feb-6350cee46bdc" class="">
+                    </p>
+                    <p id="c206bdeb-e834-414d-8a88-7b867634658e" class="">The ∆ gpio serial commands are meant to be
+                        used primarily via a securely connected (SSH) RaspberryPi, and thus controlling its GPIO pins
+                        with the Python library <a href="https://gpiozero.readthedocs.io/">gpiozero</a>. (Blueberry
+                        Framework)</p>
+                    <p id="22d7915e-889c-46ed-abad-dbac24706122" class=""><a
+                            href="https://static.raspberrypi.org/files/education/posters/GPIO_Zero_Cheatsheet.pdf">Cheatsheet</a>
+                    </p>
+                    <p id="06067917-3846-42ec-b2f4-185f53c8c65f" class="">
+                    </p>
+                    <p id="804dffce-dd56-413a-8e08-97140d90c3ce" class="">The ∞ chao commands sequence a set of preset
+                        instructions for the Lorenz attractor command and shader.</p>
+                    <p id="177bd928-3fa6-80ab-ac82-feba2d7a2369" class="">
+                    </p>
+                    <p id="177bd928-3fa6-807a-9604-cabc42c722e8" class="">
+                    </p>
+                    <p id="177bd928-3fa6-800a-9dc9-ef41816eb552" class="">
+                    </p>
+                </div>
+            </div>
+            <p id="177bd928-3fa6-80b0-bb5d-efa31edf9f49" class="">
+            </p>
+        </div>
+    </article><span class="sans" style="font-size:14px;padding-top:2em"></span>
+</body>
+
+</html>
