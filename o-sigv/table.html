@@ -5,6 +5,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>o-sigv 2025</title>
     <style>
+        :root {
+            --font-color: rgba(134, 153, 169, 1);
+            --bg-color: rgba(29, 30, 35, 1);
+            --code-bg: hsla(215,100%,80%,0.25);
+            --code-bg0: hsla(215,100%,80%,0);
+            --code-txt: hsla(200,100%,60%,1);
+            --h-txt: hsla(200,50%,60%,1);
+            --op-bg: yellow;
+            --op: 50%;
+            --cw: 100px;
+            --caption: 10pt;
+        }
+
+        
         /* cspell:disable-file */
         /* webkit printing magic: print all background colors */
         html {
@@ -20,6 +34,10 @@
         body {
             margin: 0;
             padding: 0;
+            color: var(--font-color);
+            background-color: var(--bg-color);
+            /* background-image: url(#icn); */
+            font-family: "Avenir Next", "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
 
         @media only screen {
