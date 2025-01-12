@@ -368,7 +368,9 @@ a:focus, a:hover {
   color: rgba(30, 144, 255, 0.8);
 }
 
-
+.center {
+	text-align: center;
+}
 
 hr {
   border: 1px dotted rgba(100,100,100,0.8);
