@@ -62,6 +62,10 @@ nav .active {
 	padding: 8pt;
 }
 
+.cli code {
+	padding: 0.1em 0;
+}
+
 .flx {
 	display: flex;
 }
