@@ -52,6 +52,12 @@ nav .active {
 	grid-area: container;
 }
 
+.cli {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
 .flx {
 	display: flex;
 }
