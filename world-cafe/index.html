@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>World Café: Compara + VIZLAND Research</title>
+
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans' />
+
+  <link rel="stylesheet" href="css/cafe.css" />
+  <style>
+  .main p {
+    font-style: italic;
+    color: #fff;
+  }
+  .logo {
+    position: fixed;
+    left: 50px;
+    bottom: 50px;
+  }
+  button {
+    border: 0;
+    border-width: 2px;
+    border-color: red;
+    background-color: rgba(250, 0, 0, 0.3);
+    color: red;
+  }
+  button.yellow {
+    background-color: rgba(75, 75, 0, 0.7);
+    border-color: yellow;
+    color: yellow;
+  }
+  button.yellow:hover {
+    background-color: rgba(75, 75, 0, 0.2);
+    color: #fff;
+  }
+  button.vert {
+    background-color: rgba(0, 75, 0, 0.7);
+    border-color: green;
+    color: lightgreen;
+  }
+  button.vert:hover {
+    background-color: rgba(0, 75, 0, 0.2);
+    color: #fff;
+  }
+  button.magenta {
+    background-color: rgba(255, 0, 255, 0.7);
+    border-color: lavender;
+    color: lavender;
+  }
+  button.magenta:hover {
+    background-color: rgba(153, 0, 153, 7);
+  }
+  button.lagoon {
+    background-color: rgba(30, 190, 255, 0.3);
+    border-color: lavender;
+    color: lavender;
+  }
+  button.vert:hover {
+    background-color: rgba(0, 75, 0, 0.2);
+    color: #fff;
+  }
+  button.sass {
+    background-color: rgba(153, 0, 153, 0.4);
+    border-color: lavender;
+    color: lavender;
+  }
+  button.vert:hover {
+    background-color: rgba(0, 75, 0, 0.2);
+    color: #fff;
+  }
+  svg {
+    color: #fff;
+  }
+
+  .mainBars{
+		shape-rendering: auto;
+		fill-opacity: 0;
+		stroke-width: 0.5px;
+		stroke: rgb(0, 0, 0);
+		stroke-opacity: 0;
+	}
+	.subBars{
+		shape-rendering:crispEdges;
+	}
+	.edges{
+		stroke:none;
+		fill-opacity:0.3;
+	}
+
+  </style>
+
+  <script type="text/javascript" src="js/d3.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="logo">
+    <img src="svg/ocadu-logo-vector.svg" width="100px" />
+  </div>
+
+  <script>
+  var valegal = d3.select('body')
+      .append('div')
+      .attr('id', 'legal')
+      .style('position', 'fixed')
+      .style('bottom', '50px')
+      .style('right', '50px')
+      .append('button')
+      .attr('class','yellow')
+      .text('© Marcus A. Gordon')
+      .attr('onclick', "location.href='http://magfoto.github.io'");
+  </script>
+
+  <div class="entries">
+    <div class="entry">
+      <div class="title big">World Café</div>
+      <div class="body main">
+        <p>iCity World Café 2018<br />A presentation and discussion of the Compara and VIZLAND prototypes.<br /></p>
+        <button onclick="location.href='http://www2.ocadu.ca/research/val/home'">Visual Analytics Lab</button><button class="yellow" onclick="location.href='http://magfoto.github.io'">Marcus A. Gordon</button>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title">Compara</div>
+      <div class="body">
+        <p>Compara is an intuitive interactive and searchable index that visualizes the attributes of software from a wide-range of applications and technologies.</p>
+        <button>Code</button><button class="vert">Prototype</button><button class="yellow">Metadata</button>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title subtitle">System Map</div>
+      <div class="body">
+        <p>A taxonomy spreadsheet is exported to comma seperated values (csv) and converted to the JSON file format.</p>
+        <button class="magenta" onclick="location.href='svg/system-black.svg'">View</button> <button class="lagoon" onclick="location.href='#'">CSV</button> <button class="sass" onclick="#'">JSON</button>
+        <img src="svg/system.svg" width="300px" />
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title subtitle">Inspired by Trees</div>
+      <div class="body">
+        <p>As the spreadsheet maintains a growing hierarchy, we are inspired by use of the <button>tree diagram</button> to maintain the original hierarchy. <button class="magenta" onclick="location.href='svg/trees-black.svg'">View</button></p>
+        <br />
+        <img src="svg/trees.svg" width="300px" />
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title subtitle">Adapting a Bipartite Comparison</div>
+      <div class="body">
+        <p>The <button>Bipartite Graph</button> provided the simplest and most user-friendly way to have users quickly see the users and tasks associated with said software.</p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title subtitle">The Combined Result</div>
+      <div class="body">
+        <p>The result of the research led to the making of a tree-diagram/bipartite graph.</p>
+        <br />
+        <img src="svg/horiz-tree-bipartite-canvas.svg" width="150px" />
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title">VIZLAND</div>
+      <div class="body">
+        <p>What is VIZLAND? VIZLAND (the VisualIZation LANDscape): aspires to map a multitude of libraries that define data visualization types, their functions, their representational form, shapes, analytic capabilities, and descriptions, and making them queryable through a web interface.</p>
+        <button class="yellow" onclick="location.href='https://github.com/magfoto/vizland'">Metadata</button>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title subtitle">Prototype v.4</div>
+      <div class="body">
+        <p>What can VIZLAND look like? Version 4 of the prototype suggests a Meteor Cloud concept</p>
+        <a href="http://magfoto.github.io/index-original.html"><img src="img/v4.png" width="300px" /></a>
+        <button class="vert" onclick="location.href='http://magfoto.github.io/index-original.html'">Prototype</button>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title subtitle">Prototype v.5</div>
+      <div class="body">
+        <p>What can VIZLAND look like? Version 5 is inspired by the network graph and its use in visualizing ontologies.</p>
+        <a href="http://magfoto.github.io/index-vizland.html"><img src="img/v5.png" width="300px" /></a>
+        <button class="vert" onclick="location.href='http://magfoto.github.io/index-vizland.html'">Prototype</button>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title big">Discussion</div>
+      <div class="body">
+        <p>What are the applications and potential use cases for Compara?  For VIZLAND?</p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title subtitle">Question A.</div>
+      <div class="body">
+        <p>How can Compara be used in other contexts?</p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title subtitle">Question B.</div>
+      <div class="body">
+        <p>What additional advancements to the VIZLAND concept do you forsee?</p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="title big">----</div>
+      <div class="body">
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

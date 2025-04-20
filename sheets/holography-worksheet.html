@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+
+© 2019 OCAD University PHASE Lab
+
+-->
+
+<head>
+
+  <title>Lab Tools: Holography Worksheet</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <meta name="keywords" content="" />
+  <meta name="description" content="holography lab, holography worksheet" />
+  <meta name="author" content="Marcus A. Gordon" />
+
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css"></link>
+
+</head>
+<body class="bg-white f7 avenir dark-gray ml5 mr6 mt5 mb7">
+  <header>
+
+    <div class="f2 lh-title db dark-gray ttu">
+      <span class="gray">Holography</span> Worksheet
+    </div>
+
+    <br/>
+
+  </header>
+
+    <main class="pa3 mv4 pa0-ns">
+      <p class="f5 lh-copy measure">
+        This worksheet is a holography lab tool for <a class="link hot-pink hover-purple" href="https://www2.ocadu.ca/research/phaselab/home?_ga=2.190555561.366796939.1551213015-1874822113.1543598600" target="_blank">PHASE Lab</a>, and is utilized by the artist for documenting their hologram  specifications.
+      </p>
+
+      <form>
+        <fieldset id="holography_specs" class="bn">
+          <legend class="fw7 mb2"> </legend>
+
+          <article class="cf">
+            <div class="fl w-25 tc">
+              <div class="flex items-center mb2">
+                <label for="hologram-name" class="lh-copy">Name: &nbsp;</label>
+                <input id="hologram-name" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                Date:  &nbsp;<span class="b"><script> document.write(new Date().toDateString()); </script></span>
+              </div>
+              <div class="flex items-center mb2">
+                <label for="hologram-type" class="lh-copy">Type: &nbsp;</label>
+                <input id="hologram-type" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="hologram-size" class="lh-copy">Size: &nbsp;</label>
+                <input id="hologram-size" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="film-type" class="lh-copy">Film Type / Treatment: &nbsp;</label>
+                <input id="film-type" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="laser-power" class="lh-copy">Laser Power: &nbsp;</label>
+                <input id="laser-power" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="laser-temp" class="lh-copy">Laser Temperature: &nbsp;</label>
+                <input id="laser-temp" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+
+            </div>
+
+            <div class="fl w-25 tc">
+              <div class="flex items-center mb2">
+                <label for="object-beam" class="lh-copy">Object Beam: &nbsp;</label>
+                <input id="object-beam" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="recon-angle" class="lh-copy">Reconstruction Angle: &nbsp;</label>
+                <input id="recon-angle" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="ref-beam" class="lh-copy">Reference Beam: &nbsp;</label>
+                <input id="ref-beam" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="ref-angle" class="lh-copy">Reference Angle: &nbsp;</label>
+                <input id="ref-angle" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="h1-h2" class="lh-copy">H1-H2 Distance: &nbsp;</label>
+                <input id="h1-h2" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="exp-time" class="lh-copy">Exposure Time: &nbsp;</label>
+                <input id="exp-time" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <div class="flex items-center mb2">
+                <label for="dev-time" class="lh-copy">Development Time: &nbsp;</label>
+                <input id="dev-time" class="input-reset ba b--black-20 pa2 mb2 db w-25" type="text" aria-describedby="name-desc">
+              </div>
+              <hr />
+              <div class="flex items-center mb2">
+                <label for="hologram-results" class="lh-copy">Results: &nbsp;</label>
+                <textarea id="hologram-results" name="comment" class="db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" aria-describedby="comment-desc"></textarea>
+              </div>
+            </div>
+          </article>
+
+        </fieldset>
+      </form>
+    </main>
+
+
+    <footer>
+      <p class="db ttu">
+        &copy  2019 OCAD UNIVERSITY <a class="link hot-pink hover-purple" href="https://www2.ocadu.ca/research/phaselab/home?_ga=2.190555561.366796939.1551213015-1874822113.1543598600" target="_blank">PHASE LAB</a>.
+      </p>
+
+    </footer>
+
+  </body>
+  </html>

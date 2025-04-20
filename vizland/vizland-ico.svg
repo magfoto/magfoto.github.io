@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288.62 146.68">
+  <defs>
+    <style>
+      .a {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <title>vizland-ico</title>
+  <polyline class="a" points="1.06 1.06 144.56 144.56 287.56 1.56"/>
+  <line class="a" x1="193.06" y1="57.06" x2="144.56" y2="105.56"/>
+  <line class="a" x1="97.06" y1="58.06" x2="144.56" y2="105.56"/>
+  <rect class="a" x="146.65" y="132.65" width="21.21" height="21.21" transform="translate(-67.43 69.96) rotate(-45)"/>
+</svg>

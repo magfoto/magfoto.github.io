@@ -24,7 +24,7 @@ body {
 
 .layout {
 	display: grid;
-	grid-template-areas: 'ico light' 'container .';
+	grid-template-areas: 'ico brief container';
 }
 
 .vkey > span {
@@ -39,7 +39,9 @@ nav .active {
 }
 
 .overv {
+	grid-area: brief;
 	font-size: 2em;
+	max-width: 750px;
 }
 
 .lts {
@@ -50,6 +52,10 @@ nav .active {
 
 .stouf {
 	grid-area: container;
+}
+
+.active ul {
+	visibility: hidden;
 }
 
 .cli {
@@ -297,7 +303,7 @@ p {
 
 article {
 	padding-bottom: 25px;
-	max-width: 750px;
+	
 }
 
 article::after {
@@ -468,6 +474,7 @@ li {
 	margin-bottom: 0.75em;
 	margin-top:    0.75em;
 	color: slategray;
+	list-style-type:circle;
 }
 
 footer, footer::before {
@@ -536,6 +543,21 @@ mark {
   background-color: black;
   color: white;
 }
+
+.gb {
+	background-color: black;
+	color: darkgrey;
+  }
+
+.black {
+background-color: black;
+color: rgb(98, 97, 97);
+}
+
+.slate {
+	background-color: slategray;
+	color: black;
+	}
 
 
 /* Media */

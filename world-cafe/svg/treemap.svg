@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366.67 466.67">
+  <defs>
+    <style>
+      .a {
+        fill: #ccc;
+      }
+
+      .b {
+        fill: #58595b;
+      }
+
+      .c {
+        fill: #939598;
+      }
+
+      .d {
+        fill: #bcbec0;
+      }
+
+      .e {
+        fill: #808285;
+      }
+
+      .f {
+        fill: #a7a9ac;
+      }
+    </style>
+  </defs>
+  <title>treemap</title>
+  <rect class="a" x="32.28" y="34.95" width="64.67" height="168.19"/>
+  <rect class="b" x="32.28" y="204.62" width="127" height="85.84"/>
+  <rect class="b" x="32.28" y="291.74" width="127" height="142.08"/>
+  <rect class="c" x="160.56" y="312.38" width="44.05" height="121.45"/>
+  <rect class="c" x="160.56" y="204.62" width="44.05" height="106.45"/>
+  <rect class="d" x="205.91" y="204.62" width="125.4" height="229.09"/>
+  <rect class="e" x="98.23" y="34.9" width="108.46" height="43.82"/>
+  <rect class="e" x="207.97" y="34.9" width="123.46" height="43.82"/>
+  <rect class="f" x="98.23" y="80.02" width="233.2" height="123.15"/>
+</svg>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+
+© 2019 OCAD University PHASE Lab
+
+-->
+
+<head>
+
+  <title>Lab Tools: Pilot's Checklist</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <meta name="keywords" content="" />
+  <meta name="description" content="holography lab, pilot's checklist" />
+  <meta name="author" content="Marcus A. Gordon" />
+
+  <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css"></link>
+
+</head>
+<body class="bg-white f7 avenir dark-gray ml5 mr6 mt5 mb7">
+  <header>
+
+    <div class="f2 lh-title db dark-gray ttu">
+      <span class="gray">Pilot's</span> Checklist
+    </div>
+
+    <br/>
+
+  </header>
+
+  <div><script> document.write(new Date().toDateString()); </script></di>
+
+  <main class="pa3 mv4 pa0-ns">
+    <p class="f5 lh-copy measure">
+      The pilot's checklist is a holography lab tool for <a class="link hot-pink hover-purple" href="https://www2.ocadu.ca/research/phaselab/home?_ga=2.190555561.366796939.1551213015-1874822113.1543598600" target="_blank">PHASE Lab</a>, and is utilized by the artist before carrying out a holographic recording in the lab.
+    </p>
+
+    <form>
+      <fieldset id="pilots_checklist" class="bn">
+        <legend class="fw7 mb2"> </legend>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="air-check" value="air-check">
+          <label for="air-check" class="lh-copy">Is the air on?</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="floating-check" value="floating-check">
+          <label for="floating-check" class="lh-copy">Is the table floating?</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="ref-check" value="ref-check">
+          <label for="ref-check" class="lh-copy">Is your reference angle 45º?</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="heat-check" value="heat-check">
+          <label for="heat-check" class="lh-copy">Are the heaters off?</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="ratio-check" value="ratio-check">
+          <label for="ratio-check" class="lh-copy">Is the ratio = 7.5?</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="plate-check" value="plate-check">
+          <label for="plate-check" class="lh-copy">Is the plate fully secure and tightened?</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="laser-check" value="laser-check">
+          <label for="laser-check" class="lh-copy">Laser power: <input id="las" class="input-reset ba b--black-20 pa2 mb2 db w-50" type="text" aria-describedby="name-desc">@ head in amps</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="wiggle-check" value="wiggle-check">
+          <label for="wiggle-check" class="lh-copy">Performed a wiggle test?</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="exposure-check" value="exposure-check">
+          <label for="exposure-check" class="lh-copy">Exposure (in seconds): <input id="exp" class="input-reset ba b--black-20 pa2 mb2 db w-50" type="text" value="10 " aria-describedby="name-desc">±15 seconds</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="development-check" value="development-check">
+          <label for="development-check" class="lh-copy">Development (in seconds): <input id="exp" class="input-reset ba b--black-20 pa2 mb2 db w-50" type="text" value="90 " aria-describedby="name-desc">±45 seconds</label>
+        </div>
+        <div class="flex items-center mb2">
+          <input class="mr2" type="checkbox" id="vertical-check" value="vertical-check">
+          <label for="vertical-check" class="lh-copy">Are the laser beams vertically aligned above the table?</label>
+        </div>
+      </fieldset>
+    </form>
+  </main>
+
+
+  <footer>
+    <p class="db ttu">
+      &copy  2019 OCAD UNIVERSITY <a class="link hot-pink hover-purple" href="https://www2.ocadu.ca/research/phaselab/home?_ga=2.190555561.366796939.1551213015-1874822113.1543598600" target="_blank">PHASE LAB</a>.
+    </p>
+
+  </footer>
+
+</body>
+</html>
