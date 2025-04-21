@@ -167,7 +167,7 @@ pre {
 	color:         #fff;
 	text-align:    left;
 	line-height:   1.2em;
-	//overflow-x:    scroll;
+	overflow-x:    scroll;
 	background:    #282c34;
 	padding:       20pt;
 	margin:        20pt 0;
