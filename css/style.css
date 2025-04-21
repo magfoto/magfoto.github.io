@@ -38,10 +38,11 @@ nav {
 	padding-bottom: 50px;
 }
 
-.xxiivv img, .foot span a img {
+.xxiivv.img, .foot span a img {
 	max-height: 25px;
+	height:25px;
 	/* max-width: 30px; */
-	vertical-align: -5px
+	/* vertical-align: -5px */
 }
 
 .overv {
