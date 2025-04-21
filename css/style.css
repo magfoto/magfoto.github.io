@@ -39,7 +39,7 @@ nav {
 }
 
 .xxiivv img, .foot span a img {
-	height: 25px;
+	max-height: 25px;
 	/* max-width: 30px; */
 	vertical-align: -5px
 }
