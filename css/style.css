@@ -9,6 +9,7 @@
 	--op: 50%;
 	--cw: 100px;
 	--caption: 10pt;
+	--rose: rgba(200, 153, 169, 1);
 }
 
 body {
@@ -24,9 +25,15 @@ body {
 
 .layout {
 	display: grid;
-	grid-template-columns: 'ico nav' auto;
+	/* grid-template-columns: 'masthead' 'container'; */
+	grid-template-columns: mast container;
 	/* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
-  	grid-gap: 10px;
+  	/* grid-gap: 10px; */
+}
+
+section .heading {
+	grid-area: mast;
+	padding-bottom: 10px;
 }
 
 .vkey > span {
@@ -40,9 +47,9 @@ nav {
 
 .xxiivv.img, .foot span a img {
 	max-height: 25px;
-	height:25px;
+	height: 25px;
 	/* max-width: 30px; */
-	/* vertical-align: -5px */
+	vertical-align: -5px
 }
 
 .overv {
@@ -59,7 +66,7 @@ nav {
 
 .stouf {
 	grid-area: container;
-	padding: 20px;
+	padding-right: 20px;
 }
 
 /* .active ul {
@@ -139,7 +146,7 @@ nav {
 
 .logo {
 	grid-area: ico;
-	max-width: 40%;
+	/* max-width: 40%; */
   	filter: saturate(2);
   	filter: brightness(1.45);
 }
@@ -320,10 +327,10 @@ article {
 	padding-right: 25px;
 }
 
-article::after {
-  /* content: "-◊--------------------"; */
+/* article::after {
+  content: "-◊--------------------";
   font-size: 8pt;
-}
+} */
 
 b:before {
   content: "> ";
@@ -374,7 +381,7 @@ sup.sidenote-number::after {
 }
 
 i {
-  color: rgba(200, 153, 169, 1);
+  color: var(--rose);;
 }
 
 .sidenote, .marginnote {
@@ -400,6 +407,11 @@ a {
 
 a:focus, a:hover {
   color: rgba(30, 144, 255, 0.8);
+}
+
+nav a:focus, nav a:hover {
+	color: #111;
+  background-color: var(--rose);
 }
 
 .center {
@@ -487,7 +499,7 @@ ol p, ul p {
 li {
 	margin-bottom: 0.75em;
 	margin-top:    0.75em;
-	color: slategray;
+	/* color: slategray; */
 	list-style-type: circle;
 }
 
@@ -523,6 +535,11 @@ footer > small {
   color: hsla(100,100%,40%,0.75);
 }
 
+.greenb {
+	background-color: hsla(100,100%,40%,0.45);
+	color: #111;
+  }
+
 .blue {
   background-color: hsla(215,100%,80%,0.25);
   color: hsla(190,100%,40%,0.75);
@@ -532,6 +549,11 @@ footer > small {
   background-color: hsla(331,100%,60%,0.25);
   color: hsla(325,100%,70%,0.75);
 }
+
+.magentab {
+	background-color: hsla(325,100%,70%,0.75);
+	color: #111;
+  }
 
 .cyan {
   background-color: hsla(191,100%,60%,0.25);
