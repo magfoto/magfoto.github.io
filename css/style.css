@@ -26,10 +26,7 @@ body {
 
 .layout {
   display: grid;
-  /* grid-template-columns: 'masthead' 'container'; */
   grid-template-columns: mast container;
-  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
-  /* grid-gap: 10px; */
 }
 
 section .heading {
@@ -60,20 +57,10 @@ nav {
   max-width: 750px;
 }
 
-.lts {
-  grid-area: light;
-  /* filter: brightness(120%); */
-  float: right;
-}
-
 .stouf {
   grid-area: container;
   padding-right: 20px;
 }
-
-/* .active ul {
-	visibility: hidden;
-} */
 
 .cli {
   display: inline-block;
