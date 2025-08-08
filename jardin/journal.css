@@ -1,0 +1,55 @@
+
+body {
+    /* font-family: 'Avenir Next', sans-serif; */
+    /* background-color: #fff; */
+    /* color: #000; */
+    margin: 0;
+    padding: 2rem;
+  }
+  
+  .jardin {
+    max-width: 700px;
+    margin: auto;
+  }
+  
+  .jardin header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .jardin h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .jardin .subtitle {
+    font-family: 'Avenir Next', sans-serif;
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .jardin article {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid #dddddd16;
+    padding-bottom: 1.5rem;
+  }
+  
+  .jardin article h2 {
+    font-size: 1rem;
+    font-weight: normal;
+    /* color: #888; */
+    margin-bottom: 0.2rem;
+  }
+  
+  .jardin article h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0.2rem 0;
+  }
+  
+  .jardin article p {
+    font-family: 'Avenir Next', sans-serif;
+    font-size: 1rem;
+    /* color: #333; */
+  }
+  
