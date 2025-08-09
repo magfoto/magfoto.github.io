@@ -10,10 +10,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../css/style.css">
   </link>
+  <link rel="stylesheet" href="journal.css">
+  </link>
   <style>
     body {
       background: rgba(119, 130, 153, 0.8);
-      /* #778899 (LIGHTSLATEGREY) 119,130,153*/
       color: #111;
     }
 
@@ -22,7 +23,16 @@
     }
 
     .exts a {
-      background: black;
+      background: #888;
+      color: darkblue;
+    }
+
+    li a {
+      color: white;
+    }
+
+    li a:hover {
+      color: magenta;
     }
   </style>
 </head>
@@ -53,12 +63,24 @@
       </nav>
     </section>
     <section class="stouf">
-      <article>
-        <p><code class="greenb">Jardin</code> :: <code class="magentab">Archive</code> :: Slate Pages Listing</p>
-        <li>VIZLAND <a href="vizland/index.html" target="_blank">[brief]</a> <a href="https://magfoto.dev/vizland/"
-            target="_blank">[v5]</a></li>
-        <li>World Café <a href="world-cafe/index.html" target="_blank">[2018 site]</a></li>
-      </article>
+      <section class="jardin">
+        <header>
+          <a href="index.html"><code class="greenb">Jardin</code></a> :: &nbsp;<code class="magentab">Archive</code> ::
+          &nbsp;<code class="slate">slate</code>
+        </header>
+        <article>
+          <li>Meta-instrument <span class="exts"><a href="https://nbcli.space" target="_blank">nbcli</a></span>. My
+            dissertation (in progress), and instrument I live code with.</li>
+          <li>Hydrawocky, a lazy <a href="https://github.com/magfoto/hydrawocky" target="_blank">web prototype</a> that
+            mixes Hydra and Gibberwocky together. <a href="https://www.youtube.com/watch?v=06JXfMttnnE"
+              target="_blank">[howto vid]</a></li>
+          <li><a href="https://github.com/nbcli-meta/6020" target="_blank">Project 6020</a> Generative Music w/Machine
+            Learning</li>
+          <li>VIZLAND <a href="vizland/index.html" target="_blank">[brief]</a> <a href="https://magfoto.dev/vizland/"
+              target="_blank">[v5]</a></li>
+          <li>World Café <a href="world-cafe/index.html" target="_blank">[2018 site]</a></li>
+        </article>
+      </section>
     </section>
   </div>
 </body>
