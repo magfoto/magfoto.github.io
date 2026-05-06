@@ -1,0 +1,120 @@
+<svg id="l2" viewBox="3.75 22 64.75 42.5" xmlns="http://www.w3.org/2000/svg" width="25%" height="25%">
+    <desc>
+        nbcli abstract machine
+    </desc>
+    <style>
+        #l2 #mos rect,
+        #l2 #mes rect {
+            stroke: #999;
+            fill: #fff;
+        }
+
+        #l2 #mos,
+        #l2 #mes {
+            stroke-width: 0.5px;
+        }
+
+        #l2 #c {
+            z-index: -999;
+        }
+
+        #l2 #a {
+            z-index: 2;
+        }
+
+        #l2 path {
+            stroke: black;
+            fill: none;
+            stroke-width: 0.125;
+            stroke-dasharray: 1, .5;
+        }
+
+        #l2 rect,
+        #l2 circle,
+        #l2 line {
+            stroke-width: 0.25;
+            stroke: #111;
+            fill: none;
+        }
+
+        #l2 text {
+            font: 2.5px sans-serif;
+            fill: #111;
+        }
+
+        #l2 .time {
+            fill: #aaa;
+            font: italic 2.5px sans-serif;
+        }
+
+        #l2 #c rect:nth-child(10)~rect,
+        .branch {
+            stroke: #aaa;
+            stroke-width: 0.125;
+        }
+
+        #l2 #d text {
+            /* fill: #aaa; */
+        }
+
+        #l2 .bound {
+            stroke: #aaa;
+            stroke-width: 0.1;
+        }
+
+        #l2 circle {
+            fill: #fff;
+        }
+
+        #l2 text tspan {
+            font: 1.6px sans-serif;
+            fill: #aaa;
+        }
+    </style>
+    <g id="a">
+        <g id="b">
+            <g id="sampler">
+                <text x="5.5" y="24.5">
+                    <tspan>S</tspan>
+                </text>
+                <rect x="7.5" y="25" width="2.5" height="35"></rect>
+            </g>
+            <g id="mos">
+                <text x="9.5" y="64.5">
+                    <tspan>MOS</tspan>
+                </text>
+                <path d="M 8.75 22.5 h 5 v 40 h -5 v -40"></path>
+            </g>
+        </g>
+        <g id="c">
+            <rect x="12.5" y="25" width="48" height="35"></rect>
+            <path d="M 14.5 26.5 h 15 v 32 h -15 v -32"></path>
+            <text x="20.5" y="44">
+                <tspan>A</tspan>
+            </text>
+            <path d="M 30 26.5 h 28.75 v 32 h -28.75 v -32"></path>
+            <text x="40.5" y="44">
+                <tspan>S</tspan>
+            </text>
+            <path d="M 50.75 39 h 7.5 v 8 h -7.5 v -8"></path>
+            <text x="54" y="44">
+                <tspan>F</tspan>
+            </text>
+        </g>
+        <g id="d">
+            <g id="expressor">
+                <text x="66.5" y="24.5">
+                    <tspan>E</tspan>
+                </text>
+                <rect x="63" y="25" width="2.5" height="35"></rect>
+            </g>
+            <g id="mes">
+                <text x="60" y="64.5">
+                    <tspan>MES</tspan>
+                </text>
+                <path d="M 59.25 22.5 h 5 v 40 h -5 v -40"></path>
+            </g>
+
+        </g>
+    </g>
+</svg>

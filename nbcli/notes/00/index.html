@@ -7,16 +7,657 @@
 <title>nbcli meta-instrument</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="preload" as="style" href="./_observablehq/theme-air,near-midnight.b050d634.css">
+<link rel="preload" as="style" href="./_import/index.b68c0daf.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;display=swap" crossorigin>
-<link rel="stylesheet" type="text/css" href="./_observablehq/theme-air,near-midnight.b050d634.css">
-<link rel="modulepreload" href="./_observablehq/client.ae85c29a.js">
+<link rel="stylesheet" type="text/css" href="./_import/index.b68c0daf.css">
+<link rel="modulepreload" href="./_observablehq/client.82faadcb.js">
 <link rel="modulepreload" href="./_observablehq/runtime.607a8173.js">
 <link rel="modulepreload" href="./_observablehq/stdlib.318537f4.js">
-<link rel="icon" href="./_file/observable.1af93621.png" type="image/png" sizes="32x32">
+<link rel="modulepreload" href="./_observablehq/stdlib/dot.086c89ef.js">
+<link rel="modulepreload" href="./_npm/@viz-js/viz@3.26.0/3f340b19.js">
 <script type="module">
 
-import "./_observablehq/client.ae85c29a.js";
+import {define} from "./_observablehq/client.82faadcb.js";
+
+define({id: "67e729d8", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`graph module {
+  rankdir=TD
+  viewport="1000,450"
+  size=13
+  height=0.1
+  layout="dot"
+  node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+  edge [color="gray"]
+
+  # Relationships
+
+  nbcli -- {automata,clearbuff,gen,sclang,tmux,sfor,window,histo,qr,qrec,rnr,rsr,rpg,count,timer,rand,randx,morph,morph0,morpha,vert,frag,o,ofx,omods,orcac} [style="filled" color="ghostwhite"]
+
+  s -- sigv [style="filled" color="lavender"]
+  sigv -- osc [style="filled" color="lavender"]
+
+  osc -- {aio,b0,bfg,cv,fpic,geo,grain,"graph",lfo,light,lz,lttp,markov,midi,model,monde,nature,new,nurbs,particles,plato,proc,rossler,shady,sketch,sky,som,specs,spk,synth,terra,typo,wave,wrld,zap} [style="filled" color="gold"]
+
+  osc -- {new,zap,markov,lfo} [style="filled" color="gold"]
+  count -- timer [style="filled" color="lavender"]
+  gen -- {count,timer,sfor,automata} [style="filled" color="lavender"]
+  {automata,clearbuff,gen,sfor,window,histo,qr,qrec,rnr,rsr,rpg,count,timer,rand,randx,morph,morph0,morpha,vert,frag,o} -- sigv [style="filled" color="lavender"]
+  orcac -- omods [style="filled" color="lavender"]
+
+  aio -- {grain,wave,spk,midi,synth} [style="filled" color="deeppink"]
+  {nature,qrec} -- {aio,wrld} [style="filled" color="lavender"]
+
+  rnr -- {rsr,rpg,rand,randx} [style="filled" color="lavender"]
+  rsr -- {rnr,rpg,rand,randx} [style="filled" color="lavender"]
+  qr -- rpg [style="filled" color="lavender"]
+
+  wrld -- {fx,camera,monde,movie,biomes} [style="filled" color="steelblue1"]
+  fx -- {monde,biomes} [style="filled" color="steelblue1"]
+
+  rpg -- morph [style="filled" color="lavender"]
+  {morph0,morpha} -- morph [style="filled" color="lavender"]
+  {morph,morph0} -- {geo,plato} [style="filled" color="lavender"]
+  {morph0,morpha} -- grain [style="filled" color="lavender"]
+
+  {eca,som} -- fpic [style="filled" color="steelblue1"]
+
+  monde -- movie [style="filled" color="steelblue1"]
+
+  histo -- clearbuff [style="filled" color="lavender"]
+  window -- sigv [style="filled" color="lavender"]
+  window -- histo [style="filled" color="lavender"]
+
+  {frag,vert} -- shady [style="filled" color="lavender"]
+  model -- b0 [style="filled" color="steelblue1"]
+
+  {aio,grain,lttp,midi,nature,spk,synth,wave} -- tilde [style="filled" color="deeppink"]
+  {b0,bfg,fpic,geo,"graph",light,lz,model,monde,nurbs,particles,plato,proc,rossler,shady,sketch,sky,som,specs,terra,typo,wrld} -- tilde [style="filled" color="steelblue1"]
+
+  # Core
+
+  tilde [style="filled" color="gold2"]
+  aio [style="filled" color="deeppink" fontcolor="white"]
+  automata [style="filled" color="ghostwhite"]
+  b0 [style="filled" color="steelblue3" fontcolor="azure1"]
+  bfg [style="filled" color="steelblue1" fontcolor="azure1"]
+  biomes [style="filled" color="skyblue1" fontcolor="lightskyblue4"]
+  camera [style="filled" color="steelblue1" fontcolor="azure1"]
+  clearbuff [style="filled" color="ghostwhite"]
+  count [style="filled" color="ghostwhite"]
+  cv [style="filled" color="gold2"]
+  eca [style="filled" color="steelblue1" fontcolor="azure1"]
+  fpic [style="filled" color="steelblue1" fontcolor="azure1"]
+  frag [style="filled" color="ghostwhite"]
+  fx [style="filled" color="steelblue1" fontcolor="azure1"]
+  gen [style="filled" color="ghostwhite"]
+  geo [style="filled" color="steelblue3" fontcolor="azure1"]
+  grain [style="filled" color="deeppink" fontcolor="white"]
+  "graph" [style="filled" color="steelblue1" fontcolor="azure1"]
+  histo [style="filled" color="ghostwhite"]
+  lfo [style="filled" color="gold2"]
+  light [style="filled" color="steelblue1" fontcolor="azure1"]
+  lz [style="filled" color="steelblue3" fontcolor="azure1"]
+  lttp [style="filled" color="deeppink" fontcolor="white"]
+  markov [style="filled" color="gold2"]
+  midi [style="filled" color="deeppink" fontcolor="white"]
+  model [style="filled" color="steelblue3" fontcolor="azure1"]
+  monde [style="filled" color="skyblue1" fontcolor="lightskyblue4"]
+  morph [style="filled" color="ghostwhite"]
+  morph0 [style="filled" color="ghostwhite"]
+  morpha [style="filled" color="ghostwhite"]
+  movie [style="filled" color="steelblue1" fontcolor="azure1"]
+  nature [style="filled" color="deeppink" fontcolor="white"]
+  new [style="filled" color="gold2"]
+  nurbs [style="filled" color="steelblue1" fontcolor="azure1"]
+  o [style="filled" color="ghostwhite"]
+  ofx
+  omods [style="filled" color="ghostwhite"]
+  orcac
+  osc [style="filled" color="gold2"]
+  particles [style="filled" color="steelblue3" fontcolor="azure1"]
+  plato [style="filled" color="steelblue3" fontcolor="azure1"]
+  proc [style="filled" color="steelblue3" fontcolor="azure1"]
+  qr [style="filled" color="ghostwhite"]
+  qrec [style="filled" color="ghostwhite"]
+  rand [style="filled" color="ghostwhite"]
+  randx [style="filled" color="ghostwhite"]
+  rnr [style="filled" color="ghostwhite"]
+  rossler [style="filled" color="steelblue3" fontcolor="azure1"]
+  rpg [style="filled" color="ghostwhite"]
+  rsr [style="filled" color="ghostwhite"]
+  s [style="filled" color="lavender"]
+  sclang
+  sfor [style="filled" color="ghostwhite"]
+  shady [style="filled" color="steelblue1" fontcolor="azure1"]
+  sigv [style="filled" color="lavender"]
+  sketch [style="filled" color="steelblue1" fontcolor="azure1"]
+  sky [style="filled" color="steelblue1" fontcolor="azure1"]
+  som [style="filled" color="steelblue1" fontcolor="azure1"]
+  specs [style="filled" color="steelblue1" fontcolor="azure1"]
+  spk [style="filled" color="deeppink" fontcolor="white"]
+  synth [style="filled" color="deeppink" fontcolor="white"]
+  terra [style="filled" color="steelblue3" fontcolor="azure1"]
+  timer [style="filled" color="ghostwhite"]
+  tmux
+  typo [style="filled" color="steelblue3" fontcolor="azure1"]
+  vert [style="filled" color="ghostwhite"]
+  wave [style="filled" color="deeppink" fontcolor="white"]
+  window [style="filled" color="ghostwhite"]
+  wrld [style="filled" color="steelblue1" fontcolor="azure1"]
+  zap [style="filled" color="gold2"]
+}`
+))
+}});
+
+define({id: "ef2019ba", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`graph module {
+  rankdir=TD
+  viewport="1000,350"
+  size=13
+  height=0.1
+  layout="dot"
+  node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+  edge [color="gray"]
+
+  # Relationships
+
+  nbcli -- {automata,clearbuff,gen,sclang,tmux,sfor,window,histo,qr,qrec,rnr,rsr,rpg,count,timer,rand,randx,morph,morph0,morpha,vert,frag,o,ofx,omods,orcac} [style="filled" color="ghostwhite"]
+  nbcli [style="filled" color="ghostwhite"]
+
+  s -- sigv [style="filled" color="lavender"]
+
+  count -- timer [style="filled" color="lavender"]
+  gen -- {count,timer,sfor,automata} [style="filled" color="lavender"]
+  {automata,clearbuff,gen,sfor,window,histo,qr,qrec,rnr,rsr,rpg,count,timer,rand,randx,morph,morph0,morpha,vert,frag,o} -- sigv [style="filled" color="lavender"]
+  orcac -- omods [style="filled" color="lavender"]
+
+  rnr -- {rsr,rpg,rand,randx} [style="filled" color="lavender"]
+  rsr -- {rnr,rpg,rand,randx} [style="filled" color="lavender"]
+  qr -- rpg [style="filled" color="lavender"]
+
+  rpg -- morph [style="filled" color="lavender"]
+  {morph0,morpha} -- morph [style="filled" color="lavender"]
+
+  histo -- clearbuff [style="filled" color="lavender"]
+  window -- sigv [style="filled" color="lavender"]
+  window -- histo [style="filled" color="lavender"]
+
+}`
+))
+}});
+
+define({id: "fc17f0dd", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`graph module {
+  rankdir=TD
+  viewport="1000,500"
+  size=13
+  height=0.1
+  layout="dot"
+  node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+  edge [color="gray"]
+
+  # Relationships
+
+  nbcli [style="filled" color="ghostwhite"]
+  s [style="filled" color="lavender"]
+  sigv [style="filled" color="lavender"]
+  osc,cv,lfo,markov,new,zap,tilde [style="filled" color="gold"]
+
+  nbcli -- s [style="filled" color="ghostwhite"]
+
+  s -- sigv [style="filled" color="lavender"]
+  sigv -- osc [style="filled" color="lavender"]
+
+  count -- timer [style="filled" color="lavender"]
+  gen -- {count,timer,sfor,automata} [style="filled" color="lavender"]
+  {automata,clearbuff,gen,sfor,window,histo,qr,qrec,rnr,rsr,rpg,count,timer,rand,randx,morph,morph0,morpha,vert,frag,o} -- sigv [style="filled" color="lavender"]
+  orcac -- omods [style="filled" color="lavender"]
+
+  rnr -- {rsr,rpg,rand,randx} [style="filled" color="lavender"]
+  rsr -- {rnr,rpg,rand,randx} [style="filled" color="lavender"]
+  qr -- rpg [style="filled" color="lavender"]
+
+  rpg -- morph [style="filled" color="lavender"]
+  {morph0,morpha} -- morph [style="filled" color="lavender"]
+
+  histo -- clearbuff [style="filled" color="lavender"]
+  window -- sigv [style="filled" color="lavender"]
+  window -- histo [style="filled" color="lavender"]
+
+  osc -- {cv,lfo,markov,new,zap,tilde} [style="filled" color="gold"]
+
+  {osc,cv,lfo,markov,new,zap} -- tilde [style="filled" color="gold"]
+
+}`
+))
+}});
+
+define({id: "014fde6f", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`graph spatial {
+  rankdir=TD
+  viewport="1000,350"
+  size=13
+  height=0.1
+  layout="dot"
+  node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+  edge [color="gray"]
+
+  # Relationships
+
+  nbcli [style="filled" color="ghostwhite"]
+  nbcli -- {rpg,morph,morph0,morpha,vert,frag} [style="filled" color="ghostwhite"]
+  sigv,s [style="filled" color="lavender"]
+  osc,cv,lfo,markov,new,zap,tilde [style="filled" color="gold"]
+  geo,lz,particles,proc,b0,model,terra,rossler,typo,plato [style="filled" color="steelblue3" fontcolor="white"]
+  bfg,fpic,"graph",light,monde,nurbs,particles,shady,sketch,sky,som,specs,wrld [style="filled" color="steelblue1" fontcolor="white"]
+  monde,biomes [style="filled" color="skyblue1" fontcolor="slategray"]
+  fx,camera,movie [style="filled" color="steelblue1" fontcolor="white"]
+  eca,som [style="filled" color="steelblue1" fontcolor="white"]
+
+  nbcli -- s [style="filled" color="ghostwhite"]
+
+  s -- sigv [style="filled" color="lavender"]
+  sigv -- osc [style="filled" color="lavender"]
+
+  wrld -- {fx,camera,monde,movie,biomes} [style="filled" color="steelblue1"]
+  fx -- {monde,biomes} [style="filled" color="steelblue1"]
+
+  rpg -- morph [style="filled" color="lavender"]
+  {morph0,morpha} -- morph [style="filled" color="lavender"]
+  {morph,morph0} -- {geo,plato} [style="filled" color="lavender"]
+
+  {eca,som} -- fpic [style="filled" color="steelblue1"]
+
+  monde -- movie [style="filled" color="steelblue1"]
+
+  {frag,vert} -- shady [style="filled" color="lavender"]
+  model -- b0 [style="filled" color="steelblue1"]
+
+  osc -- {cv,lfo,markov,new,zap,tilde} [style="filled" color="gold"]
+  osc -- {b0,bfg,fpic,geo,"graph",light,lz,model,monde,nurbs,particles,plato,proc,rossler,shady,sketch,sky,som,specs,terra,typo,wrld} [style="filled" color="gold"]
+
+  {geo,lz,particles,proc,b0,model,terra,rossler,typo,plato} -- tilde [style="filled" color="steelblue3"]
+  {bfg,fpic,"graph",light,monde,nurbs,particles,shady,sketch,sky,som,specs,wrld} -- tilde [style="filled" color="steelblue1"]
+  {monde,biomes} -- tilde [style="filled" color="skyblue1"]
+  {fx,camera,movie,eca,som} -- tilde [style="filled" color="steelblue1"]
+  {cv,lfo,markov,new,zap} -- tilde [style="filled" color="gold"]
+}`
+))
+}});
+
+define({id: "672be41d", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`graph sonic {
+  rankdir=TD
+  viewport="450,450"
+  size=6
+  height=0.1
+  layout="dot"
+  node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+  edge [color="gray"]
+
+  # Relationships
+
+  nbcli [style="filled" color="ghostwhite"]
+  sigv,s [style="filled" color="lavender"]
+  osc,cv,lfo,markov,new,zap,tilde [style="filled" color="gold"]
+  aio,grain,lttp,midi,nature,spk,synth,wave [style="filled" color="deeppink" fontcolor="white"]
+
+  nbcli -- s [style="filled" color="ghostwhite"]
+  nbcli -- {qrec,rpg,morph0,morpha,rnr,rsr,rpg} [style="filled" color="ghostwhite"]
+
+  {qrec,rpg,morph0,morpha,rnr,rsr,rpg} -- sigv [style="filled" color="ghostwhite"]
+
+  s -- sigv [style="filled" color="lavender"]
+  sigv -- osc [style="filled" color="lavender"]
+
+  aio -- {grain,wave,spk,midi,synth} [style="filled" color="deeppink"]
+  {nature,qrec} -- aio [style="filled" color="lavender"]
+
+  rnr -- {rsr,rpg,rand,randx} [style="filled" color="lavender"]
+  rsr -- {rnr,rpg,rand,randx} [style="filled" color="lavender"]
+  qr -- rpg [style="filled" color="lavender"]
+
+  {morph0,morpha} -- grain [style="filled" color="lavender"]
+
+  osc -- {cv,lfo,markov,new,zap,tilde} [style="filled" color="gold"]
+  osc -- {aio,grain,lttp,midi,nature,spk,synth,wave} [style="filled" color="gold"]
+
+  {aio,grain,lttp,midi,nature,spk,synth,wave} -- tilde [style="filled" color="deeppink"]
+  {cv,lfo,markov,new,zap} -- tilde [style="filled" color="gold"]
+
+}`
+))
+}});
+
+define({id: "0ccad7e9", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph ANIM {
+  rankdir=TD
+  viewport="250,150"
+  size=3
+  height=0.1
+  layout="dot"
+  node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+  edge [color="gray"]
+
+geo,lz,proc,b0,model,plato [style="filled" color="steelblue3" fontcolor="ghostwhite"]
+b0 -> model [style="filled" color="steelblue1"]
+turn,scaleto,moveto,rotateto,ease,easefunc [style="filled" color="ghostwhite"]
+osc [style="filled" color="gold"]
+
+osc -> {geo,lz,proc,b0,model,plato} [style="filled" color="steelblue3"]
+{turn,scaleto,moveto,rotateto,ease,easefunc} -> "\`"
+"\`" -> osc
+
+turn [xlabel="t"]
+scaleto [xlabel="s"]
+moveto [xlabel="m"]
+rotateto [xlabel="r"]
+ease [xlabel="e"]
+easefunc [xlabel="f"]
+"\`" [xlabel="ANIM"]
+
+}
+`
+))
+}});
+
+define({id: "40ad6576", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph MAT {
+rankdir=TD
+viewport="250,150"
+size=3
+height=0.1
+layout="twopi"
+node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+edge [color="gray"]
+
+geo,lz,proc,b0,model,plato [style="filled" color="steelblue3" fontcolor="ghostwhite"]
+b0 -> model [style="filled" color="steelblue1"]
+material,diffuse,heightmap,normals,emission,bfg,fog,drawgrp,texgrp [style="filled" color="ghostwhite"]
+osc [style="filled" color="gold"]
+
+osc -> {geo,lz,proc,b0,model,plato} [style="filled" color="steelblue3"]
+{material,diffuse,heightmap,normals,emission,bfg,fog,drawgrp,texgrp} -> "|"
+"|" -> osc
+
+material [xlabel="m"]
+diffuse [xlabel="d"]
+heightmap [xlabel="h"]
+normals [xlabel="n"]
+emission [xlabel="e"]
+bfg [xlabel="b"]
+fog [xlabel="f"]
+drawgrp [xlabel="g"]
+texgrp [xlabel="t"]
+"|" [xlabel="MAT"]
+}
+`
+))
+}});
+
+define({id: "f1744672", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph TRANS {
+rankdir=TD
+viewport="250,150"
+size=2.5
+height=0.1
+layout="twopi"
+node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+edge [color="gray"]
+
+geo,lz,proc,b0,model,plato [style="filled" color="steelblue3" fontcolor="ghostwhite"]
+b0 -> model [style="filled" color="steelblue1"]
+morph,shape,dimension,delement,oaio,polymode,cullface,pointsize,linewidth,procperiod,procscale [style="filled" color="ghostwhite"]
+osc [style="filled" color="gold"]
+
+osc -> {geo,lz,proc,b0,model,plato} [style="filled" color="steelblue3"]
+{morph,shape,dimension,delement,oaio,polymode,cullface,pointsize,linewidth,procperiod,procscale} -> "^"
+"^" -> osc
+
+morph [xlabel="o"]
+shape [xlabel="s"]
+dimension [xlabel="d"]
+delement [xlabel="e"]
+oaio [xlabel="a"]
+polymode [xlabel="p"]
+cullface [xlabel="c"]
+pointsize [xlabel="0"]
+linewidth [xlabel="1"]
+procperiod [xlabel="f"]
+procscale [xlabel="x"]
+"^" [xlabel="TRANS"]
+}
+`
+))
+}});
+
+define({id: "d42480b9", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph AUDIO {
+ rankdir=TD
+ viewport="250,150"
+ size=2.85
+ height=0.1
+ layout="fdp"
+ node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+ edge [color="gray"]
+
+ aio,grain,lttp,midi,nature,spk,synth,wave [style="filled" color="deeppink" fontcolor="ghostwhite"]
+ pkthresh,pkramp,autoaio,aiopwr,naturemo,naturemu,naturepk,naturebi,naturesen,vstplug,vstopen,vstprg [style="filled" color="ghostwhite"]
+ osc [style="filled" color="gold"]
+
+ aio -> {grain,wave,spk,midi,synth} [style="filled" color="deeppink"]
+ nature -> aio [style="filled" color="deeppink"]
+ 
+ osc -> {aio,grain,lttp,midi,nature,spk,synth,wave} [style="filled" color="deeppink"]
+ {pkthresh,pkramp,autoaio,aiopwr,naturemo,naturemu,naturepk,naturebi,naturesen,vstplug,vstopen,vstprg} -> "_"
+ "_" -> osc
+
+ pkthresh [xlabel="o"]
+ pkramp [xlabel="s"]
+ autoaio [xlabel="d"]
+ aiopwr [xlabel="e"]
+ naturemo [xlabel="a"]
+ naturemu [xlabel="p"]
+ naturepk [xlabel="c"]
+ naturebi [xlabel="0"]
+ naturesen [xlabel="1"]
+ vstplug [xlabel="f"]
+ vstopen [xlabel="x"]
+ vstprg 
+ "_" [xlabel="AUDIO"]
+}
+`
+))
+}});
+
+define({id: "3c7017e1", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph LIGHTS {
+rankdir=TD
+viewport="250,150"
+size=2.5
+height=0.1
+layout="osage"
+node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+edge [color="gray"]
+
+geo,lz,proc,b0,model,plato [style="filled" color="steelblue3" fontcolor="ghostwhite"]
+b0 -> model [style="filled" color="steelblue1"]
+newlight,enable,activate,visible,randiffu,diffu,delete [style="filled" color="ghostwhite"]
+osc,new [style="filled" color="gold"]
+
+newlight -> new [style="filled" color="gold"]
+new -> osc [style="filled" color="gold"]
+osc -> {geo,lz,proc,b0,model,plato} [style="filled" color="steelblue3"]
+{newlight,enable,activate,visible,randiffu,diffu,delete} -> "º"
+"º" -> osc
+
+newlight [xlabel="n"]
+enable [xlabel="e"]
+activate [xlabel="a"]
+visible [xlabel="v"]
+randiffu [xlabel="r"]
+diffu [xlabel="c"]
+delete [xlabel="d"]
+"º" [xlabel="LIGHTS"]
+}
+`
+))
+}});
+
+define({id: "3c4c8e56", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph SYSTEM {
+rankdir=TD
+viewport="250,150"
+size=2.5
+height=0.1
+layout="osage"
+node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+edge [color="gray"]
+
+geo,lz,proc,b0,model,plato [style="filled" color="steelblue3" fontcolor="ghostwhite"]
+osc,new [style="filled" color="gold"]
+matmo,wrldb,wrldz,fxpass,wrldp [style="filled" color="steelblue3" fontcolor="ghostwhite"]
+newobj,zapobj,fobj,clear,exit,cmde,tset,tsrc,tlink,ttail [style="filled" color="gold"]
+
+new -> osc [style="filled" color="gold"]
+osc -> {geo,lz,proc,b0,model,plato} [style="filled" color="steelblue3"]
+{newobj,zapobj,fobj,clear,exit,cmde,tset,tsrc,tlink,ttail} -> "…" [style="filled" color="gold"]
+{matmo,wrldb,wrldz,fxpass,wrldp} -> "…" [style="filled" color="steelblue3"]
+"…" -> osc
+
+newobj [xlabel="n"]
+zapobj [xlabel="z"]
+fobj [xlabel="f"]
+clear [xlabel="c"]
+matmo [xlabel="m"]
+exit [xlabel="x"]
+wrldb [xlabel="b"]
+wrldz [xlabel="e"]
+fxpass [xlabel="q"]
+wrldp [xlabel="w"]
+cmde [xlabel="s"]
+tset [xlabel="t"]
+tsrc [xlabel="t"]
+tlink [xlabel="t"]
+ttail [xlabel="t"]
+"…" [xlabel="SYSTEM"]
+}
+`
+))
+}});
+
+define({id: "c1b2cb87", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph SERIAL {
+rankdir=TD
+viewport="250,150"
+size=2.5
+height=0.1
+layout="twopi"
+node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+edge [color="gray"]
+
+cv,lfo,new,zap,markov,tilde [style="filled" color="gold"]
+osc,new [style="filled" color="gold"]
+cvolt,cinput,aio [style="filled" color="deeppink" fontcolor="ghostwhite"]
+newobj,zapobj,fobj,clear,exit,cmde,tset,tsrc,tlink,ttail [style="filled" color="gold"]
+
+new -> osc [style="filled" color="gold"]
+osc -> {cv,lfo,new,zap,markov,tilde,aio} [style="filled" color="gold"]
+{gpiol,gpioa,mcu,copen} -> "∆" [style="filled" color="gold"]
+{cvolt,cinput} -> "∆" [style="filled" color="deeppink"]
+"∆" -> osc
+
+cvolt [xlabel="v"]
+cinput [xlabel="i"]
+gpiopl [xlabel="p"]
+gpioa [xlabel="a"]
+mcu [xlabel="m"]
+copen [xlabel="c"]
+"∆" [xlabel="SERIAL"]
+}
+`
+))
+}});
+
+define({id: "688f0f4c", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph CHAO {
+rankdir=TD
+viewport="250,150"
+size=2.5
+height=0.1
+layout="twopi"
+node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+edge [color="gray"]
+
+lz,lzsamp,lzact,lzpdim,lzeq,lzaval,lzbval,lzcval,lzdtval [style="filled" color="steelblue3" fontcolor="ghostwhite"]
+osc,new,lzdata [style="filled" color="gold"]
+
+new -> osc [style="filled" color="gold"]
+osc -> lz [style="filled" color="gold"]
+lzdata -> "∞" [style="filled" color="gold"]
+{lzsamp,lzact,lzpdim,lzeq,lzaval,lzbval,lzcval,lzdtval} -> "∞" [style="filled" color="steelblue3"]
+"∞" -> osc
+
+lzsamp [xlabel="s"]
+lzact [xlabel="1"]
+lzpdim [xlabel="p"]
+lzeq [xlabel="e"]
+lzaval [xlabel="a"]
+lzbval [xlabel="b"]
+lzcval [xlabel="c"]
+lzdtval [xlabel="d"]
+lzdata [xlabel="i"]
+"∞" [xlabel="CHAO"]
+}
+`
+))
+}});
+
+define({id: "d438af61", inputs: ["dot","display"], body: async (dot,display) => {
+display(await(
+dot`digraph BUFFER {
+rankdir=TD
+viewport="250,150"
+size=3.5
+height=0.1
+layout="dot"
+node [shape="rect" height="0.5" width="0.9" color="lavender" fontsize="18" fontname="Avenir"]
+edge [color="gray"]
+
+spk,startb,loopbuff,pbuff,rbuff,selecs,midicon [style="filled" color="deeppink" fontcolor="ghostwhite"]
+osc,new,setbuff [style="filled" color="gold"]
+
+new -> osc [style="filled" color="gold"]
+osc -> spk [style="filled" color="gold"]
+setbuff -> "ß" [style="filled" color="gold"]
+{startb,loopbuff,pbuff,rbuff,selecs,midicon} -> "ß" [style="filled" color="deeppink"]
+"ß" -> osc
+
+startb [xlabel="#"]
+loopbuff [xlabel="l"]
+setbuff [xlabel="s"]
+pbuff [xlabel="p"]
+rbuff [xlabel="r"]
+selecs [xlabel="o"]
+midicon [xlabel="m"]
+"ß" [xlabel="BUFFER"]
+}
+`
+))
+}});
 
 </script>
 </head>
@@ -24,16 +665,217 @@ import "./_observablehq/client.ae85c29a.js";
 <div id="observablehq-center">
 <aside id="observablehq-toc" data-selector="h1:not(:first-of-type)[id], h2:first-child[id], :not(h1) + h2[id]">
 <nav>
+<div>Contents</div>
+<ol>
+<li class="observablehq-secondary-link"><a href="#table-of-contents">Table of Contents</a></li>
+<li class="observablehq-secondary-link"><a href="#what-is-a-meta-instrument">What is a meta-instrument?</a></li>
+<li class="observablehq-secondary-link"><a href="#meta-notation">Meta-notation</a></li>
+<li class="observablehq-secondary-link"><a href="#command-atlas">Command Atlas</a></li>
+<li class="observablehq-secondary-link"><a href="#o-sigv">o-sigv</a></li>
+<li class="observablehq-secondary-link"><a href="#blueberry-framework">Blueberry Framework</a></li>
+<li class="observablehq-secondary-link"><a href="#ecosystem">Ecosystem</a></li>
+</ol>
 </nav>
 </aside>
 <main id="observablehq-main" class="observablehq">
 <h1 id="nbcli-meta-instrument" tabindex="-1"><a class="observablehq-header-anchor" href="#nbcli-meta-instrument">nbcli meta-instrument</a></h1>
-<p>This is the home page of your new Observable Framework app.</p>
-<p>For more, see <a href="https://observablehq.com/framework/getting-started" target="_blank" rel="noopener noreferrer">https://observablehq.com/framework/getting-started</a>.</p>
+<p>This notebook outlines the specifications of <a href="https://nbcli.space" target="_blank" rel="noopener noreferrer">nbcli</a>, a meta-instrument for <a href="https://livecodingbook.toplap.org/" target="_blank" rel="noopener noreferrer">live coding</a> and <a href="https://archimusic.info/" target="_blank" rel="noopener noreferrer">archimusic</a> composition.</p>
+<figure>
+<img src="./_file/nbcli-machine.87a7853f.svg" height="50%" width="50%">
+<figcaption>nbcli represented as an <a href="https://en.wikipedia.org/wiki/Abstract_machine" target="_blank" rel="noopener noreferrer">abstract machine</a>. The diagram is used to visually describe the instruments' notation.
+    </figcaption>
+</figure>
+<h2 id="table-of-contents" tabindex="-1"><a class="observablehq-header-anchor" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="#what-is-a-meta-instrument">What is a meta-instrument?</a></li>
+<li><a href="#meta-notation">Meta-notation</a></li>
+<li><a href="#command-atlas">Command Atlas</a>
+<ul>
+<li><a href="#language">Language</a></li>
+</ul>
+</li>
+<li><a href="#blueberry-framework">Blueberry Framework</a></li>
+<li><a href="#ecosystem">Ecosystem</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+<h2 id="what-is-a-meta-instrument" tabindex="-1"><a class="observablehq-header-anchor" href="#what-is-a-meta-instrument">What is a meta-instrument?</a></h2>
+<p>An instrument is a device defined by the way it is used (e.g. musical instrument to make music). <em>Meta</em> means self-referential or denoting a change in something. Moreover, the prefix <em>meta-</em> means pertaining to a second or higher-order. The research behind nbcli is grounded in computer music and algorithmic composition (composing music with algorithmic patterns), as such the <em>meta</em> aspect of nbcli explores precomposition (the setup and pre-arrangement of composition material and systems). With live coding practice as a vehicle, the nbcli meta-instrument makes pre-composition a performative element of the practice.</p>
+<p>The concept of meta-instrument also refers to the ability for nbcli itself to create new instruments. The methodology used in its creation, was captured and synthesized into a workflow, that nbcli can re-initiate to create new modules (the compositional elements and systems that makeup the instruments' capabilities), further extending its use.</p>
+<hr>
+<h2 id="meta-notation" tabindex="-1"><a class="observablehq-header-anchor" href="#meta-notation">Meta-notation</a></h2>
+<p>The model of the nbcli meta-instrument as an abstract machine can be broken down into 3 main parts:</p>
+<ul>
+<li><strong>MOS (machinic observation system)</strong> represented by the letter S in the diagram below, refers to the instruments' sampling and input system, such as audio, video, and general signal sources of data made available to the instrument. It is where field recordings and video capture happen.</li>
+<li><strong>TRANS (transformation system)</strong> represented by the dotted areas in the diagram below, refers to the instruments' ability to transform sampled and generated data and information. It is where composition arrangement and live coding happens.</li>
+<li><strong>MES (machinic expression system)</strong> represented by the letter E in the diagram below, refers to the instruments' expression and output system, in the form of sonic, visual or raw data outputs. This is where music is heard and visuals seen.</li>
+</ul>
+<figure>
+<img src="./_file/systems.1eaf019b.svg" width="50%" height="50%">
+</figure>
+<p>These 3 parts being the makeup of the abstract machine, can be referred to as <em>proto-machines</em>: the technical layers of an abstract machine.</p>
+<p>The MOS (S) layer can be further broken down into its proto-machinic view as follows:</p>
+<figure>
+<img src="./_file/mos.e10b2ee6.svg" width="50%" height="50%">
+</figure>
+<p>The rectangular item in the MES proto-machine is the <em>probe</em>, responsible for capturing incoming data. The 4 circles are known as <em>abstract buffers</em> for temporal storage of input media from the probe or generated data from a <em>ugen</em>. A ugen (unit generator) refers to the system used to generate raw audio or visual data.</p>
+<p>The TRANS (-formation) system can be further broken down into its proto-machinic view as follows:</p>
+<figure>
+<img src="./_file/trans.c25e86fe.svg" width="50%" height="50%">
+</figure>
+<p>TRANS is a proto-machine for facilitating the preparation of composing sessions, live
+performance setups, research and prototyping experiments, art installation configurations,
+music compositions, audiovisual compositions, and generative compositions. It is represented by the four <em>logic buffers</em> A, V, C, and I, referred to by the acronym AVCI (pronounced <em>a-vee-chi</em>). Referring to audio, video, control voltage, and image, they are “logic” buffers signifying their identity beyond being buffers for storing a particular media type, but suggests that they can be used for parameterization or general purpose.</p>
+<p>The second column consists of a transformation buffer for every type of AVCI: sonic (S<sub>o</sub>), spatial (S<sub>p</sub>), and kinetic (K<sub>i</sub>), where both V and I of AVCI share the same transformation buffer (S<sub>p</sub>). These transform buffers are the final result of the TRANS proto-machine and continue on to the expressor (MES below). Like the AVCI buffers, the transformation buffers are logic buffers and contain much more information than simply the media in question.</p>
+<figure>
+<img src="./_file/logic-transform.da99a2d5.svg" width="50%" height="50%">
+<figcaption>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Logic Buffers &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; Transform Buffers</figcaption>
+</figure>
+
+<p>The diagram above shows paths from each logic buffer to all possibilities for transform buffers.</p>
+<p>The MES (E) can be further broken down into its proto-machinic view as follows:</p>
+<figure>
+<img src="./_file/mes.12aaf643.svg" width="50%" height="50%">
+</figure>
+<p>The MES proto-machine is the output of nbcli which can range from an arrangement of
+instruments and/or (pre)compositions to new instruments, music, shaders or data sets
+from textures to raw audio. The proto-machine of the MES creates expressivity, described
+by dimension, modularity, morphogenesis, and perception.</p>
+<figure>
+<img src="./_file/nbcli-machine.87a7853f.svg" height="50%" width="50%">
+<figcaption>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOS &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; TRANS &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp; MES</figcaption>
+</figure>
+<h3 id="what-the-notation-looks-like" tabindex="-1"><a class="observablehq-header-anchor" href="#what-the-notation-looks-like">What the notation looks like</a></h3>
+<p>Let’s take a simple setup scenario of a live microphone receiving audio input (<span id="notation"><i>S</i><sub>a~</sub></span>) and used in a composition setup with a synthesizer. The composer uses a combination of captured sounds from the microphone and transforms them with a series of parameters set by the synthesizer (<span id="notation"><code class="blank">A</code> → <code class="blank"><i>S</i><sub>o</sub></code></span>), and generates a custom musical output heard through studio speakers (<span><i>E</i><sub>o</sub></span>). An nbcli meta-notation of this setup could look like this:</p>
+<p><span id="notation"><i>S</i><sub>a~</sub> | <code class="blank">A</code> → <code class="blank"><i>S</i><sub>o</sub></code>| <i>E</i><sub>o</sub></span></p>
+<p>The notation can also be sketched liked this:</p>
+<figure>
+<img src="./_file/notasketch.5fa15f37.svg" height="75%" width="75%">
+</figure>
+<hr>
+<h3 id="expressivity-e" tabindex="-1"><a class="observablehq-header-anchor" href="#expressivity-e">Expressivity (e)</a></h3>
+<p>The final part to the nbcli meta-notation refers to the instruments' expressive power, a characteristic defined in the form of an equation:</p>
+<style>
+  #eq {
+    font-size: 23.5px;
+  }
+  </style>
+<figure id="eq">
+<div>&nbsp;</div>
+<math>
+<mn><i>e</i></mn>
+<mo>=</mo>
+  <mfrac>
+	<mn> <i>f(dim<sub>xyz</sub>, mod<sub>n</sub>, morph<sub>bool</sub>, perc<sub>±1</sub>)</i></mn>
+	<mn><i>t</i></mn>
+  </mfrac>
+</math>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<figcaption>Expressivity equation</figcaption>
+</figure>
+<p>The expressivity equation is primarily based on an interpretation of Magnusson's ergodynamics of instruments with particular focus on characteristics of importance to nbcli and this research including HCI influences from analogue modular synthesizers, digital music instruments, live coding esolangs, algorithmic music composition tools from various time periods.</p>
+<p><em>Expressivity</em> (e) is the function of nbcli (f) over time (t). The functions of nbcli are to operate
+in a defined <em>dimensional space</em> (dim<sub>xyz</sub>), use one or more modules which define its
+<em>modularity</em> (mod<sub>n</sub>), if the instrument is <em>capable of transformation</em> or not, as a way to identify <a href="https://royalsocietypublishing.org/rstb/article/237/641/37/112910/The-chemical-basis-of-morphogenesis" target="_blank" rel="noopener noreferrer">morphogenesis</a> potential (morph<sub>bool</sub>), and if <em>perception</em> potential is positive or negative (perc<sub>±1</sub>).</p>
+<p>Dimensional space is written as <em>xy</em> for a two-dimensional space and <em>xyz</em> for a three-dimensional space. Frequency over time and pitch over time in the digital audio domain is a two-dimensional sonic space, just as an image texture is a two-dimensional visual space. In these examples, the dimensional space of expressivity is written xy. Geometric shape primitives such as spheres and cubes are three-dimensional, as well spatial audio from a quad speaker setup in architectural space. In these examples, the dimensional space of expressivity is written xyz.</p>
+<p>As witnessed by the instrumentality of the modular synthesizer, the stacking of modules expands the affordances of the instrument, increasing numbers of voices, filters and controls, further increasing its capabilities. In this equation, <em>modularity</em> of nbcli refers to the number of sigv modules and nbcli extensions used in a composition or performance and reflects this through the affordances they create. The <em>n</em> subscript signifies modularity is indicated by an <strong>integer</strong> of the amount of modules and/or extensions used.</p>
+<p>Morphogenesis is the study of origin and development of morphological characteristics (Oxford Dictionary). In this research, the <em>morph</em> (or morphological capability) is the instruments’ ability to create and facilitate transformations via precomposition and composition. The instruments’ modularity contributes directly to the morphological capability due to that capability mostly comes from the existence of a module that provides this.</p>
+<p>perc describes the range of perception. With the visual, positive 1 indicates visible, and negative 1 invisible. In the audio domain, perc assigns positive 1 to audible waveforms (20 Hz - 20 kHz) and negative 1 to low-frequency waveforms (e.g. LFO and control voltage in <a href="https://econtact.ca/17_4/austin_synthesis.html" target="_blank" rel="noopener noreferrer">modular synthesis</a>).</p>
+<h4 id="meta-notation-w-expressivity" tabindex="-1"><a class="observablehq-header-anchor" href="#meta-notation-w-expressivity">Meta-notation w/Expressivity</a></h4>
+<p>From our previous example of the notation, we can now add <em>expressivity</em>:</p>
+<p><span id="notation"><i>S</i><sub>a~</sub> | <code class="blank">A</code> → <code class="blank"><i>S</i><sub>o</sub></code>| <i>E</i><sub>o</sub> → (xy 2 0 1)</span></p>
+<p>Notation sketch:</p>
+<figure>
+<img src="./_file/nota0.f506fe7e.svg" height="75%" width="75%">
+</figure>
+<p>The expressivity element → (xy 2 0 1) can be read as composition in a two-dimensional space (xy) using two modules (2), has no morphogenetic capability (0), and is audible (1).</p>
+<hr>
+<h2 id="command-atlas" tabindex="-1"><a class="observablehq-header-anchor" href="#command-atlas">Command Atlas</a></h2>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:67e729d8:--></div>
+<h3 id="init" tabindex="-1"><a class="observablehq-header-anchor" href="#init">Init</a></h3>
+<p>The first step in initializing nbcli is launching a terminal session. This session once launched will have a configuration set by an invisible file named <a href="https://github.com/nbcli-meta/nbcli/blob/main/.sigvsh" target="_blank" rel="noopener noreferrer"><em>.sigvsh</em></a>. This prepares the terminal to receive and respond to all nbcli commands. That would put our command atlas in a state that looks like this:</p>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:ef2019ba:--></div>
+<h4 id="what-nbcli-init-assumes" tabindex="-1"><a class="observablehq-header-anchor" href="#what-nbcli-init-assumes">What nbcli init assumes</a></h4>
+<p>In part, the creation of sigv is a direct response to the research problem exploring a series of experiments in transmodality, built with the Max programming environment. From this perspective, sigv is one of a myriad of tools that generate both visual on sonic material using the powerful backing of technologies such as Max engines. Live coding practice however often challenges the behaviors of popular computing paradigms as well as bringing to the fore, the question of magnitude of <em>computational expense</em>. The management of cognitive load, creative thinking, computing power, and language, often require the inclusion of computational expense consideration. nbcli init assumes that live coding should start from scratch, from a blank canvas, and therefore also from a perspective of minimal resources to begin with.</p>
+<p>In the above diagram for nbcli init, available to the live coder is a small list of commands for utilities such as repetitive functions, counters and timers, for loops and aliases, many of which are aliases for sigv commands. There are also other “assumed” tools the live coder might have on their machines including SuperCollider and its sclang CLI, Orca’s CLI version and a formatted alias to a directory for Orca files (omods).</p>
+<p>Prior to launching sigv explicitly (by writing sigv on the command line to launch it), nbcli allows for a dressing up of the scenario a performer seeks to create, with or without the use of sigv. A live coder could use nbcli to initiate Orca CLI and sclang and immediately live code music.</p>
+<h3 id="language" tabindex="-1"><a class="observablehq-header-anchor" href="#language">Language</a></h3>
+<p>Understanding the language of nbcli is a complex interplay between existing paradigms.</p>
+<p>nbcli consists of a mini-language called sigv, which is also the name of the tool developed in Max, and a group of custom Bash scripts. With the Bash script,s nbcli is also considered a connection to all accessible programs and operations on the live coders’ machine, accessbile via the command line. In my case, this includes SuperCollider via sclang, OpenFrameworks via ofx, Orca CLI via orcac, nano and TMUX, example utiltities that simply exist with the use of the Terminal. Like Bash scripts written in the Terminal, nbcli commands can also be amended while using them.</p>
+<p>When using sigv, nbcli facilitates a bridging of the Bash programming paradigm with that of the Max programming language.</p>
+<hr>
+<p><span id="notation"><code class="blank"><i>K</i><sub>i</sub></code></span> Kinetic</p>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:fc17f0dd:--></div>
+<p>We begin to look specifically at sigv commands by starting with the above image. In lavender and white boxes at the top for the bash commands, and the yellow for sigv <em>kinetic</em> commands. Together, these commands form a signalling system of sorts using Open Sound Control (OSC), connecting sigv modules together using Max messaging, and for the loading and unloading of modules.</p>
+<p>When describing the meta-notation, we referred to transform buffers under the TRANS proto-machine. These buffers are called transform one based on the simple fact that the abstract machines’ primary duty is to create transforms, that are then “expressed” in some way. As a contingent of this duty, the sigv modules are split amongst these transforms, giving them a particular “state” of focus. So in terms of the commands used to carry out these duties, we refer to the spatial, sonic and kinetic as “solid states."</p>
+<p>The kinetic commands are connectors (like tilde), messaging systems (like osc), general purpose operators (like new and zap), and generative systems (markov).</p>
+<hr>
+<p><span id="notation"><code class="blank"><i>S</i><sub>p</sub></code></span> Spatial</p>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:014fde6f:--></div>
+<p>In our spatial diagram above are blue commands referring to visual primitives, generative systems, shader objects, algorithms, effects, and spaces. Limited to only a few nbcli bash commands shown that interact with sigv spatial commands. The darker blue commands represent visual primitives that operate in the xyz dimension. The light blue commands with dark text are the extended spaces of the wrld module.</p>
+<p>A signature structure of visual primitives include an anim parameter, for translations and scaling.</p>
+<hr>
+<p><span id="notation"><code class="blank"><i>S</i><sub>o</sub></code></span> Sonic</p>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:672be41d:--></div>
+<p>The sonic commands for sigv include an experimental synth (synth), a granular synthesizer (grain), a MIDI and VST module (midi), a sampler module (spk) and others. The key module/command for audio is the engine itself: aio. In order for sound to work, the aio module needs to be present.</p>
+<hr>
+<h2 id="o-sigv" tabindex="-1"><a class="observablehq-header-anchor" href="#o-sigv">o-sigv</a></h2>
+<p>The <a href="https://github.com/nbcli-meta/o-sigv" target="_blank" rel="noopener noreferrer">o-sigv</a> operators below (aka the nbcli 9) are nine operators grouped into target activities set for live coding visuals, sound, and physical computing within the <a href="https://hundredrabbits.itch.io/orca" target="_blank" rel="noopener noreferrer">Orca</a> live coding environment. To view them all on one page of tables: <a href="https://magfoto.any.org/o-sigv-table" target="_blank" rel="noopener noreferrer">o-sigv table</a>.</p>
+<div class="grid grid-cols-3">
+  <div class="card">
+  <h3>ANIM</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:0ccad7e9:--></div>
+  </div>
+  <div class="card">
+    <h3>MAT</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:40ad6576:--></div>
+  </div>
+  <div class="card">
+  <h3>TRANS</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:f1744672:--></div>
+  </div>
+  <div class="card">
+  <h3>AUDIO</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:d42480b9:--></div>
+  </div>
+  <div class="card">
+  <h3>LIGHTS</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:3c7017e1:--></div>
+  </div>
+  <div class="card">
+  <h3>SYSTEM</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:3c4c8e56:--></div>
+  </div>
+  <div class="card">
+  <h3>SERIAL</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:c1b2cb87:--></div>
+  </div>
+  <div class="card">
+  <h3>CHAO</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:688f0f4c:--></div>
+  </div>
+  <div class="card">
+  <h3>BUFFER</h3>
+<div class="observablehq observablehq--block"><observablehq-loading></observablehq-loading><!--:d438af61:--></div>
+  </div>
+</div>
+<hr>
+<h2 id="blueberry-framework" tabindex="-1"><a class="observablehq-header-anchor" href="#blueberry-framework">Blueberry Framework</a></h2>
+<p>The Blueberry Framework is a custom setup for portable live coding with small computers that was first tested as a Raspberry Pi. The premise was to support art installations, generative composition systems, and portable live coding performance setups. The main purpose of this exploration was to achieve the goal of extending live coding to the built environment through the live coding of <a href="https://en.wikipedia.org/wiki/General-purpose_input/output" target="_blank" rel="noopener noreferrer">GPIO</a> pins on these small computers.</p>
+<p>The listed advantages of Orca in this research that led to o-sigv for desktop version, is also present in Orca norns. Furthermore, the norns sound computers' creator <a href="https://monome.org/" target="_blank" rel="noopener noreferrer">Monome</a>, has released a <a href="https://monome.org/docs/norns/shield/" target="_blank" rel="noopener noreferrer">norns shield</a>, a DIY version of their flagship hardware made with the Raspberry Pi. In many, but different ways, the norns device has similar ideas to the Blueberry Pi concept.</p>
+<p>o-sigv on norns allows for the mobile sound computer to be a remote "controller" for any computer running sigv and connected to a display and speakers.</p>
+<hr>
+<h2 id="ecosystem" tabindex="-1"><a class="observablehq-header-anchor" href="#ecosystem">Ecosystem</a></h2>
+<p>The following diagram depicts the placements of parts in the nbcli ecosystem:</p>
+<img width="450" src="https://storage.googleapis.com/anytype-prod-publishserver/6931b17635d18cbb8cfb43ea/files/nbcli-ecosystem.png">
+<h3 id="modes" tabindex="-1"><a class="observablehq-header-anchor" href="#modes">Modes</a></h3>
+<hr>
+<h3 id="modular" tabindex="-1"><a class="observablehq-header-anchor" href="#modular">Modular</a></h3>
+<figure id="mod">
+<img src="https://cdn.modulargrid.net/img/racks/modulargrid_3127124.jpg">
+</figure>
+<hr>
 </main>
-<footer id="observablehq-footer">
-<div>Built with <a href="https://observablehq.com/" target="_blank" rel="noopener noreferrer">Observable</a> on <a title="2026-04-29T19:48:15">Apr 29, 2026</a>.</div>
-</footer>
 </div>
 </body>
 </html>
