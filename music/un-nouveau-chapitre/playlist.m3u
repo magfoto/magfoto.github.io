@@ -1,0 +1,13 @@
+#EXTM3U
+#EXTENC:UTF-8
+#PLAYLIST:New Chapter
+#EXTIMG:https://magfoto.dev/un-nouveau-chapitre/cover_480.jpg?nIedPWj-u9o
+#EXTALB:New Chapter
+#EXTINF:610,  – 1. 0000A
+https://magfoto.dev/un-nouveau-chapitre/1/opus-96/s_zUuunjTq0/01%200000A.opus
+#EXTINF:542,  – 2. ETERNA1_
+https://magfoto.dev/un-nouveau-chapitre/2/opus-96/c4u8EhjjzlY/02%20ETERNA1_.opus
+#EXTINF:564,  – 3. OP-Z-PASSERS
+https://magfoto.dev/un-nouveau-chapitre/3/opus-96/-xh5I6BQiLs/03%20OP-Z-PASSERS.opus
+#EXTINF:204,  – 4. Organisme
+https://magfoto.dev/un-nouveau-chapitre/4/opus-96/e0vM2PlWTvM/04%20Organisme.opus

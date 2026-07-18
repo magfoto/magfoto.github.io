@@ -1,0 +1,9 @@
+#EXTM3U
+#EXTENC:UTF-8
+#PLAYLIST:CODI Journal
+#EXTIMG:https://magfoto.dev/codi-journal/cover_480.jpg?E1lmUAPsnUU
+#EXTALB:CODI Journal
+#EXTINF:66,  – 1. Jupiter Sine Generator
+https://magfoto.dev/codi-journal/1/opus-96/tL3pSZkecIQ/01%20Jupiter%20Sine%20Generator.opus
+#EXTINF:72,  – 2. Melted Lick
+https://magfoto.dev/codi-journal/2/opus-96/oE_Pa02JOUc/02%20Melted%20Lick.opus

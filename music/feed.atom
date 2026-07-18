@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    
+    <generator uri="https://simonrepp.com/faircamp" version="1.7.0">
+        Faircamp 1.7.0 (unknown revision)
+    </generator>
+    <id>https://magfoto.dev/</id>
+    <link href="https://magfoto.dev/feed.atom" rel="self"/>
+    <logo>https://magfoto.dev/feed.jpg?e73JtdRWXwQ</logo>
+    <subtitle>experimental, electronic</subtitle>
+    <title>magfoto Music</title>
+    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+    <entry>
+    
+    <id>https://magfoto.dev/ambient-assembly/</id>
+    <link href="https://magfoto.dev/ambient-assembly/" rel="alternate"/>
+    <title> – Ambient Assembly</title>
+    
+    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+</entry>
+
+<entry>
+    
+    <id>https://magfoto.dev/the-last-metropolis-serenade/</id>
+    <link href="https://magfoto.dev/the-last-metropolis-serenade/" rel="alternate"/>
+    <title> – Last Metropolis Serenade</title>
+    
+    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+</entry>
+
+<entry>
+    
+    <id>https://magfoto.dev/codi-journal/</id>
+    <link href="https://magfoto.dev/codi-journal/" rel="alternate"/>
+    <title> – CODI Journal</title>
+    
+    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+</entry>
+
+<entry>
+    
+    <id>https://magfoto.dev/un-nouveau-chapitre/</id>
+    <link href="https://magfoto.dev/un-nouveau-chapitre/" rel="alternate"/>
+    <title> – New Chapter</title>
+    
+    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+</entry>
+
+</feed>

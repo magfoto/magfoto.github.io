@@ -1,0 +1,32 @@
+#EXTM3U
+#EXTENC:UTF-8
+#PLAYLIST:magfoto Music
+#EXTIMG:https://magfoto.dev/image_fixed_300x133.jpg?e73JtdRWXwQ
+#EXTIMG:https://magfoto.dev/ambient-assembly/cover_480.jpg?JJsq89ZM06E
+#EXTALB:Ambient Assembly
+#EXTINF:831,  – 1. Ambient Assembly
+https://magfoto.dev/ambient-assembly/1/opus-96/-maHF_6OTUE/01%20Ambient%20Assembly.opus
+
+#EXTIMG:https://magfoto.dev/the-last-metropolis-serenade/cover_480.jpg?QPFePPovqxU
+#EXTALB:Last Metropolis Serenade
+#EXTINF:134,  – 1. The Last Metropolis (Post-Lighthouse Serenade)
+https://magfoto.dev/the-last-metropolis-serenade/1/opus-96/ylVo0_dmkms/01%20The%20Last%20Metropolis%20%28Post-Lighthouse%20Serenade%29.opus
+
+#EXTIMG:https://magfoto.dev/codi-journal/cover_480.jpg?E1lmUAPsnUU
+#EXTALB:CODI Journal
+#EXTINF:66,  – 1. Jupiter Sine Generator
+https://magfoto.dev/codi-journal/1/opus-96/tL3pSZkecIQ/01%20Jupiter%20Sine%20Generator.opus
+#EXTINF:72,  – 2. Melted Lick
+https://magfoto.dev/codi-journal/2/opus-96/oE_Pa02JOUc/02%20Melted%20Lick.opus
+
+#EXTIMG:https://magfoto.dev/un-nouveau-chapitre/cover_480.jpg?nIedPWj-u9o
+#EXTALB:New Chapter
+#EXTINF:610,  – 1. 0000A
+https://magfoto.dev/un-nouveau-chapitre/1/opus-96/s_zUuunjTq0/01%200000A.opus
+#EXTINF:542,  – 2. ETERNA1_
+https://magfoto.dev/un-nouveau-chapitre/2/opus-96/c4u8EhjjzlY/02%20ETERNA1_.opus
+#EXTINF:564,  – 3. OP-Z-PASSERS
+https://magfoto.dev/un-nouveau-chapitre/3/opus-96/-xh5I6BQiLs/03%20OP-Z-PASSERS.opus
+#EXTINF:204,  – 4. Organisme
+https://magfoto.dev/un-nouveau-chapitre/4/opus-96/e0vM2PlWTvM/04%20Organisme.opus
+

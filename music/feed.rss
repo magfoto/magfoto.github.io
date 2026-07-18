@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" >
+    <channel>
+        <atom:link href="https://magfoto.dev/feed.rss" rel="self" type="application/rss+xml"/>
+        <description>experimental, electronic</description>
+        <generator>Faircamp 1.7.0 (unknown revision)</generator>
+        <image>
+    <height>300</height>
+    <link>https://magfoto.dev/</link>
+    <title>studio instrument</title>
+    <url>https://magfoto.dev/feed.jpg?e73JtdRWXwQ</url>
+    <width>300</width>
+</image>
+
+        <language>en</language>
+        <lastBuildDate>Sat, 18 Jul 2026 19:48:23 +0000</lastBuildDate>
+        <link>https://magfoto.dev/</link>
+        <title>magfoto Music</title>
+        
+        <item>
+    
+    <guid>https://magfoto.dev/ambient-assembly/</guid>
+    <link>https://magfoto.dev/ambient-assembly/</link>
+    <title> – Ambient Assembly</title>
+    
+</item>
+
+<item>
+    
+    <guid>https://magfoto.dev/the-last-metropolis-serenade/</guid>
+    <link>https://magfoto.dev/the-last-metropolis-serenade/</link>
+    <title> – Last Metropolis Serenade</title>
+    
+</item>
+
+<item>
+    
+    <guid>https://magfoto.dev/codi-journal/</guid>
+    <link>https://magfoto.dev/codi-journal/</link>
+    <title> – CODI Journal</title>
+    
+</item>
+
+<item>
+    
+    <guid>https://magfoto.dev/un-nouveau-chapitre/</guid>
+    <link>https://magfoto.dev/un-nouveau-chapitre/</link>
+    <title> – New Chapter</title>
+    
+</item>
+
+    </channel>
+</rss>
