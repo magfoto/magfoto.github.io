@@ -9,14 +9,14 @@
     <logo>https://magfoto.dev/feed.jpg?e73JtdRWXwQ</logo>
     <subtitle>experimental, electronic</subtitle>
     <title>magfoto Music</title>
-    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+    <updated>2026-07-18T20:29:18.400525+00:00</updated>
     <entry>
     
     <id>https://magfoto.dev/ambient-assembly/</id>
     <link href="https://magfoto.dev/ambient-assembly/" rel="alternate"/>
     <title> – Ambient Assembly</title>
     
-    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+    <updated>2026-07-18T20:29:18.400525+00:00</updated>
 </entry>
 
 <entry>
@@ -25,7 +25,16 @@
     <link href="https://magfoto.dev/the-last-metropolis-serenade/" rel="alternate"/>
     <title> – Last Metropolis Serenade</title>
     
-    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+    <updated>2026-07-18T20:29:18.400525+00:00</updated>
+</entry>
+
+<entry>
+    
+    <id>https://magfoto.dev/energies-lp/</id>
+    <link href="https://magfoto.dev/energies-lp/" rel="alternate"/>
+    <title> – Energies LP</title>
+    
+    <updated>2026-07-18T20:29:18.400525+00:00</updated>
 </entry>
 
 <entry>
@@ -34,16 +43,16 @@
     <link href="https://magfoto.dev/codi-journal/" rel="alternate"/>
     <title> – CODI Journal</title>
     
-    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+    <updated>2026-07-18T20:29:18.400525+00:00</updated>
 </entry>
 
 <entry>
     
     <id>https://magfoto.dev/un-nouveau-chapitre/</id>
     <link href="https://magfoto.dev/un-nouveau-chapitre/" rel="alternate"/>
-    <title> – New Chapter</title>
+    <title> – Un Nouveau Chapitre</title>
     
-    <updated>2026-07-18T19:48:23.403085+00:00</updated>
+    <updated>2026-07-18T20:29:18.400525+00:00</updated>
 </entry>
 
 </feed>

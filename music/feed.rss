@@ -13,7 +13,7 @@
 </image>
 
         <language>en</language>
-        <lastBuildDate>Sat, 18 Jul 2026 19:48:23 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 18 Jul 2026 20:29:18 +0000</lastBuildDate>
         <link>https://magfoto.dev/</link>
         <title>magfoto Music</title>
         
@@ -35,6 +35,14 @@
 
 <item>
     
+    <guid>https://magfoto.dev/energies-lp/</guid>
+    <link>https://magfoto.dev/energies-lp/</link>
+    <title> – Energies LP</title>
+    
+</item>
+
+<item>
+    
     <guid>https://magfoto.dev/codi-journal/</guid>
     <link>https://magfoto.dev/codi-journal/</link>
     <title> – CODI Journal</title>
@@ -45,7 +53,7 @@
     
     <guid>https://magfoto.dev/un-nouveau-chapitre/</guid>
     <link>https://magfoto.dev/un-nouveau-chapitre/</link>
-    <title> – New Chapter</title>
+    <title> – Un Nouveau Chapitre</title>
     
 </item>
 
