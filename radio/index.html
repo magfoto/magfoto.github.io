@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>MAGFOTO</title>
+    <title>MAGFOTO RADIO</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
     <meta name="description"
@@ -37,6 +37,28 @@
             height: auto;
             object-fit: cover;
         }
+
+        iframe {
+            border: none;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            /* width: 375px;
+            height: 200px; */
+            width: 880px;
+            height: 700px;
+        }
+
+        iframe div {
+            object-position: 70px 0px;
+        }
+
+        iframe::-webkit-scrollbar {
+            display: none;
+            /* Hide scrollbar for Chrome, Safari and Opera */
+        }
     </style>
     <link rel="stylesheet" href="../css/style.css">
     </link>
@@ -68,26 +90,13 @@
                     </svg>
                 </a>
             </section>
-            <nav>
-                <span class="exts"><a href="../index.html">magfoto</a> <a href="../music.html">music</a> <a
-                        href="../gallery.html">gallery</a> <a href="../about.html">about</a> </span>
-            </nav>
         </section>
-        <section class="stouf">
-            <section>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-            </section>
-            <article>
-                <section class="overv">
-                    <p>Radio</p>
-                </section>
-            </article>
-            <section class="foot">
-                <span class="exts">
-
-                </span>
-            </section>
+        <section>
+            &nbsp; &nbsp;<br />
+            &nbsp; &nbsp;<br />
+            <iframe src="https://norns.online/magfoto" title="Live Coding Pirate Radio" referrerpolicy="origin"
+                allowfullscreen>
+            </iframe>
         </section>
 
     </div>
