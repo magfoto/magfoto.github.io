@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>@magfoto | Digital Garden</title>
+        <link>https://magfoto.dev/</link>
+        <description>Minimal blog site for @magfoto</description>
+        <lastBuildDate>Wed, 21 Oct 2026 08:14:33 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>Astro Chiri Feed Generator</generator>
+        <language>en-US</language>
+        <copyright>Copyright © 2026 magfoto</copyright>
+        <atom:link href="https://magfoto.dev/rss.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Base 36 Music]]></title>
+            <link>https://magfoto.dev/base-36-music</link>
+            <guid isPermaLink="false">https://magfoto.dev/base-36-music</guid>
+            <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Base 36 Music Live coding workshop with Orca This workshop will explore the esoteric programming language Orca, by learning the basics of the language. Orca uses a base 36 counting system, and we will...]]></description>
+            <content:encoded><![CDATA[<h1>Base 36 Music</h1>
+<p><img src="files/orca-grid-ico.png" alt="orca-grid-ico" /></p>
+<h3><strong>Live coding workshop with Orca</strong></h3>
+<p>This workshop will explore the esoteric programming language Orca, by learning the basics of the language. Orca uses a base 36 counting system, and we will use it to make some playful sounds and music. The workshop is being piloted as the opening class exercise of the upcoming large-format course Computational Dialogues.</p>
+<p><img src="files/screenshot-2025-05-07-at-10-49-53-am.png" alt="Screenshot 2025-05-07 at 10.49.53 AM" /></p>
+<p>$$
+<a href="https://youtu.be/jNrNtnrP28w">https://youtu.be/jNrNtnrP28w</a>
+$$
+Preview of Orca module <em>Cabby Roc</em> on Orca Play <strong>(left)</strong>. Video of live coding with <a href="https://hundredrabbits.github.io/Orca/">Orca web</a> and <a href="https://midi.city/">midi.city</a> <strong>(right)</strong>.</p>
+<hr />
+<h3>Requirements</h3>
+<ul>
+<li>headphones</li>
+<li>laptop</li>
+</ul>
+<h3>Feedback (click form below)</h3>
+<p><a href="https://form.typeform.com/to/DfD1s9sU">Base 36 Reflection</a></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[CODI Community]]></title>
+            <link>https://magfoto.dev/codi-community</link>
+            <guid isPermaLink="false">https://magfoto.dev/codi-community</guid>
+            <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[::link{url=“https://codi.dfos.com”}]]></description>
+            <content:encoded><![CDATA[<p>::link{url=“<a href="https://codi.dfos.com">https://codi.dfos.com</a>”}</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Live Coding Chaotic Oscillators]]></title>
+            <link>https://magfoto.dev/live-coding-chaotic-oscillators</link>
+            <guid isPermaLink="false">https://magfoto.dev/live-coding-chaotic-oscillators</guid>
+            <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Live Coding Chaotic Oscillators In this experiment, the challenge was to create a simulation of a Lorenz attractor visualization by writing the differential equations using Gen in Max. The purpose of ...]]></description>
+            <content:encoded><![CDATA[<h1>Live Coding Chaotic Oscillators</h1>
+<p>In this experiment, the challenge was to create a simulation of a Lorenz attractor visualization by writing the differential equations using Gen in Max. The purpose of this was to create a Jitter matrix of the Lorenz data, that can eventually be used for live coding. Focus remained on the Lorenz attractor, however modules were made for Clifford, Rossler, Chen-Celikovsky, and Burke-Shaw attractors.</p>
+<h2><img src="files/lorenz-equation.png" alt="lorenz-equation" /><br />
+<img src="files/lorenz-attractor-system.png" alt="lorenz-attractor-system" /><br />
+Twelve (12) parameters were designed to allow the specification of initial set conditions, as well as other Max specific parameters from mesh material settings to jit.* values.</h2>
+<p>Initial set conditions:
+a = 7.
+b = 20.
+c = 2.667
+dt = 0.007<br />
+mesh position: 0 0 -57
+mesh point size: 2.5</p>
+<h2><img src="files/sample1.png" alt="sample1" /></h2>
+<h2><img src="files/sample2.png" alt="sample2" /><br />
+<img src="files/sample3.png" alt="sample3" /><br />
+<img src="files/sample5.png" alt="sample5" /><br />
+<img src="files/sample6.png" alt="sample6" /></h2>
+<p><img src="files/lorenz-sigv-js.png" alt="lorenz-sigv-js" /></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Meta-instrument Notes]]></title>
+            <link>https://magfoto.dev/meta-instrument-notes</link>
+            <guid isPermaLink="false">https://magfoto.dev/meta-instrument-notes</guid>
+            <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Notes on the nbcli meta-instrument and notation: meta]]></description>
+            <content:encoded><![CDATA[<p>Notes on the nbcli meta-instrument and notation:
+<a href="../nbcli/notes/00/index.html">meta</a></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[A Nix Journal]]></title>
+            <link>https://magfoto.dev/nix-journal</link>
+            <guid isPermaLink="false">https://magfoto.dev/nix-journal</guid>
+            <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[::link{url=“https://nix.dfos.com”}]]></description>
+            <content:encoded><![CDATA[<p>::link{url=“<a href="https://nix.dfos.com">https://nix.dfos.com</a>”}</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[o-sigv table]]></title>
+            <link>https://magfoto.dev/o-sigv-table</link>
+            <guid isPermaLink="false">https://magfoto.dev/o-sigv-table</guid>
+            <pubDate>Wed, 21 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[o-sigv table The following list of tables show the nine o-sigv operators, displaying their symbols, parameters and notation format for writing them in Orca. The first table here lists the 9 operators ...]]></description>
+            <content:encoded><![CDATA[<h1>o-sigv table</h1>
+<p>The following list of tables show the nine o-sigv operators, displaying their symbols, parameters and notation format for writing them in Orca. The first table here lists the 9 operators and the default keyboard shortcuts to use them <em>(tested on macOS US/Canada EN keyboards)</em>:</p>
+<table>
+<thead>
+<tr>
+<th>Operator Symbol   <br /></th>
+<th>Operator Name   <br /></th>
+<th>Keyboard* (macOS)   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>`   <br /></td>
+<td>ANIM   <br /></td>
+<td>`   <br /></td>
+</tr>
+<tr>
+<td>|   <br /></td>
+<td>MAT   <br /></td>
+<td>shift \   <br /></td>
+</tr>
+<tr>
+<td>^   <br /></td>
+<td>TRANS   <br /></td>
+<td>shift 6   <br /></td>
+</tr>
+<tr>
+<td>_   <br /></td>
+<td>AUDIO   <br /></td>
+<td>shift -   <br /></td>
+</tr>
+<tr>
+<td>º   <br /></td>
+<td>LIGHTS   <br /></td>
+<td>option 0   <br /></td>
+</tr>
+<tr>
+<td>…   <br /></td>
+<td>SYSTEM   <br /></td>
+<td>option ;   <br /></td>
+</tr>
+<tr>
+<td>∆   <br /></td>
+<td>SERIAL   <br /></td>
+<td>option j   <br /></td>
+</tr>
+<tr>
+<td>∞   <br /></td>
+<td>CHAO   <br /></td>
+<td>option 5   <br /></td>
+</tr>
+<tr>
+<td>ß   <br /></td>
+<td>BUFFER   <br /></td>
+<td>option s   <br /></td>
+</tr>
+</tbody>
+</table>
+<p><em>*Windows users are recommended to use <a href="https://www.autohotkey.com/">AutoHotKey</a> to set similar keyboard shortcuts for the symb</em>ols.</p>
+<hr />
+<h2>OPs / params / notation</h2>
+<p>Further information on each operator can be accessed by their independent pages with the following links or the header names of the tables below: <a href="https://magfoto.any.org/anim">ANIM</a>, <a href="https://magfoto.any.org/lights">LIGHTS</a>, <a href="https://magfoto.any.org/trans">TRANS</a>, <a href="https://magfoto.any.org/serial">SERIAL</a>, <a href="https://magfoto.any.org/chao">CHAO</a>, <a href="https://magfoto.any.org/buffer">BUFFER</a>, <a href="https://magfoto.any.org/mat">MAT</a>, <a href="https://magfoto.any.org/audio">AUDIO</a>, <a href="https://magfoto.any.org/system">SYSTEM</a>.</p>
+<table>
+<thead>
+<tr>
+<th>’   <br /></th>
+<th><a href="https://magfoto.any.org/anim">ANIM</a>   <br /></th>
+<th></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t   <br /></td>
+<td>turn   <br /></td>
+<td></td>
+<td>’ t i 2 i   <br /></td>
+</tr>
+<tr>
+<td>s   <br /></td>
+<td>scaleto   <br /></td>
+<td></td>
+<td>’ s 1 1 1 a   <br /></td>
+</tr>
+<tr>
+<td>m   <br /></td>
+<td>moveto   <br /></td>
+<td></td>
+<td>’ m i i i s   <br /></td>
+</tr>
+<tr>
+<td>r   <br /></td>
+<td>rotateto   <br /></td>
+<td></td>
+<td>’ r i 0 i   <br /></td>
+</tr>
+<tr>
+<td>e   <br /></td>
+<td>ease   <br /></td>
+<td></td>
+<td>’ e 9   <br /></td>
+</tr>
+<tr>
+<td><strong>f</strong>   <br /></td>
+<td>ease function   <br /></td>
+<td></td>
+<td>’ f 0   <br /></td>
+</tr>
+</tbody>
+</table>
+<p>Common sigv translation of primitives include:</p>
+<p>’ t i k i - <code>anim turn 0 1 0</code> (rotates on its Y axis)<br />
+’ t i i k - <code>anim turn 0 0 1</code> (rotates on its Z axis)<br />
+’ t i i i - <code>anim turn 0 0 0</code> (stops animation)<br />
+’ m i i i - <code>anim moveto 0 0 0</code> (center object in <code>wrld</code>)</p>
+<table>
+<thead>
+<tr>
+<th>º   <br /></th>
+<th><a href="https://magfoto.any.org/lights">LIGHTS</a>   <br /></th>
+<th></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n   <br /></td>
+<td>new light   <br /></td>
+<td></td>
+<td>º n   <br /></td>
+</tr>
+<tr>
+<td>e   <br /></td>
+<td>enable   <br /></td>
+<td></td>
+<td>º e 0   <br /></td>
+</tr>
+<tr>
+<td>a   <br /></td>
+<td>activate   <br /></td>
+<td></td>
+<td>º a 1   <br /></td>
+</tr>
+<tr>
+<td>v   <br /></td>
+<td>visible   <br /></td>
+<td></td>
+<td>º v 0   <br /></td>
+</tr>
+<tr>
+<td>r   <br /></td>
+<td>random diffuse   <br /></td>
+<td></td>
+<td>º r 0   <br /></td>
+</tr>
+<tr>
+<td>c   <br /></td>
+<td>diffuse (color)   <br /></td>
+<td></td>
+<td>º c a b 2   <br /></td>
+</tr>
+<tr>
+<td>d   <br /></td>
+<td>delete light   <br /></td>
+<td></td>
+<td>º d 2   <br /></td>
+</tr>
+</tbody>
+</table>
+<p>The sigv light module when loaded (ºn) has the following default parameters:</p>
+<p>º e 1  - light object is enabled, use (º e 0) to disable<br />
+º a 1  - activation off (º a 1), to activate and turn is (º a 0)<br />
+º v 0 - geometric object of light source off (º v 0)<br />
+º r 0  - random colorizer on (0), to deactivate is (º r 1)</p>
+<table>
+<thead>
+<tr>
+<th>∞   <br /></th>
+<th><a href="https://magfoto.any.org/chao">CHAO</a>   <br /></th>
+<th></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>s   <br /></td>
+<td>lz sample   <br /></td>
+<td></td>
+<td>∞ s   <br /></td>
+</tr>
+<tr>
+<td>1   <br /></td>
+<td>lz activate   <br /></td>
+<td></td>
+<td>∞ 1   <br /></td>
+</tr>
+<tr>
+<td>p   <br /></td>
+<td>lz particles dim   <br /></td>
+<td></td>
+<td>∞ p 7 7   <br /></td>
+</tr>
+<tr>
+<td>e   <br /></td>
+<td>lz ^ equation   <br /></td>
+<td></td>
+<td>∞ e   <br /></td>
+</tr>
+<tr>
+<td>a   <br /></td>
+<td>lz a value   <br /></td>
+<td></td>
+<td>∞ a 4   <br /></td>
+</tr>
+<tr>
+<td>b   <br /></td>
+<td>lz b value   <br /></td>
+<td></td>
+<td>∞ b a   <br /></td>
+</tr>
+<tr>
+<td>c   <br /></td>
+<td>lz c value   <br /></td>
+<td></td>
+<td>∞ c 1   <br /></td>
+</tr>
+<tr>
+<td>d   <br /></td>
+<td>lz dt value   <br /></td>
+<td></td>
+<td>∞ d 0   <br /></td>
+</tr>
+<tr>
+<td>i   <br /></td>
+<td>lz data value   <br /></td>
+<td></td>
+<td>∞ i 0 0 7   <br /></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The ∞ chao commands sequence a set of preset instructions for the Lorenz attractor command and shader (<code>[lz](https://magfoto.any.org/l)</code>). Original experiments can be found here: <a href="https://magfoto.any.org/live-coding-chaotic-oscillators">https://magfoto.any.org/live-coding-chaotic-oscillators</a>.<br />
+Initializing an lz module has the following defaults: ∞ 0, and its engine starts with the following: ∞ s</p>
+<table>
+<thead>
+<tr>
+<th>I   <br /></th>
+<th><a href="https://magfoto.any.org/mat">MAT</a>   <br /></th>
+<th></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m   <br /></td>
+<td>material specs   <br /></td>
+<td></td>
+<td>| m a 9 2   <br /></td>
+</tr>
+<tr>
+<td>d   <br /></td>
+<td>diffuse tex   <br /></td>
+<td></td>
+<td>| d 2   <br /></td>
+</tr>
+<tr>
+<td>h   <br /></td>
+<td>heightmap tex   <br /></td>
+<td></td>
+<td>| h 3   <br /></td>
+</tr>
+<tr>
+<td>n   <br /></td>
+<td>normals tex   <br /></td>
+<td></td>
+<td>| n 1   <br /></td>
+</tr>
+<tr>
+<td>e   <br /></td>
+<td>emission tex   <br /></td>
+<td></td>
+<td>| e 1   <br /></td>
+</tr>
+<tr>
+<td>b   <br /></td>
+<td>bfg   <br /></td>
+<td></td>
+<td>| b   <br /></td>
+</tr>
+<tr>
+<td>f   <br /></td>
+<td>fog   <br /></td>
+<td></td>
+<td>| f 1   <br /></td>
+</tr>
+<tr>
+<td>g   <br /></td>
+<td>drawgroup   <br /></td>
+<td></td>
+<td>| g 2   <br /></td>
+</tr>
+<tr>
+<td>t   <br /></td>
+<td>texgroup   <br /></td>
+<td></td>
+<td>| t 0 1   <br /></td>
+</tr>
+</tbody>
+</table>
+<p>The MAT operator processes textures loaded into containers <em>tex0</em>, <em>tex1</em>, <em>tex2</em> and <em>tex3</em>. These textures can be loaded into sigv using the command fpic read for <em>tex0</em>, fpic 1 read for tex1, and so on. Once images are loaded as textures, the | d 0 command will load <em>tex0</em> on the primitive of focus (… f 0, for instance places focus on a loaded <code>[geo](https://magfoto.any.org/geo)</code> primitive).</p>
+<table>
+<thead>
+<tr>
+<th>…   <br /></th>
+<th><a href="https://magfoto.any.org/system">SYSTEM</a>   <br /></th>
+<th></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>n   <br /></td>
+<td>new object   <br /></td>
+<td></td>
+<td>… n 0   <br /></td>
+</tr>
+<tr>
+<td>z   <br /></td>
+<td>zap object   <br /></td>
+<td></td>
+<td>… z p   <br /></td>
+</tr>
+<tr>
+<td>f   <br /></td>
+<td>focus object   <br /></td>
+<td></td>
+<td>… f m   <br /></td>
+</tr>
+<tr>
+<td>c   <br /></td>
+<td>clear   <br /></td>
+<td></td>
+<td>… c 1   <br /></td>
+</tr>
+<tr>
+<td>m   <br /></td>
+<td>material mode   <br /></td>
+<td></td>
+<td>… m 3   <br /></td>
+</tr>
+<tr>
+<td>x   <br /></td>
+<td>exit   <br /></td>
+<td></td>
+<td>… x 0   <br /></td>
+</tr>
+<tr>
+<td>b   <br /></td>
+<td>wrld border   <br /></td>
+<td></td>
+<td>… b 0   <br /></td>
+</tr>
+<tr>
+<td>e   <br /></td>
+<td>wrld exec zoom   <br /></td>
+<td></td>
+<td>… e 1   <br /></td>
+</tr>
+<tr>
+<td>q   <br /></td>
+<td>fx pass   <br /></td>
+<td></td>
+<td>… q 0   <br /></td>
+</tr>
+<tr>
+<td>w   <br /></td>
+<td>wrld window pos   <br /></td>
+<td></td>
+<td>… w 0   <br /></td>
+</tr>
+<tr>
+<td>s   <br /></td>
+<td>cmd enable   <br /></td>
+<td><br /></td>
+<td>… s 1   <br /></td>
+</tr>
+<tr>
+<td>t   <br /></td>
+<td>tilde (~) set   <br /></td>
+<td></td>
+<td>… t s 4   <br /></td>
+</tr>
+<tr>
+<td>t   <br /></td>
+<td>tilde (~) src   <br /></td>
+<td></td>
+<td>… t r 6   <br /></td>
+</tr>
+<tr>
+<td>t   <br /></td>
+<td>tilde (~) link   <br /></td>
+<td></td>
+<td>… t l 1   <br /></td>
+</tr>
+<tr>
+<td>t   <br /></td>
+<td>tilde (~) tail   <br /></td>
+<td></td>
+<td>… t t 2   <br /></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>^   <br /></th>
+<th><a href="https://magfoto.any.org/trans">TRANS</a>   <br /></th>
+<th></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>o   <br /></td>
+<td>morph ^   <br /></td>
+<td></td>
+<td>^ o 0 i a   <br /></td>
+</tr>
+<tr>
+<td>s   <br /></td>
+<td>shape   <br /></td>
+<td></td>
+<td>^ s 2 6   <br /></td>
+</tr>
+<tr>
+<td>d   <br /></td>
+<td>dimensions   <br /></td>
+<td></td>
+<td>^ d 1 j j   <br /></td>
+</tr>
+<tr>
+<td>e   <br /></td>
+<td>draw element   <br /></td>
+<td></td>
+<td>^ e 4   <br /></td>
+</tr>
+<tr>
+<td>a   <br /></td>
+<td>object aio ^   <br /></td>
+<td></td>
+<td>^ a 8   <br /></td>
+</tr>
+<tr>
+<td>p   <br /></td>
+<td>poly mode   <br /></td>
+<td></td>
+<td>^ p 0 0   <br /></td>
+</tr>
+<tr>
+<td>c   <br /></td>
+<td>cull face   <br /></td>
+<td></td>
+<td>^ c 0 1   <br /></td>
+</tr>
+<tr>
+<td>0   <br /></td>
+<td>point size   <br /></td>
+<td></td>
+<td>^ 0 4   <br /></td>
+</tr>
+<tr>
+<td>1   <br /></td>
+<td>line width   <br /></td>
+<td></td>
+<td>^ 1 i   <br /></td>
+</tr>
+<tr>
+<td>f   <br /></td>
+<td>proc period   <br /></td>
+<td></td>
+<td>^ f a   <br /></td>
+</tr>
+<tr>
+<td>x   <br /></td>
+<td>proc scale   <br /></td>
+<td></td>
+<td>^ x i   <br /></td>
+</tr>
+</tbody>
+</table>
+<p>The TRANS operator commands are tested to work primarily with parametric geometries such as <code>[geo](http://magfoto.any.org/lzgeo)</code>, <code>[proc](http://magfoto.any.org/proc)</code>, <code>[nurbs](http://magfoto.any.org/nurbs)</code>, and <code>[plato](http://magfoto.any.org/pla)</code>, but as well with 3D model primitives like <code>model</code>, and <code>b0</code>…<code>b7</code>. The ^s (shape) operator targets the 10 shapes of <code>geo gs1</code> (^ s 1) or <code>geo gs2</code> (^ s 2):</p>
+<p>0 - sphere<br />
+1 - torus<br />
+2 - cylinder<br />
+3 - opencylinder<br />
+4 - cube<br />
+5 - opencube<br />
+6 - plane<br />
+7 - circle<br />
+8 - cone<br />
+9 - capsule</p>
+<table>
+<thead>
+<tr>
+<th>∆   <br /></th>
+<th><a href="https://magfoto.any.org/serial">SERIAL</a>   <br /></th>
+<th><br /></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v   <br /></td>
+<td>crow ****volts   <br /></td>
+<td><br /></td>
+<td><strong>∆ c r</strong>   <br /></td>
+</tr>
+<tr>
+<td>i   <br /></td>
+<td><strong>crow input</strong>   <br /></td>
+<td><br /></td>
+<td><strong>∆ l m 1 1</strong>   <br /></td>
+</tr>
+<tr>
+<td>p   <br /></td>
+<td><strong>gpio pulse</strong>   <br /></td>
+<td></td>
+<td><strong>∆ p d 7</strong>   <br /></td>
+</tr>
+<tr>
+<td>a   <br /></td>
+<td><strong>gpio analog</strong>   <br /></td>
+<td></td>
+<td><strong>∆ a 4 s</strong>   <br /></td>
+</tr>
+<tr>
+<td>m   <br /></td>
+<td><strong>mcu message</strong>   <br /></td>
+<td></td>
+<td><strong>∆ m 1</strong>   <br /></td>
+</tr>
+<tr>
+<td>c   <br /></td>
+<td>crow open   <br /></td>
+<td><br /></td>
+<td>∆ c   <br /></td>
+</tr>
+</tbody>
+</table>
+<p>The ∆ gpio serial commands are meant to be used primarily via a securely connected (SSH) RaspberryPi, and thus controlling its GPIO pins with the Python library <a href="https://gpiozero.readthedocs.io/">gpiozero</a>. (<a href="https://magfoto.any.org/kb#6919f5e0d514cc9d6e14e43e">Blueberry Framework</a>)</p>
+<p><a href="https://static.raspberrypi.org/files/education/posters/GPIO_Zero_Cheatsheet.pdf">Cheatsheet</a></p>
+<table>
+<thead>
+<tr>
+<th>ß   <br /></th>
+<th><a href="https://magfoto.any.org/buffer">BUFFER</a>   <br /></th>
+<th></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#   <br /></td>
+<td>start buffer   <br /></td>
+<td></td>
+<td>5   <br /></td>
+</tr>
+<tr>
+<td>l   <br /></td>
+<td>loop   <br /></td>
+<td></td>
+<td>l 0   <br /></td>
+</tr>
+<tr>
+<td>s   <br /></td>
+<td>set buffer   <br /></td>
+<td></td>
+<td>s 3   <br /></td>
+</tr>
+<tr>
+<td>p   <br /></td>
+<td>pause buffer   <br /></td>
+<td></td>
+<td>p   <br /></td>
+</tr>
+<tr>
+<td>r   <br /></td>
+<td>resume buffer   <br /></td>
+<td></td>
+<td>r   <br /></td>
+</tr>
+<tr>
+<td>o   <br /></td>
+<td>select sample   <br /></td>
+<td></td>
+<td>o 4   <br /></td>
+</tr>
+<tr>
+<td>m   <br /></td>
+<td>midi connect   <br /></td>
+<td></td>
+<td>m 0   <br /></td>
+</tr>
+</tbody>
+</table>
+<p>The ß operator represents the sigv <code>spk</code> <a href="https://magfoto.any.org/spk">sampler</a> module. Using the Max <a href="https://docs.cycling74.com/reference/mc.play~/">mc.play~ object</a>, ß o 4 in Orca will trigger a dialog box to select an audio file and store it in buffer, and a ß 4 would trigger the sample to play. Being a sonic module, the spk requires the starting up of the aio engine, which in o-sigv can be triggered with a _ 1 1 command (see AUDIO below).<br />
+By default, when an spk is loaded it is automatically connected to the default MIDI. This means that form our example above, if a MIDI channel 4 message is received (i.e. a bang of : 3 1 C in Orca) will trigger the spk sample 4, just like sending a bang to ß 4 in o-sigv. To turn off this feature, a bang to ß m 0 does that, with the option to always send a bang to ß m 1 to turn it back on.</p>
+<table>
+<thead>
+<tr>
+<th>_   <br /></th>
+<th><a href="https://magfoto.any.org/audio">AUDIO</a>   <br /></th>
+<th></th>
+<th>Notation   <br /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p   <br /></td>
+<td>aio peak thresh   <br /></td>
+<td></td>
+<td>_ p a   <br /></td>
+</tr>
+<tr>
+<td>l   <br /></td>
+<td>aio peak ramp   <br /></td>
+<td></td>
+<td>_ l 9   <br /></td>
+</tr>
+<tr>
+<td>o   <br /></td>
+<td>auto aio object   <br /></td>
+<td></td>
+<td>_ o 1   <br /></td>
+</tr>
+<tr>
+<td>1   <br /></td>
+<td>aio pwr   <br /></td>
+<td></td>
+<td>_ 1 1   <br /></td>
+</tr>
+<tr>
+<td>m   <br /></td>
+<td>nature mode   <br /></td>
+<td></td>
+<td>_ m t   <br /></td>
+</tr>
+<tr>
+<td>x   <br /></td>
+<td>nature mult   <br /></td>
+<td></td>
+<td>_ x a   <br /></td>
+</tr>
+<tr>
+<td>q   <br /></td>
+<td>nature peak   <br /></td>
+<td></td>
+<td>_ q 8   <br /></td>
+</tr>
+<tr>
+<td>b   <br /></td>
+<td>nature biquad   <br /></td>
+<td></td>
+<td>_ b 0 3 a 2 a   <br /></td>
+</tr>
+<tr>
+<td>s   <br /></td>
+<td>nature sense   <br /></td>
+<td></td>
+<td>_ s 0 1   <br /></td>
+</tr>
+<tr>
+<td>v   <br /></td>
+<td>midi vst plug   <br /></td>
+<td></td>
+<td>_ v 1 5   <br /></td>
+</tr>
+<tr>
+<td>v   <br /></td>
+<td>midi vst open   <br /></td>
+<td></td>
+<td>_ v 0 1 1   <br /></td>
+</tr>
+<tr>
+<td>v   <br /></td>
+<td>midi vst program   <br /></td>
+<td></td>
+<td>_ v 1 p 3   <br /></td>
+</tr>
+</tbody>
+</table>
+<p>Using sonic command <code>midi vst plug</code> and a number for a buffer container (there are only four midi channels for a VST: 1, 2, 3, and 4), allows you to choose an VST instrument from your machine. After which, writing the Orca characters _ v 0 2, (notice channel number is 0) opens your instruments GUI (in this case the VST instrument in channel 2).</p>
+<p>… n, z, and f, are SYSTEM operator commands that refer to primitives and modules listed as follows:</p>
+<p>0 - <code>[geo](https://magfoto.any.org/geo)</code><br />
+1 - <code>[proc](https://magfoto.any.org/proc)</code><br />
+3 - <code>[model](https://magfoto.any.org/model)</code> / b# (# can be integers 0 thru 7, like <code>[b1](https://magfoto.any.org/b1)</code>)<br />
+4 - <code>[nature](https://magfoto.any.org/nature)</code><br />
+5 - <code>[wrld](https://magfoto.any.org/wrld)</code><br />
+6 - <code>[lz](https://magfoto.any.org/lz)</code><br />
+7 - <code>[midi](https://magfoto.any.org/midi)</code><br />
+8 - <code>[spk](https://magfoto.any.org/spk)</code></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[music]]></title>
+            <link>https://magfoto.dev/music</link>
+            <guid isPermaLink="false">https://magfoto.dev/music</guid>
+            <pubDate>Sun, 18 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[From now on, making this the place for music: ::link{url=“https://magfoto.dev/music”}]]></description>
+            <content:encoded><![CDATA[<p>From now on, making this the place for music:</p>
+<p>::link{url=“<a href="https://magfoto.dev/music">https://magfoto.dev/music</a>”}</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[radio]]></title>
+            <link>https://magfoto.dev/radio</link>
+            <guid isPermaLink="false">https://magfoto.dev/radio</guid>
+            <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[norns radio (offline)]]></description>
+            <content:encoded><![CDATA[
+<div class="layout">
+    <div class="video-background">
+        
+            
+        
+    </div>
+</div>
+<p>norns radio (<a target="_blank" href="https://norns.online/magfoto">offline</a>)</p>
+<img src="pix/norns-scan.png" />]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[research]]></title>
+            <link>https://magfoto.dev/research</link>
+            <guid isPermaLink="false">https://magfoto.dev/research</guid>
+            <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[| Rg | ORCID]]></description>
+            <content:encoded><![CDATA[<p>|
+<a href="https://www.researchgate.net/profile/Marcus-Gordon-2" target="_blank">
+Rg
+</a>
+|
+<a href="https://orcid.org/0000-0001-5332-3047" target="_blank">
+ORCID
+</a></p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[works]]></title>
+            <link>https://magfoto.dev/works</link>
+            <guid isPermaLink="false">https://magfoto.dev/works</guid>
+            <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Selected works, performances, and other things.]]></description>
+            <content:encoded><![CDATA[<p>Selected works, performances, and other things.</p>
+<section class="stouf">      
+      <div class="flx">
+        <a href="http://nbcli.space" target="_blank"><img src="pix/nbcli-mono.png" alt="nbcli" /></a>
+        <a href="https://twitch.tv/magfoto/schedule" target="_blank"><img src="pix/orca-wkshp.jpg" alt="Orca Workshops" /></a>
+        <a href="https://www.youtube.com/watch?v=fcPcmRqLaGU" target="_blank"><img src="pix/southern.jpg" alt="Southern Sub" /></a>
+        <a href="https://youtu.be/b89OQNXcCPE" target="_blank"><img src="pix/lttp-m4l.jpg" alt="LTTP M4L Demo" /></a>
+      </div>
+      <div class="flx">
+        <a href="https://www.ninaprotocol.com/releases/6020" target="_blank"><img src="pix/6020.jpg" alt="Generative Music w/AI" /></a>
+        <a href="https://hydra.ojack.xyz/?sketch_id=5npilnJ1HjrXy2qV" target="_blank"><img src="pix/forming-energy.jpg" alt="Forming Energy" /></a>
+        <a href="https://observablehq.com/collection/@magfoto/live-coding-research" target="_blank"><img src="pix/hydra-fft.jpg" alt="Hydra FFT Notebook" /></a>
+        <a href="https://youtu.be/Sgyw8H_QAYM" target="_blank"><img src="pix/nautical-time-cover.jpg" alt="Nautical Time" /></a>
+      </div>
+      <div class="flx">
+        <a href="https://www.instagram.com/p/CqgWMMzPLVY/" target="_blank"><img src="pix/QMMarch3Flyer.jpg" alt="Quasimod" /></a>
+        <a href="https://www.instagram.com/p/Co5bY00v4uX/" target="_blank"><img src="pix/ende-squares.jpg" alt="Endemics Jam" /></a> 
+        <a href="https://youtu.be/zDnFnH_oBEw" target="_blank"><img src="pix/grain.jpg" alt="sigv grain" /></a>
+      </div>
+      <div class="flx">
+        <a href="https://linktr.ee/exitpoints" target="_blank"><img src="pix/EP32_poster.jpg" alt="Exit Points 32" /></a>
+        <a href="https://www.researchgate.net/publication/336221183_A_Medical_Visualization_Framework_and_Pipeline_for_Holographic_MRI" target="_blank"><img src="pix/medholo.jpg" alt="Medical Visualization" /></a>
+        <a href="https://linktr.ee/exitpoints" target="_blank"><img src="pix/EP25_poster.jpg" alt="Exit Points 25" /></a>
+        <a href="http://dmgallery.apps01.yorku.ca/making-a-better-world/" target="_blank"><img src="pix/ritt.jpg" alt="Rhythmanalysis in the Tub" /></a>
+      </div>
+    </section>]]></content:encoded>
+        </item>
+    </channel>
+</rss>

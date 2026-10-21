@@ -1,0 +1,435 @@
+<!DOCTYPE html><html lang="en-US"> <head><!--
+  This is a critical style block to prevent flashing on page load in dark mode.
+  It is injected into the <head> of the document before the main stylesheets are loaded.
+--><style>
+  :root {
+    --bg: #ffffff;
+  }
+
+  html.dark {
+    --bg: #1c1c1c;
+  }
+
+  html {
+    background-color: var(--bg);
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+</style><script>
+  // Global Theme Manager
+  ;(function () {
+    // Prevent duplicate initialization
+    if (window.ThemeManager && window.ThemeManager.initialized) {
+      return
+    }
+
+    const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+    function getAppliedTheme() {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+    }
+
+    window.ThemeManager = {
+      STORAGE_KEY: 'chiri-theme',
+      initialized: false,
+
+      getSystemTheme() {
+        return systemThemeQuery.matches ? 'dark' : 'light'
+      },
+
+      getStoredTheme() {
+        try {
+          return localStorage.getItem(this.STORAGE_KEY)
+        } catch {
+          return null
+        }
+      },
+
+      setStoredTheme(theme) {
+        try {
+          if (theme === 'system') {
+            // Reserved API: clearing storage makes the current system theme effective again.
+            localStorage.removeItem(this.STORAGE_KEY)
+          } else {
+            localStorage.setItem(this.STORAGE_KEY, theme)
+          }
+        } catch (e) {
+          console.warn('Failed to store theme preference:', e)
+        }
+      },
+
+      getEffectiveTheme() {
+        const stored = this.getStoredTheme()
+        return stored || this.getSystemTheme()
+      },
+
+      isUsingSystemTheme() {
+        return this.getStoredTheme() === null
+      },
+
+      applyTheme(theme) {
+        document.documentElement.classList.remove('light', 'dark')
+        document.documentElement.classList.add(theme)
+
+        const isSystemTheme = this.isUsingSystemTheme()
+
+        // Dispatch event for other components
+        document.dispatchEvent(
+          new CustomEvent('themechange', {
+            detail: {
+              theme,
+              isUserChoice: !isSystemTheme,
+              isSystemTheme
+            }
+          })
+        )
+      },
+
+      toggle() {
+        const currentTheme = this.getEffectiveTheme()
+        // Simply toggle between light and dark
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+
+        this.setStoredTheme(newTheme)
+        this.applyTheme(newTheme)
+      },
+
+      init() {
+        if (this.initialized) return
+
+        // Set initial theme (maintain current theme when refreshing page)
+        this.applyTheme(this.getEffectiveTheme())
+
+        systemThemeQuery.addEventListener('change', (e) => {
+          const newSystemTheme = e.matches ? 'dark' : 'light'
+
+          // Current product behavior: system theme changes always become the stored theme.
+          this.setStoredTheme(newSystemTheme)
+          this.applyTheme(newSystemTheme)
+        })
+
+        this.initialized = true
+      }
+    }
+
+    // Initialize theme manager
+    window.ThemeManager.init()
+
+    const applyTheme = () => {
+      if (window.ThemeManager) {
+        const theme = window.ThemeManager.getEffectiveTheme()
+        window.ThemeManager.applyTheme(theme)
+      }
+    }
+
+    // Listen for navigation events
+    document.addEventListener('astro:before-preparation', applyTheme)
+
+    // Apply theme after DOM changes (both swap and page load)
+    const applyThemeAfterNavigation = () => {
+      if (window.ThemeManager) {
+        const currentTheme = window.ThemeManager.getEffectiveTheme()
+        const appliedTheme = getAppliedTheme()
+
+        if (currentTheme !== appliedTheme) {
+          // Use requestAnimationFrame to ensure theme is applied in the next frame, avoiding conflicts with view transition
+          requestAnimationFrame(() => {
+            window.ThemeManager.applyTheme(currentTheme)
+          })
+        }
+      }
+    }
+
+    document.addEventListener('astro:after-swap', applyThemeAfterNavigation)
+    document.addEventListener('astro:page-load', applyThemeAfterNavigation)
+  })()
+</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CAqDO0tx.js"></script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/favicons/favicon-light.png" media="(prefers-color-scheme: light)"><link rel="icon" type="image/png" href="/favicons/favicon-dark.png" media="(prefers-color-scheme: dark)"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="preload" href="/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/fonts/Besley-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="@magfoto | Digital Garden" href="https://magfoto.dev/rss.xml"><link rel="alternate" type="application/atom+xml" title="@magfoto | Digital Garden" href="https://magfoto.dev/atom.xml"><link rel="stylesheet" href="/_astro/katex.min.D-CG6hqQ.css" media="print" onload="this.media='all'"><meta name="generator" content="Astro v6.4.6"><!-- Canonical URL --><link rel="canonical" href="https://magfoto.dev/codi-community/"><!-- Primary Meta Tags --><title>
+  CODI Community · @magfoto | Digital Garden
+</title><meta name="title" content="CODI Community · @magfoto | Digital Garden"><meta name="description" content="Minimal blog site for @magfoto"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://magfoto.dev/codi-community/"><meta property="og:title" content="CODI Community · @magfoto | Digital Garden"><meta property="og:description" content="Minimal blog site for @magfoto"><meta property="og:image" content="https://magfoto.dev/open-graph/codi-community.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://magfoto.dev/codi-community/"><meta property="twitter:title" content="CODI Community · @magfoto | Digital Garden"><meta property="twitter:description" content="Minimal blog site for @magfoto"><meta property="twitter:image" content="https://magfoto.dev/open-graph/codi-community.png"><link rel="stylesheet" href="/_astro/GradientMask.BP0iWUjW.css">
+<style>.date-left[data-astro-cid-5mzstg4p]{display:inline-block;min-width:86px;text-align:right}
+.back-button[data-astro-cid-cjjlykpo]{width:8rem;display:inline-flex;align-items:center;gap:.375rem;font-family:var(--serif);font-size:var(--font-size-m);font-style:italic;letter-spacing:0;line-height:1.75;color:var(--text-secondary);cursor:pointer;border:none;background-color:transparent;position:relative;margin-bottom:2.5em;padding:0;left:-.175em;transition:color .2s ease-out;text-decoration:none}.back-button[data-astro-cid-cjjlykpo]:hover{color:var(--text-primary)}@media(hover:none)and (pointer:coarse){.back-button[data-astro-cid-cjjlykpo]:hover{color:var(--text-secondary)}}.back-button[data-astro-cid-cjjlykpo] svg[data-astro-cid-cjjlykpo]{width:.8rem;height:.8rem;flex-shrink:0}.back-button[data-astro-cid-cjjlykpo].fixed-position{position:fixed;top:6rem;margin-bottom:0;padding-left:.75rem;z-index:10}.image-viewer[data-astro-cid-66hmb7oq]{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease-out,visibility 0s linear .15s;background:color-mix(in srgb,var(--bg) 60%,transparent);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}.image-viewer[data-astro-cid-66hmb7oq].active{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .15s ease-out,visibility 0s ease-out}.prose img[data-preview=true]{cursor:pointer}.image-viewer[data-astro-cid-66hmb7oq] img[data-astro-cid-66hmb7oq]{min-width:45rem;max-width:60vw;max-height:80vh;object-fit:contain}@media(max-width:768px){.image-viewer[data-astro-cid-66hmb7oq] img[data-astro-cid-66hmb7oq]{min-width:100vw}}body.image-viewer-open{overflow:hidden}.post-container[data-astro-cid-gjtny2mx]{display:flex;flex-direction:column;flex:1}.post-container[data-astro-cid-gjtny2mx] main[data-astro-cid-gjtny2mx]{flex:1}
+</style></head> <body data-centered="true" style="
+      max-width: 35rem;
+      --content-width: 35rem;
+    "> <div class="layout-wrapper" id="transition-wrapper">    <div class="post-container" data-astro-cid-gjtny2mx> <main data-astro-cid-gjtny2mx> <div class="prose" data-astro-cid-gjtny2mx> <div class="gradient-mask" aria-hidden="true" data-astro-cid-5gze4ep5> <div class="gradient-mask__blur" data-astro-cid-5gze4ep5></div> <div class="gradient-mask__background" data-astro-cid-5gze4ep5></div> </div> <script type="module">let e=null,i=!1,a=!1;function r(){if(typeof window>"u")return!1;const t=navigator.userAgent,n=navigator.platform;return!(/iP(ad|hone|od)/.test(t)||n==="MacIntel"&&navigator.maxTouchPoints>1)||!(/Safari\//.test(t)&&!/(CriOS|FxiOS|EdgiOS|OPiOS|DuckDuckGo)/.test(t))?!1:!!(window.matchMedia?.("(pointer: coarse)").matches||window.matchMedia?.("(max-width: 768px)").matches)}function o(){if(a||(e||(e=document.querySelector(".gradient-mask")),!e))return;window.scrollY>=64?e.style.opacity="1":e.style.opacity="0"}function s(){i||(i=!0,requestAnimationFrame(()=>{o(),i=!1}))}function l(){if(a=r(),e=document.querySelector(".gradient-mask"),a&&e){e.style.display="none";return}o()}document.addEventListener("astro:page-load",l);window.addEventListener("scroll",s,{passive:!0});</script> <a href="/" class="back-button" data-astro-cid-cjjlykpo> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-cjjlykpo> <path d="M2.5 6.5H9.5C11.1569 6.5 12.5 7.84315 12.5 9.5V9.5C12.5 11.1569 11.1569 12.5 9.5 12.5H7.5M2.5 6.5L5.5 9.5M2.5 6.5L5.5 3.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-cjjlykpo></path> </svg>
+index
+</a> <script>(function(){const contentWidth = "35rem";
+const centeredLayout = true;
+const toc = true;
+
+  ;(function () {
+    // Adjust back button position based on layout and screen size
+    function adjustBackButtonPosition() {
+      const button = document.querySelector('.back-button')
+      if (!button) return
+
+      if (!centeredLayout) {
+        button.classList.remove('fixed-position')
+        button.style.left = ''
+        return
+      }
+
+      // Calculate available margin space for positioning
+      const pageWidth = window.innerWidth
+      const contentWidthValue = parseFloat(contentWidth)
+      // Apply the same minimum width logic as in BaseLayout
+      const widthValue = Math.min(contentWidthValue, 50)
+      const shouldUseCustomWidth = widthValue > 25
+      const finalWidthValue = shouldUseCustomWidth ? widthValue : 25
+      const margin = (pageWidth - finalWidthValue * 16) / 2
+      const baseMinSpace = 11 * 16 // Base minimum space needed
+      // If toc is enabled, need additional 2.5rem (40px) space
+      const minSpace = toc ? baseMinSpace + 52 : baseMinSpace + 12
+
+      // Position button fixed on the left if there's enough space
+      if (margin >= minSpace) {
+        button.classList.add('fixed-position')
+        const basePosition = margin - baseMinSpace
+        // If toc is enabled, move 2.5rem (40px) further left
+        const leftPosition = toc ? basePosition - 40 : basePosition
+        button.style.left = `${leftPosition}px`
+      } else {
+        button.classList.remove('fixed-position')
+        button.style.left = ''
+      }
+    }
+
+    adjustBackButtonPosition()
+
+    // Use only astro:page-load as it fires on initial load and navigation
+    document.addEventListener('astro:page-load', adjustBackButtonPosition)
+    window.addEventListener('resize', adjustBackButtonPosition)
+  })()
+})();</script>  <div class="title" data-astro-cid-gjtny2mx> <h1 data-astro-cid-gjtny2mx>CODI Community</h1> <div class="date" data-astro-cid-gjtny2mx> <time datetime="2026-10-21T00:00:00.000Z" class data-astro-cid-5mzstg4p> 2026.10.20 </time>  </div> </div> <article class="content" data-astro-cid-gjtny2mx>  
+      <div class="link-card-wrapper">
+        <a href="https://codi.dfos.com/" class="link-card has-image" target="_blank" rel="noopener noreferrer">
+          <div class="link-card-content">
+            <div class="link-card-url"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+    <path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path>
+  </svg><span>CODI</span></div>
+            <p class="link-card-title">CODI</p>
+            <p class="link-card-description">Computational Dialogues studio 2027</p>
+          </div>
+          <div class="link-card-image-outer">
+                  <div class="link-card-image">
+                    <img src="https://dfos.imgix.net/media/public/2vt2tz2n2z8kczf7v46k47-codilines.png?ixlib=js-3.8.0&#x26;w=1200&#x26;h=630&#x26;fit=crop&#x26;auto=format" alt="CODI" loading="lazy" decoding="async">
+                  </div>
+                </div>
+        </a>
+      </div>
+      </article> </div> </main>        <style>
+  .prose .link-card {
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background: var(--astro-code-background);
+    min-height: 22.75px;
+    margin: 1.25rem 0 1.75rem 0;
+    transition: background 0.2s ease-out;
+  }
+
+  .prose .link-card:hover {
+    background: color-mix(in srgb, var(--selection) 75%, transparent);
+    text-decoration: none;
+  }
+
+  .prose .link-card-content {
+    padding: 0.75rem 1.25rem 0.75rem 1.25rem;
+    order: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .prose .link-card-image-outer {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    order: 1;
+  }
+
+  .prose .link-card-image {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* Fallback for browsers that don't support aspect-ratio */
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+    overflow: hidden;
+    background: var(--astro-code-background);
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border-radius: 6px;
+  }
+
+  /* Modern browsers with aspect-ratio support */
+  @supports (aspect-ratio: 16 / 9) {
+    .prose .link-card-image {
+      height: auto;
+      padding-bottom: 0;
+    }
+  }
+
+  .prose .link-card-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .prose .link-card-title {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    margin: 0.25rem 0 0 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    padding-right: 1rem;
+    order: 1;
+  }
+
+  .prose .link-card .link-card-description {
+    font-size: var(--font-size-m);
+    color: var(--text-primary);
+    opacity: 0.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-wrap: break-word;
+    max-height: calc(1.4em * 2);
+    order: 2;
+  }
+
+  /* Modern browsers with line-clamp support */
+  @supports (-webkit-line-clamp: 2) {
+    .prose .link-card .link-card-description {
+      max-height: none;
+    }
+  }
+
+  .prose .link-card-url {
+    color: var(--text-tertiary);
+    letter-spacing: 0.015em;
+    margin: 0.25rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.325rem;
+    order: 3;
+  }
+
+  .prose .link-card-url svg {
+    width: 0.875em;
+    height: 0.875em;
+    flex-shrink: 0;
+    vertical-align: middle;
+  }
+
+  .prose .link-card-url span {
+    font-size: var(--font-size-s);
+    vertical-align: baseline;
+  }
+
+  .prose .link-card.no-image {
+    padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  }
+
+  .prose .link-card.has-image .link-card-content {
+    padding: 0.5rem 1.25rem 0.5rem 1.25rem;
+  }
+
+  .prose .link-card.no-image .link-card-content {
+    padding: 0;
+  }
+</style> <footer data-astro-cid-35ed7um5> <div class="footer-content" data-astro-cid-35ed7um5> <div class="copyright" data-astro-cid-35ed7um5> <span class="date" data-astro-cid-35ed7um5>
+&copy;
+2026 </span> <!-- {themeConfig.site.author} -->
+&nbsp;  <img alt="magfoto" src="pix/magfoto-light-ico.png" width="25%" style="vertical-align: middle;" data-astro-cid-35ed7um5> </div> <div class="powered-by" data-astro-cid-35ed7um5> <a href="https://merveilles.town/@magfoto" target="_blank" data-astro-cid-35ed7um5>   <code data-astro-cid-35ed7um5>Mv</code>  </a> 
+|
+<a href="https://www.youtube.com/@magfoto" target="_blank" data-astro-cid-35ed7um5>   <code data-astro-cid-35ed7um5>Yt</code>  </a> 
+|
+<a href="https://twitch.tv/magfoto" target="_blank" data-astro-cid-35ed7um5>   <code data-astro-cid-35ed7um5>Tv</code>  </a>  </div> </div> </footer> </div>   </div> <script>
+  // Cleanup hover states after Astro page load and on touch events
+  function cleanupHover() {
+    const hoveredLinks = document.querySelectorAll('ul a:hover')
+    hoveredLinks.forEach((link) => {
+      link.style.opacity = ''
+    })
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(cleanupHover, 50)
+  })
+
+  // Add touch event listener for touch devices
+  document.addEventListener('touchstart', cleanupHover, { passive: true })
+</script> <style>
+  @supports (view-transition-name: none) {
+    @media not (prefers-reduced-motion: reduce) {
+      ::view-transition-old(root) {
+        animation: fade-out 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      ::view-transition-new(root) {
+        opacity: 0;
+        animation: fade-in 0.4s ease 0.2s forwards;
+        will-change: filter, opacity, transform;
+      }
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateZ(0);
+    }
+    30% {
+      opacity: 0.5;
+      filter: blur(4px);
+      transform: translateZ(0);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateZ(0);
+    }
+  }
+</style> <script>(function(){const fadeAnimation = true;
+
+      if (!fadeAnimation) {
+        const dispatchPageLoad = () => {
+          document.dispatchEvent(new Event('astro:page-load'))
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', dispatchPageLoad, { once: true })
+        } else {
+          queueMicrotask(dispatchPageLoad)
+        }
+      }
+    })();</script> </body> </html>

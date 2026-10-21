@@ -1,0 +1,1392 @@
+<!DOCTYPE html><html lang="en-US"> <head><!--
+  This is a critical style block to prevent flashing on page load in dark mode.
+  It is injected into the <head> of the document before the main stylesheets are loaded.
+--><style>
+  :root {
+    --bg: #ffffff;
+  }
+
+  html.dark {
+    --bg: #1c1c1c;
+  }
+
+  html {
+    background-color: var(--bg);
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+</style><script>
+  // Global Theme Manager
+  ;(function () {
+    // Prevent duplicate initialization
+    if (window.ThemeManager && window.ThemeManager.initialized) {
+      return
+    }
+
+    const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+    function getAppliedTheme() {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+    }
+
+    window.ThemeManager = {
+      STORAGE_KEY: 'chiri-theme',
+      initialized: false,
+
+      getSystemTheme() {
+        return systemThemeQuery.matches ? 'dark' : 'light'
+      },
+
+      getStoredTheme() {
+        try {
+          return localStorage.getItem(this.STORAGE_KEY)
+        } catch {
+          return null
+        }
+      },
+
+      setStoredTheme(theme) {
+        try {
+          if (theme === 'system') {
+            // Reserved API: clearing storage makes the current system theme effective again.
+            localStorage.removeItem(this.STORAGE_KEY)
+          } else {
+            localStorage.setItem(this.STORAGE_KEY, theme)
+          }
+        } catch (e) {
+          console.warn('Failed to store theme preference:', e)
+        }
+      },
+
+      getEffectiveTheme() {
+        const stored = this.getStoredTheme()
+        return stored || this.getSystemTheme()
+      },
+
+      isUsingSystemTheme() {
+        return this.getStoredTheme() === null
+      },
+
+      applyTheme(theme) {
+        document.documentElement.classList.remove('light', 'dark')
+        document.documentElement.classList.add(theme)
+
+        const isSystemTheme = this.isUsingSystemTheme()
+
+        // Dispatch event for other components
+        document.dispatchEvent(
+          new CustomEvent('themechange', {
+            detail: {
+              theme,
+              isUserChoice: !isSystemTheme,
+              isSystemTheme
+            }
+          })
+        )
+      },
+
+      toggle() {
+        const currentTheme = this.getEffectiveTheme()
+        // Simply toggle between light and dark
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+
+        this.setStoredTheme(newTheme)
+        this.applyTheme(newTheme)
+      },
+
+      init() {
+        if (this.initialized) return
+
+        // Set initial theme (maintain current theme when refreshing page)
+        this.applyTheme(this.getEffectiveTheme())
+
+        systemThemeQuery.addEventListener('change', (e) => {
+          const newSystemTheme = e.matches ? 'dark' : 'light'
+
+          // Current product behavior: system theme changes always become the stored theme.
+          this.setStoredTheme(newSystemTheme)
+          this.applyTheme(newSystemTheme)
+        })
+
+        this.initialized = true
+      }
+    }
+
+    // Initialize theme manager
+    window.ThemeManager.init()
+
+    const applyTheme = () => {
+      if (window.ThemeManager) {
+        const theme = window.ThemeManager.getEffectiveTheme()
+        window.ThemeManager.applyTheme(theme)
+      }
+    }
+
+    // Listen for navigation events
+    document.addEventListener('astro:before-preparation', applyTheme)
+
+    // Apply theme after DOM changes (both swap and page load)
+    const applyThemeAfterNavigation = () => {
+      if (window.ThemeManager) {
+        const currentTheme = window.ThemeManager.getEffectiveTheme()
+        const appliedTheme = getAppliedTheme()
+
+        if (currentTheme !== appliedTheme) {
+          // Use requestAnimationFrame to ensure theme is applied in the next frame, avoiding conflicts with view transition
+          requestAnimationFrame(() => {
+            window.ThemeManager.applyTheme(currentTheme)
+          })
+        }
+      }
+    }
+
+    document.addEventListener('astro:after-swap', applyThemeAfterNavigation)
+    document.addEventListener('astro:page-load', applyThemeAfterNavigation)
+  })()
+</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.CAqDO0tx.js"></script><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="/favicons/favicon-light.png" media="(prefers-color-scheme: light)"><link rel="icon" type="image/png" href="/favicons/favicon-dark.png" media="(prefers-color-scheme: dark)"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="preload" href="/fonts/Inter.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="preload" href="/fonts/Besley-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="@magfoto | Digital Garden" href="https://magfoto.dev/rss.xml"><link rel="alternate" type="application/atom+xml" title="@magfoto | Digital Garden" href="https://magfoto.dev/atom.xml"><link rel="stylesheet" href="/_astro/katex.min.D-CG6hqQ.css" media="print" onload="this.media='all'"><meta name="generator" content="Astro v6.4.6"><!-- Canonical URL --><link rel="canonical" href="https://magfoto.dev/o-sigv-table/"><!-- Primary Meta Tags --><title>
+  o-sigv table · @magfoto | Digital Garden
+</title><meta name="title" content="o-sigv table · @magfoto | Digital Garden"><meta name="description" content="Minimal blog site for @magfoto"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://magfoto.dev/o-sigv-table/"><meta property="og:title" content="o-sigv table · @magfoto | Digital Garden"><meta property="og:description" content="Minimal blog site for @magfoto"><meta property="og:image" content="https://magfoto.dev/open-graph/o-sigv-table.png"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://magfoto.dev/o-sigv-table/"><meta property="twitter:title" content="o-sigv table · @magfoto | Digital Garden"><meta property="twitter:description" content="Minimal blog site for @magfoto"><meta property="twitter:image" content="https://magfoto.dev/open-graph/o-sigv-table.png"><link rel="stylesheet" href="/_astro/GradientMask.BP0iWUjW.css">
+<style>.date-left[data-astro-cid-5mzstg4p]{display:inline-block;min-width:86px;text-align:right}
+.back-button[data-astro-cid-cjjlykpo]{width:8rem;display:inline-flex;align-items:center;gap:.375rem;font-family:var(--serif);font-size:var(--font-size-m);font-style:italic;letter-spacing:0;line-height:1.75;color:var(--text-secondary);cursor:pointer;border:none;background-color:transparent;position:relative;margin-bottom:2.5em;padding:0;left:-.175em;transition:color .2s ease-out;text-decoration:none}.back-button[data-astro-cid-cjjlykpo]:hover{color:var(--text-primary)}@media(hover:none)and (pointer:coarse){.back-button[data-astro-cid-cjjlykpo]:hover{color:var(--text-secondary)}}.back-button[data-astro-cid-cjjlykpo] svg[data-astro-cid-cjjlykpo]{width:.8rem;height:.8rem;flex-shrink:0}.back-button[data-astro-cid-cjjlykpo].fixed-position{position:fixed;top:6rem;margin-bottom:0;padding-left:.75rem;z-index:10}.image-viewer[data-astro-cid-66hmb7oq]{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .15s ease-out,visibility 0s linear .15s;background:color-mix(in srgb,var(--bg) 60%,transparent);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}.image-viewer[data-astro-cid-66hmb7oq].active{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .15s ease-out,visibility 0s ease-out}.prose img[data-preview=true]{cursor:pointer}.image-viewer[data-astro-cid-66hmb7oq] img[data-astro-cid-66hmb7oq]{min-width:45rem;max-width:60vw;max-height:80vh;object-fit:contain}@media(max-width:768px){.image-viewer[data-astro-cid-66hmb7oq] img[data-astro-cid-66hmb7oq]{min-width:100vw}}body.image-viewer-open{overflow:hidden}.post-container[data-astro-cid-gjtny2mx]{display:flex;flex-direction:column;flex:1}.post-container[data-astro-cid-gjtny2mx] main[data-astro-cid-gjtny2mx]{flex:1}
+</style></head> <body data-centered="true" style="
+      max-width: 35rem;
+      --content-width: 35rem;
+    "> <div class="layout-wrapper" id="transition-wrapper">    <div class="post-container" data-astro-cid-gjtny2mx> <main data-astro-cid-gjtny2mx> <div class="prose" data-astro-cid-gjtny2mx> <div class="gradient-mask" aria-hidden="true" data-astro-cid-5gze4ep5> <div class="gradient-mask__blur" data-astro-cid-5gze4ep5></div> <div class="gradient-mask__background" data-astro-cid-5gze4ep5></div> </div> <script type="module">let e=null,i=!1,a=!1;function r(){if(typeof window>"u")return!1;const t=navigator.userAgent,n=navigator.platform;return!(/iP(ad|hone|od)/.test(t)||n==="MacIntel"&&navigator.maxTouchPoints>1)||!(/Safari\//.test(t)&&!/(CriOS|FxiOS|EdgiOS|OPiOS|DuckDuckGo)/.test(t))?!1:!!(window.matchMedia?.("(pointer: coarse)").matches||window.matchMedia?.("(max-width: 768px)").matches)}function o(){if(a||(e||(e=document.querySelector(".gradient-mask")),!e))return;window.scrollY>=64?e.style.opacity="1":e.style.opacity="0"}function s(){i||(i=!0,requestAnimationFrame(()=>{o(),i=!1}))}function l(){if(a=r(),e=document.querySelector(".gradient-mask"),a&&e){e.style.display="none";return}o()}document.addEventListener("astro:page-load",l);window.addEventListener("scroll",s,{passive:!0});</script> <a href="/" class="back-button" data-astro-cid-cjjlykpo> <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" data-astro-cid-cjjlykpo> <path d="M2.5 6.5H9.5C11.1569 6.5 12.5 7.84315 12.5 9.5V9.5C12.5 11.1569 11.1569 12.5 9.5 12.5H7.5M2.5 6.5L5.5 9.5M2.5 6.5L5.5 3.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" data-astro-cid-cjjlykpo></path> </svg>
+index
+</a> <script>(function(){const contentWidth = "35rem";
+const centeredLayout = true;
+const toc = true;
+
+  ;(function () {
+    // Adjust back button position based on layout and screen size
+    function adjustBackButtonPosition() {
+      const button = document.querySelector('.back-button')
+      if (!button) return
+
+      if (!centeredLayout) {
+        button.classList.remove('fixed-position')
+        button.style.left = ''
+        return
+      }
+
+      // Calculate available margin space for positioning
+      const pageWidth = window.innerWidth
+      const contentWidthValue = parseFloat(contentWidth)
+      // Apply the same minimum width logic as in BaseLayout
+      const widthValue = Math.min(contentWidthValue, 50)
+      const shouldUseCustomWidth = widthValue > 25
+      const finalWidthValue = shouldUseCustomWidth ? widthValue : 25
+      const margin = (pageWidth - finalWidthValue * 16) / 2
+      const baseMinSpace = 11 * 16 // Base minimum space needed
+      // If toc is enabled, need additional 2.5rem (40px) space
+      const minSpace = toc ? baseMinSpace + 52 : baseMinSpace + 12
+
+      // Position button fixed on the left if there's enough space
+      if (margin >= minSpace) {
+        button.classList.add('fixed-position')
+        const basePosition = margin - baseMinSpace
+        // If toc is enabled, move 2.5rem (40px) further left
+        const leftPosition = toc ? basePosition - 40 : basePosition
+        button.style.left = `${leftPosition}px`
+      } else {
+        button.classList.remove('fixed-position')
+        button.style.left = ''
+      }
+    }
+
+    adjustBackButtonPosition()
+
+    // Use only astro:page-load as it fires on initial load and navigation
+    document.addEventListener('astro:page-load', adjustBackButtonPosition)
+    window.addEventListener('resize', adjustBackButtonPosition)
+  })()
+})();</script> <div class="toc-container" id="toc"> <nav class="toc-nav"> <ul class="toc-list" id="toc-list"> <!-- Back to top link --> <li class="toc-item toc-level-0"> <a href="#" class="toc-link toc-title" title="Back to top" data-text="Back to top">  
+Back to top  </a> </li> <!-- TOC items --> <li class="toc-item toc-level-2"> <a href="#ops-params-notation" class="toc-link" title="OPs / params / notation" data-text="OPs / params / notation"> OPs / params / notation </a> </li> </ul> </nav> </div> <script>(function(){const contentWidth = "35rem";
+const centeredLayout = true;
+const toc = true;
+
+  ;(function () {
+    if (window.__tocController?.destroy) {
+      window.__tocController.destroy()
+    }
+
+    const activeOffset = 128
+    const jumpOffset = 96
+
+    // Core state
+    const state = {
+      container: null,
+      linkList: [],
+      headingList: [],
+      titleLink: null,
+      headingMap: new Map(),
+      scrollFrame: null,
+      resizeTimeout: null,
+      resetTimeout: null,
+      activeLink: null,
+      activeId: null,
+      hasContent: false
+    }
+
+    // Initialize DOM elements
+    function initElements() {
+      state.container = document.querySelector('.toc-container')
+      if (!state.container) return false
+
+      state.linkList = Array.from(document.querySelectorAll('.toc-link'))
+      state.headingList = Array.from(document.querySelectorAll('h1, h2, h3')).filter(
+        (heading, index, headings) => !(index === 0 && headings[0].tagName === 'H1') && heading.id
+      )
+      state.titleLink = document.querySelector('.toc-link.toc-title')
+
+      // Build heading map
+      state.headingMap.clear()
+      state.linkList.forEach((link) => {
+        const href = link.getAttribute('href')
+        if (href?.startsWith('#')) {
+          state.headingMap.set(href.substring(1), link)
+        }
+      })
+
+      return true
+    }
+
+    // Check if content exists
+    function checkContent() {
+      if (!state.container) return
+
+      const tocItems = state.linkList.filter((link) => !link.classList.contains('toc-title'))
+      state.hasContent = tocItems.length > 0
+
+      if (!state.hasContent) {
+        state.container.style.display = 'none'
+      }
+    }
+
+    // Adjust TOC position
+    function adjustPosition() {
+      if (!state.container || !centeredLayout || !state.hasContent) {
+        if (state.container) state.container.style.display = 'none'
+        return
+      }
+
+      const pageWidth = window.innerWidth
+      const contentWidthValue = Math.max(parseFloat(contentWidth), 25)
+      const margin = (pageWidth - contentWidthValue * 16) / 2
+      const baseMinSpace = 11 * 16 // Base minimum space needed
+      const minSpace = toc ? baseMinSpace + 52 : baseMinSpace + 12
+
+      if (margin >= minSpace) {
+        state.container.style.display = 'block'
+        state.container.classList.add('fixed-position')
+        const leftPosition = toc ? margin - 176 - 40 : margin - 176
+        state.container.style.left = `${leftPosition}px`
+      } else {
+        state.container.style.display = 'none'
+        state.container.classList.remove('fixed-position')
+        state.container.style.left = ''
+      }
+    }
+
+    // Handle click events
+    function handleClick(e) {
+      const link = e.target.closest('.toc-link')
+      if (!link) return
+
+      e.preventDefault()
+
+      if (link.classList.contains('toc-title')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        history.pushState(null, null, '#')
+      } else {
+        const href = link.getAttribute('href')
+        if (href?.startsWith('#')) {
+          const target = document.getElementById(href.substring(1))
+          if (target) {
+            const rect = target.getBoundingClientRect()
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+            const offset = rect.top + scrollTop - jumpOffset
+            window.scrollTo({ top: offset, behavior: 'smooth' })
+            history.pushState(null, null, href)
+          }
+        }
+      }
+    }
+
+    function setActive(nextActiveId) {
+      const nextActiveLink =
+        nextActiveId && state.headingMap.has(nextActiveId) ? state.headingMap.get(nextActiveId) : state.titleLink
+
+      if (state.activeId === nextActiveId && state.activeLink === nextActiveLink) {
+        return
+      }
+
+      if (state.activeLink) {
+        state.activeLink.classList.remove('active')
+      }
+
+      if (nextActiveLink) {
+        nextActiveLink.classList.add('active')
+      }
+
+      state.activeId = nextActiveId
+      state.activeLink = nextActiveLink
+    }
+
+    function refreshActiveHeading() {
+      if (!state.headingList.length) {
+        setActive(null)
+        return
+      }
+
+      if (window.pageYOffset < 16 || state.headingList[0].getBoundingClientRect().top > activeOffset) {
+        setActive(null)
+        return
+      }
+
+      for (let i = state.headingList.length - 1; i >= 0; i--) {
+        if (state.headingList[i].getBoundingClientRect().top <= activeOffset) {
+          setActive(state.headingList[i].id)
+          break
+        }
+      }
+    }
+
+    function scheduleActiveRefresh() {
+      if (state.scrollFrame) {
+        return
+      }
+
+      state.scrollFrame = requestAnimationFrame(() => {
+        state.scrollFrame = null
+        refreshActiveHeading()
+      })
+    }
+
+    // Initialize
+    function init(retryCount = 0) {
+      const maxRetries = 5
+
+      if (initElements()) {
+        checkContent()
+        adjustPosition()
+
+        if (state.container) {
+          state.container.addEventListener('click', handleClick)
+        }
+
+        refreshActiveHeading()
+      } else if (retryCount < maxRetries) {
+        setTimeout(() => init(retryCount + 1), 100)
+      }
+    }
+
+    // Event handlers
+    function handleResize() {
+      if (state.resizeTimeout) {
+        cancelAnimationFrame(state.resizeTimeout)
+      }
+
+      state.resizeTimeout = requestAnimationFrame(() => {
+        adjustPosition()
+        refreshActiveHeading()
+      })
+    }
+
+    // Reset DOM-scoped work; destroy() additionally removes global listeners.
+    function cleanup() {
+      if (state.activeLink) {
+        state.activeLink.classList.remove('active')
+      }
+
+      if (state.container) {
+        state.container.removeEventListener('click', handleClick)
+      }
+
+      if (state.scrollFrame) {
+        cancelAnimationFrame(state.scrollFrame)
+        state.scrollFrame = null
+      }
+
+      if (state.resizeTimeout) {
+        cancelAnimationFrame(state.resizeTimeout)
+        state.resizeTimeout = null
+      }
+
+      if (state.resetTimeout) {
+        cancelAnimationFrame(state.resetTimeout)
+        state.resetTimeout = null
+      }
+
+      Object.assign(state, {
+        container: null,
+        linkList: [],
+        headingList: [],
+        titleLink: null,
+        headingMap: new Map(),
+        scrollFrame: null,
+        activeLink: null,
+        activeId: null,
+        hasContent: false
+      })
+    }
+
+    function reset() {
+      state.resetTimeout = null
+      cleanup()
+      init()
+    }
+
+    function scheduleReset() {
+      if (state.resetTimeout) {
+        cancelAnimationFrame(state.resetTimeout)
+      }
+
+      state.resetTimeout = requestAnimationFrame(reset)
+    }
+
+    function destroy() {
+      cleanup()
+      document.removeEventListener('astro:page-load', scheduleReset)
+      document.removeEventListener('astro:after-swap', scheduleReset)
+      window.removeEventListener('scroll', scheduleActiveRefresh)
+      window.removeEventListener('resize', handleResize)
+
+      if (window.__tocController?.destroy === destroy) {
+        window.__tocController = null
+      }
+    }
+
+    // Event listeners
+    document.addEventListener('astro:page-load', scheduleReset)
+    document.addEventListener('astro:after-swap', scheduleReset)
+    window.addEventListener('scroll', scheduleActiveRefresh, { passive: true })
+    window.addEventListener('resize', handleResize)
+
+    window.__tocController = { destroy }
+    init()
+  })()
+})();</script> <style>
+  .toc-container {
+    width: 12rem;
+    position: relative;
+    left: -0.175em;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    display: none;
+  }
+
+  .toc-container.fixed-position {
+    opacity: 1;
+    position: fixed;
+    top: 12rem;
+    margin-top: 0;
+    padding-left: 1rem;
+    z-index: 10;
+    left: auto;
+  }
+
+  .toc-nav {
+    font-family: var(--sans);
+  }
+
+  .toc-list,
+  .toc-list li,
+  .toc-item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .prose .toc-container .toc-list {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .prose .toc-container .toc-list li {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .toc-item::before,
+  .toc-item::marker {
+    display: none;
+  }
+
+  .toc-link {
+    display: block;
+    color: transparent;
+    text-decoration: none;
+    position: relative;
+    padding-left: 0;
+    height: 1.125rem;
+    width: 100%;
+    min-height: 1rem;
+    font-size: 0;
+    line-height: 1.125rem;
+    text-indent: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition:
+      color 0.2s ease-out,
+      font-size 0.2s ease-out,
+      text-indent 0.2s ease-out;
+    cursor: pointer;
+  }
+
+  .toc-link::after {
+    content: attr(data-text);
+    position: absolute;
+    left: -0.5rem;
+    top: 0;
+    font-family: var(--sans);
+    font-size: var(--font-size-s);
+    letter-spacing: var(--spacing-m);
+    line-height: 1.125rem;
+    color: var(--text-primary);
+    opacity: 0;
+    transition:
+      opacity 0.2s ease-out,
+      left 0.2s ease-out;
+    pointer-events: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .toc-link:hover::after {
+    opacity: 1;
+    left: -0.75rem;
+  }
+
+  .toc-level-0 .toc-link:hover::after {
+    opacity: 0;
+  }
+
+  .toc-level-1 .toc-link:hover::before,
+  .toc-level-2 .toc-link:hover::before,
+  .toc-level-3 .toc-link:hover::before {
+    width: 0.75rem;
+    transition: width 0.1s ease-out;
+  }
+
+  .toc-link.active {
+    color: var(--text-primary);
+  }
+
+  /* Horizontal line indicators */
+  .toc-level-0 .toc-link::before,
+  .toc-level-1 .toc-link::before,
+  .toc-level-2 .toc-link::before,
+  .toc-level-3 .toc-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1.75rem;
+    height: 1px;
+    background-color: var(--text-tertiary);
+    transform: translateY(-50%);
+    opacity: 0.4;
+    transition: all 0.1s ease-out;
+  }
+
+  .toc-link:hover::before,
+  .toc-link.active::before {
+    opacity: 0.8;
+    background-color: var(--text-primary);
+  }
+
+  /* Hide on mobile */
+  @media (max-width: 768px) {
+    .toc-container {
+      display: none !important;
+    }
+  }
+</style> <div class="title" data-astro-cid-gjtny2mx> <h1 data-astro-cid-gjtny2mx>o-sigv table</h1> <div class="date" data-astro-cid-gjtny2mx> <time datetime="2026-10-21T00:00:00.000Z" class data-astro-cid-5mzstg4p> 2026.10.20 </time>  </div> </div> <article class="content" data-astro-cid-gjtny2mx>  <h1 id="o-sigv-table">o-sigv table</h1>
+<p>The following list of tables show the nine o-sigv operators, displaying their symbols, parameters and notation format for writing them in Orca. The first table here lists the 9 operators and the default keyboard shortcuts to use them <em>(tested on macOS US/Canada EN keyboards)</em>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">Operator Symbol   <br></th><th align="left">Operator Name   <br></th><th align="left">Keyboard* (macOS)   <br></th></tr></thead><tbody><tr><td align="left">`   <br></td><td align="left">ANIM   <br></td><td align="left">`   <br></td></tr><tr><td align="left">|   <br></td><td align="left">MAT   <br></td><td align="left">shift \   <br></td></tr><tr><td align="left">^   <br></td><td align="left">TRANS   <br></td><td align="left">shift 6   <br></td></tr><tr><td align="left">_   <br></td><td align="left">AUDIO   <br></td><td align="left">shift -   <br></td></tr><tr><td align="left">º   <br></td><td align="left">LIGHTS   <br></td><td align="left">option 0   <br></td></tr><tr><td align="left">…   <br></td><td align="left">SYSTEM   <br></td><td align="left">option ;   <br></td></tr><tr><td align="left">∆   <br></td><td align="left">SERIAL   <br></td><td align="left">option j   <br></td></tr><tr><td align="left">∞   <br></td><td align="left">CHAO   <br></td><td align="left">option 5   <br></td></tr><tr><td align="left">ß   <br></td><td align="left">BUFFER   <br></td><td align="left">option s   <br></td></tr></tbody></table>
+<p><em>*Windows users are recommended to use <a href="https://www.autohotkey.com/">AutoHotKey</a> to set similar keyboard shortcuts for the symb</em>ols.</p>
+<hr>
+<h2 id="ops-params-notation">OPs / params / notation</h2>
+<p>Further information on each operator can be accessed by their independent pages with the following links or the header names of the tables below: <a href="https://magfoto.any.org/anim">ANIM</a>, <a href="https://magfoto.any.org/lights">LIGHTS</a>, <a href="https://magfoto.any.org/trans">TRANS</a>, <a href="https://magfoto.any.org/serial">SERIAL</a>, <a href="https://magfoto.any.org/chao">CHAO</a>, <a href="https://magfoto.any.org/buffer">BUFFER</a>, <a href="https://magfoto.any.org/mat">MAT</a>, <a href="https://magfoto.any.org/audio">AUDIO</a>, <a href="https://magfoto.any.org/system">SYSTEM</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">’   <br></th><th align="left"><a href="https://magfoto.any.org/anim">ANIM</a>   <br></th><th align="left"></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">t   <br></td><td align="left">turn   <br></td><td align="left"></td><td align="left">’ t i 2 i   <br></td></tr><tr><td align="left">s   <br></td><td align="left">scaleto   <br></td><td align="left"></td><td align="left">’ s 1 1 1 a   <br></td></tr><tr><td align="left">m   <br></td><td align="left">moveto   <br></td><td align="left"></td><td align="left">’ m i i i s   <br></td></tr><tr><td align="left">r   <br></td><td align="left">rotateto   <br></td><td align="left"></td><td align="left">’ r i 0 i   <br></td></tr><tr><td align="left">e   <br></td><td align="left">ease   <br></td><td align="left"></td><td align="left">’ e 9   <br></td></tr><tr><td align="left"><strong>f</strong>   <br></td><td align="left">ease function   <br></td><td align="left"></td><td align="left">’ f 0   <br></td></tr></tbody></table>
+<p>Common sigv translation of primitives include:</p>
+<p>’ t i k i - <code>anim turn 0 1 0</code> (rotates on its Y axis)<br>
+’ t i i k - <code>anim turn 0 0 1</code> (rotates on its Z axis)<br>
+’ t i i i - <code>anim turn 0 0 0</code> (stops animation)<br>
+’ m i i i - <code>anim moveto 0 0 0</code> (center object in <code>wrld</code>)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">º   <br></th><th align="left"><a href="https://magfoto.any.org/lights">LIGHTS</a>   <br></th><th align="left"></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">n   <br></td><td align="left">new light   <br></td><td align="left"></td><td align="left">º n   <br></td></tr><tr><td align="left">e   <br></td><td align="left">enable   <br></td><td align="left"></td><td align="left">º e 0   <br></td></tr><tr><td align="left">a   <br></td><td align="left">activate   <br></td><td align="left"></td><td align="left">º a 1   <br></td></tr><tr><td align="left">v   <br></td><td align="left">visible   <br></td><td align="left"></td><td align="left">º v 0   <br></td></tr><tr><td align="left">r   <br></td><td align="left">random diffuse   <br></td><td align="left"></td><td align="left">º r 0   <br></td></tr><tr><td align="left">c   <br></td><td align="left">diffuse (color)   <br></td><td align="left"></td><td align="left">º c a b 2   <br></td></tr><tr><td align="left">d   <br></td><td align="left">delete light   <br></td><td align="left"></td><td align="left">º d 2   <br></td></tr></tbody></table>
+<p>The sigv light module when loaded (ºn) has the following default parameters:</p>
+<p>º e 1  - light object is enabled, use (º e 0) to disable<br>
+º a 1  - activation off (º a 1), to activate and turn is (º a 0)<br>
+º v 0 - geometric object of light source off (º v 0)<br>
+º r 0  - random colorizer on (0), to deactivate is (º r 1)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">∞   <br></th><th align="left"><a href="https://magfoto.any.org/chao">CHAO</a>   <br></th><th align="left"></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">s   <br></td><td align="left">lz sample   <br></td><td align="left"></td><td align="left">∞ s   <br></td></tr><tr><td align="left">1   <br></td><td align="left">lz activate   <br></td><td align="left"></td><td align="left">∞ 1   <br></td></tr><tr><td align="left">p   <br></td><td align="left">lz particles dim   <br></td><td align="left"></td><td align="left">∞ p 7 7   <br></td></tr><tr><td align="left">e   <br></td><td align="left">lz ^ equation   <br></td><td align="left"></td><td align="left">∞ e   <br></td></tr><tr><td align="left">a   <br></td><td align="left">lz a value   <br></td><td align="left"></td><td align="left">∞ a 4   <br></td></tr><tr><td align="left">b   <br></td><td align="left">lz b value   <br></td><td align="left"></td><td align="left">∞ b a   <br></td></tr><tr><td align="left">c   <br></td><td align="left">lz c value   <br></td><td align="left"></td><td align="left">∞ c 1   <br></td></tr><tr><td align="left">d   <br></td><td align="left">lz dt value   <br></td><td align="left"></td><td align="left">∞ d 0   <br></td></tr><tr><td align="left">i   <br></td><td align="left">lz data value   <br></td><td align="left"></td><td align="left">∞ i 0 0 7   <br></td></tr><tr><td align="left"></td><td align="left"></td><td align="left"></td><td align="left"></td></tr></tbody></table>
+<p>The ∞ chao commands sequence a set of preset instructions for the Lorenz attractor command and shader (<code>[lz](https://magfoto.any.org/l)</code>). Original experiments can be found here: <a href="https://magfoto.any.org/live-coding-chaotic-oscillators">https://magfoto.any.org/live-coding-chaotic-oscillators</a>.<br>
+Initializing an lz module has the following defaults: ∞ 0, and its engine starts with the following: ∞ s</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">I   <br></th><th align="left"><a href="https://magfoto.any.org/mat">MAT</a>   <br></th><th align="left"></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">m   <br></td><td align="left">material specs   <br></td><td align="left"></td><td align="left">| m a 9 2   <br></td></tr><tr><td align="left">d   <br></td><td align="left">diffuse tex   <br></td><td align="left"></td><td align="left">| d 2   <br></td></tr><tr><td align="left">h   <br></td><td align="left">heightmap tex   <br></td><td align="left"></td><td align="left">| h 3   <br></td></tr><tr><td align="left">n   <br></td><td align="left">normals tex   <br></td><td align="left"></td><td align="left">| n 1   <br></td></tr><tr><td align="left">e   <br></td><td align="left">emission tex   <br></td><td align="left"></td><td align="left">| e 1   <br></td></tr><tr><td align="left">b   <br></td><td align="left">bfg   <br></td><td align="left"></td><td align="left">| b   <br></td></tr><tr><td align="left">f   <br></td><td align="left">fog   <br></td><td align="left"></td><td align="left">| f 1   <br></td></tr><tr><td align="left">g   <br></td><td align="left">drawgroup   <br></td><td align="left"></td><td align="left">| g 2   <br></td></tr><tr><td align="left">t   <br></td><td align="left">texgroup   <br></td><td align="left"></td><td align="left">| t 0 1   <br></td></tr></tbody></table>
+<p>The MAT operator processes textures loaded into containers <em>tex0</em>, <em>tex1</em>, <em>tex2</em> and <em>tex3</em>. These textures can be loaded into sigv using the command fpic read for <em>tex0</em>, fpic 1 read for tex1, and so on. Once images are loaded as textures, the | d 0 command will load <em>tex0</em> on the primitive of focus (… f 0, for instance places focus on a loaded <code>[geo](https://magfoto.any.org/geo)</code> primitive).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">…   <br></th><th align="left"><a href="https://magfoto.any.org/system">SYSTEM</a>   <br></th><th align="left"></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">n   <br></td><td align="left">new object   <br></td><td align="left"></td><td align="left">… n 0   <br></td></tr><tr><td align="left">z   <br></td><td align="left">zap object   <br></td><td align="left"></td><td align="left">… z p   <br></td></tr><tr><td align="left">f   <br></td><td align="left">focus object   <br></td><td align="left"></td><td align="left">… f m   <br></td></tr><tr><td align="left">c   <br></td><td align="left">clear   <br></td><td align="left"></td><td align="left">… c 1   <br></td></tr><tr><td align="left">m   <br></td><td align="left">material mode   <br></td><td align="left"></td><td align="left">… m 3   <br></td></tr><tr><td align="left">x   <br></td><td align="left">exit   <br></td><td align="left"></td><td align="left">… x 0   <br></td></tr><tr><td align="left">b   <br></td><td align="left">wrld border   <br></td><td align="left"></td><td align="left">… b 0   <br></td></tr><tr><td align="left">e   <br></td><td align="left">wrld exec zoom   <br></td><td align="left"></td><td align="left">… e 1   <br></td></tr><tr><td align="left">q   <br></td><td align="left">fx pass   <br></td><td align="left"></td><td align="left">… q 0   <br></td></tr><tr><td align="left">w   <br></td><td align="left">wrld window pos   <br></td><td align="left"></td><td align="left">… w 0   <br></td></tr><tr><td align="left">s   <br></td><td align="left">cmd enable   <br></td><td align="left"><br></td><td align="left">… s 1   <br></td></tr><tr><td align="left">t   <br></td><td align="left">tilde (~) set   <br></td><td align="left"></td><td align="left">… t s 4   <br></td></tr><tr><td align="left">t   <br></td><td align="left">tilde (~) src   <br></td><td align="left"></td><td align="left">… t r 6   <br></td></tr><tr><td align="left">t   <br></td><td align="left">tilde (~) link   <br></td><td align="left"></td><td align="left">… t l 1   <br></td></tr><tr><td align="left">t   <br></td><td align="left">tilde (~) tail   <br></td><td align="left"></td><td align="left">… t t 2   <br></td></tr></tbody></table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">^   <br></th><th align="left"><a href="https://magfoto.any.org/trans">TRANS</a>   <br></th><th align="left"></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">o   <br></td><td align="left">morph ^   <br></td><td align="left"></td><td align="left">^ o 0 i a   <br></td></tr><tr><td align="left">s   <br></td><td align="left">shape   <br></td><td align="left"></td><td align="left">^ s 2 6   <br></td></tr><tr><td align="left">d   <br></td><td align="left">dimensions   <br></td><td align="left"></td><td align="left">^ d 1 j j   <br></td></tr><tr><td align="left">e   <br></td><td align="left">draw element   <br></td><td align="left"></td><td align="left">^ e 4   <br></td></tr><tr><td align="left">a   <br></td><td align="left">object aio ^   <br></td><td align="left"></td><td align="left">^ a 8   <br></td></tr><tr><td align="left">p   <br></td><td align="left">poly mode   <br></td><td align="left"></td><td align="left">^ p 0 0   <br></td></tr><tr><td align="left">c   <br></td><td align="left">cull face   <br></td><td align="left"></td><td align="left">^ c 0 1   <br></td></tr><tr><td align="left">0   <br></td><td align="left">point size   <br></td><td align="left"></td><td align="left">^ 0 4   <br></td></tr><tr><td align="left">1   <br></td><td align="left">line width   <br></td><td align="left"></td><td align="left">^ 1 i   <br></td></tr><tr><td align="left">f   <br></td><td align="left">proc period   <br></td><td align="left"></td><td align="left">^ f a   <br></td></tr><tr><td align="left">x   <br></td><td align="left">proc scale   <br></td><td align="left"></td><td align="left">^ x i   <br></td></tr></tbody></table>
+<p>The TRANS operator commands are tested to work primarily with parametric geometries such as <code>[geo](http://magfoto.any.org/lzgeo)</code>, <code>[proc](http://magfoto.any.org/proc)</code>, <code>[nurbs](http://magfoto.any.org/nurbs)</code>, and <code>[plato](http://magfoto.any.org/pla)</code>, but as well with 3D model primitives like <code>model</code>, and <code>b0</code>..<code>b7</code>. The ^s (shape) operator targets the 10 shapes of <code>geo gs1</code> (^ s 1) or <code>geo gs2</code> (^ s 2):</p>
+<p>0 - sphere<br>
+1 - torus<br>
+2 - cylinder<br>
+3 - opencylinder<br>
+4 - cube<br>
+5 - opencube<br>
+6 - plane<br>
+7 - circle<br>
+8 - cone<br>
+9 - capsule</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">∆   <br></th><th align="left"><a href="https://magfoto.any.org/serial">SERIAL</a>   <br></th><th align="left"><br></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">v   <br></td><td align="left">crow ****volts   <br></td><td align="left"><br></td><td align="left"><strong>∆ c r</strong>   <br></td></tr><tr><td align="left">i   <br></td><td align="left"><strong>crow input</strong>   <br></td><td align="left"><br></td><td align="left"><strong>∆ l m 1 1</strong>   <br></td></tr><tr><td align="left">p   <br></td><td align="left"><strong>gpio pulse</strong>   <br></td><td align="left"></td><td align="left"><strong>∆ p d 7</strong>   <br></td></tr><tr><td align="left">a   <br></td><td align="left"><strong>gpio analog</strong>   <br></td><td align="left"></td><td align="left"><strong>∆ a 4 s</strong>   <br></td></tr><tr><td align="left">m   <br></td><td align="left"><strong>mcu message</strong>   <br></td><td align="left"></td><td align="left"><strong>∆ m 1</strong>   <br></td></tr><tr><td align="left">c   <br></td><td align="left">crow open   <br></td><td align="left"><br></td><td align="left">∆ c   <br></td></tr></tbody></table>
+<p>The ∆ gpio serial commands are meant to be used primarily via a securely connected (SSH) RaspberryPi, and thus controlling its GPIO pins with the Python library <a href="https://gpiozero.readthedocs.io/">gpiozero</a>. (<a href="https://magfoto.any.org/kb#6919f5e0d514cc9d6e14e43e">Blueberry Framework</a>)</p>
+<p><a href="https://static.raspberrypi.org/files/education/posters/GPIO_Zero_Cheatsheet.pdf">Cheatsheet</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">ß   <br></th><th align="left"><a href="https://magfoto.any.org/buffer">BUFFER</a>   <br></th><th align="left"></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">#   <br></td><td align="left">start buffer   <br></td><td align="left"></td><td align="left">5   <br></td></tr><tr><td align="left">l   <br></td><td align="left">loop   <br></td><td align="left"></td><td align="left">l 0   <br></td></tr><tr><td align="left">s   <br></td><td align="left">set buffer   <br></td><td align="left"></td><td align="left">s 3   <br></td></tr><tr><td align="left">p   <br></td><td align="left">pause buffer   <br></td><td align="left"></td><td align="left">p   <br></td></tr><tr><td align="left">r   <br></td><td align="left">resume buffer   <br></td><td align="left"></td><td align="left">r   <br></td></tr><tr><td align="left">o   <br></td><td align="left">select sample   <br></td><td align="left"></td><td align="left">o 4   <br></td></tr><tr><td align="left">m   <br></td><td align="left">midi connect   <br></td><td align="left"></td><td align="left">m 0   <br></td></tr></tbody></table>
+<p>The ß operator represents the sigv <code>spk</code> <a href="https://magfoto.any.org/spk">sampler</a> module. Using the Max <a href="https://docs.cycling74.com/reference/mc.play~/">mc.play~ object</a>, ß o 4 in Orca will trigger a dialog box to select an audio file and store it in buffer, and a ß 4 would trigger the sample to play. Being a sonic module, the spk requires the starting up of the aio engine, which in o-sigv can be triggered with a _ 1 1 command (see AUDIO below).<br>
+By default, when an spk is loaded it is automatically connected to the default MIDI. This means that form our example above, if a MIDI channel 4 message is received (i.e. a bang of : 3 1 C in Orca) will trigger the spk sample 4, just like sending a bang to ß 4 in o-sigv. To turn off this feature, a bang to ß m 0 does that, with the option to always send a bang to ß m 1 to turn it back on.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">_   <br></th><th align="left"><a href="https://magfoto.any.org/audio">AUDIO</a>   <br></th><th align="left"></th><th align="left">Notation   <br></th></tr></thead><tbody><tr><td align="left">p   <br></td><td align="left">aio peak thresh   <br></td><td align="left"></td><td align="left">_ p a   <br></td></tr><tr><td align="left">l   <br></td><td align="left">aio peak ramp   <br></td><td align="left"></td><td align="left">_ l 9   <br></td></tr><tr><td align="left">o   <br></td><td align="left">auto aio object   <br></td><td align="left"></td><td align="left">_ o 1   <br></td></tr><tr><td align="left">1   <br></td><td align="left">aio pwr   <br></td><td align="left"></td><td align="left">_ 1 1   <br></td></tr><tr><td align="left">m   <br></td><td align="left">nature mode   <br></td><td align="left"></td><td align="left">_ m t   <br></td></tr><tr><td align="left">x   <br></td><td align="left">nature mult   <br></td><td align="left"></td><td align="left">_ x a   <br></td></tr><tr><td align="left">q   <br></td><td align="left">nature peak   <br></td><td align="left"></td><td align="left">_ q 8   <br></td></tr><tr><td align="left">b   <br></td><td align="left">nature biquad   <br></td><td align="left"></td><td align="left">_ b 0 3 a 2 a   <br></td></tr><tr><td align="left">s   <br></td><td align="left">nature sense   <br></td><td align="left"></td><td align="left">_ s 0 1   <br></td></tr><tr><td align="left">v   <br></td><td align="left">midi vst plug   <br></td><td align="left"></td><td align="left">_ v 1 5   <br></td></tr><tr><td align="left">v   <br></td><td align="left">midi vst open   <br></td><td align="left"></td><td align="left">_ v 0 1 1   <br></td></tr><tr><td align="left">v   <br></td><td align="left">midi vst program   <br></td><td align="left"></td><td align="left">_ v 1 p 3   <br></td></tr></tbody></table>
+<p>Using sonic command <code>midi vst plug</code> and a number for a buffer container (there are only four midi channels for a VST: 1, 2, 3, and 4), allows you to choose an VST instrument from your machine. After which, writing the Orca characters _ v 0 2, (notice channel number is 0) opens your instruments GUI (in this case the VST instrument in channel 2).</p>
+<p>… n, z, and f, are SYSTEM operator commands that refer to primitives and modules listed as follows:</p>
+<p>0 - <code>[geo](https://magfoto.any.org/geo)</code><br>
+1 - <code>[proc](https://magfoto.any.org/proc)</code><br>
+3 - <code>[model](https://magfoto.any.org/model)</code> / b# (# can be integers 0 thru 7, like <code>[b1](https://magfoto.any.org/b1)</code>)<br>
+4 - <code>[nature](https://magfoto.any.org/nature)</code><br>
+5 - <code>[wrld](https://magfoto.any.org/wrld)</code><br>
+6 - <code>[lz](https://magfoto.any.org/lz)</code><br>
+7 - <code>[midi](https://magfoto.any.org/midi)</code><br>
+8 - <code>[spk](https://magfoto.any.org/spk)</code></p>  </article> </div> </main>         <footer data-astro-cid-35ed7um5> <div class="footer-content" data-astro-cid-35ed7um5> <div class="copyright" data-astro-cid-35ed7um5> <span class="date" data-astro-cid-35ed7um5>
+&copy;
+2026 </span> <!-- {themeConfig.site.author} -->
+&nbsp;  <img alt="magfoto" src="pix/magfoto-light-ico.png" width="25%" style="vertical-align: middle;" data-astro-cid-35ed7um5> </div> <div class="powered-by" data-astro-cid-35ed7um5> <a href="https://merveilles.town/@magfoto" target="_blank" data-astro-cid-35ed7um5>   <code data-astro-cid-35ed7um5>Mv</code>  </a> 
+|
+<a href="https://www.youtube.com/@magfoto" target="_blank" data-astro-cid-35ed7um5>   <code data-astro-cid-35ed7um5>Yt</code>  </a> 
+|
+<a href="https://twitch.tv/magfoto" target="_blank" data-astro-cid-35ed7um5>   <code data-astro-cid-35ed7um5>Tv</code>  </a>  </div> </div> </footer> </div>   </div> <script>
+  // Cleanup hover states after Astro page load and on touch events
+  function cleanupHover() {
+    const hoveredLinks = document.querySelectorAll('ul a:hover')
+    hoveredLinks.forEach((link) => {
+      link.style.opacity = ''
+    })
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    setTimeout(cleanupHover, 50)
+  })
+
+  // Add touch event listener for touch devices
+  document.addEventListener('touchstart', cleanupHover, { passive: true })
+</script> <style>
+  @supports (view-transition-name: none) {
+    @media not (prefers-reduced-motion: reduce) {
+      ::view-transition-old(root) {
+        animation: fade-out 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      ::view-transition-new(root) {
+        opacity: 0;
+        animation: fade-in 0.4s ease 0.2s forwards;
+        will-change: filter, opacity, transform;
+      }
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateZ(0);
+    }
+    30% {
+      opacity: 0.5;
+      filter: blur(4px);
+      transform: translateZ(0);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateZ(0);
+    }
+  }
+</style> <script>(function(){const fadeAnimation = true;
+
+      if (!fadeAnimation) {
+        const dispatchPageLoad = () => {
+          document.dispatchEvent(new Event('astro:page-load'))
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', dispatchPageLoad, { once: true })
+        } else {
+          queueMicrotask(dispatchPageLoad)
+        }
+      }
+    })();</script> </body> </html>
