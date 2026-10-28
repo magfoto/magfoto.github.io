@@ -1,0 +1,21 @@
+#EXTM3U
+#EXTENC:UTF-8
+#PLAYLIST:Energies LP
+#EXTIMG:https://magfoto.dev/energies-lp/cover_480.jpg?QOs2ZevNDRA
+#EXTALB:Energies LP
+#EXTINF:305,  – 1. 4x4
+https://magfoto.dev/energies-lp/1/opus-96/mKwBrvjx0bo/01%204x4.opus
+#EXTINF:347,  – 2. Energy
+https://magfoto.dev/energies-lp/2/opus-96/8vfHWSorPP4/02%20Energy.opus
+#EXTINF:398,  – 3. Lighthouse
+https://magfoto.dev/energies-lp/3/opus-96/BfLjZxGlVWQ/03%20Lighthouse.opus
+#EXTINF:323,  – 4. Submerged
+https://magfoto.dev/energies-lp/4/opus-96/_wnP4_WoNMY/04%20Submerged.opus
+#EXTINF:196,  – 5. bella-bells-revival
+https://magfoto.dev/energies-lp/5/opus-96/PwIoq6Sh-V4/05%20bella-bells-revival.opus
+#EXTINF:334,  – 6. la-prochaine
+https://magfoto.dev/energies-lp/6/opus-96/ERWIQfB_EmE/06%20la-prochaine.opus
+#EXTINF:257,  – 7. loulou-et-funguy
+https://magfoto.dev/energies-lp/7/opus-96/aaYQqoP9pfY/07%20loulou-et-funguy.opus
+#EXTINF:276,  – 8. polyvocal
+https://magfoto.dev/energies-lp/8/opus-96/w5si5t0Zv1I/08%20polyvocal.opus
