@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" >
+    <channel>
+        <atom:link href="https://magfoto.dev/music/homepagefeed.rss" rel="self" type="application/rss+xml"/>
+        <description>experimental, electronic, live coding, modular</description>
+        <generator>Faircamp 2.0.1 (8d96f31)</generator>
+        <image>
+    <height>300</height>
+    <link>https://magfoto.dev/music/homepage/</link>
+    <title>studio instrument</title>
+    <url>https://magfoto.dev/music/feed_e73JtdRWXwQ.jpg</url>
+    <width>300</width>
+</image>
+
+        <language>en</language>
+        <lastBuildDate>Wed, 28 Oct 2026 16:48:02 +0000</lastBuildDate>
+        <link>https://magfoto.dev/music/homepage/</link>
+        <title>magfoto Music</title>
+        
+        <item><guid>https://magfoto.dev/music/alente-alente/</guid>
+<link>https://magfoto.dev/music/alente-alente/</link>
+<title> – alente</title></item>
+<item><guid>https://magfoto.dev/music/ambient-assembly-ambient-assembly/</guid>
+<link>https://magfoto.dev/music/ambient-assembly-ambient-assembly/</link>
+<title> – Ambient Assembly</title></item>
+<item><guid>https://magfoto.dev/music/codi-journal-jupiter-sine-generator/</guid>
+<link>https://magfoto.dev/music/codi-journal-jupiter-sine-generator/</link>
+<title> – Jupiter Sine Generator</title></item>
+<item><guid>https://magfoto.dev/music/codi-journal-melted-lick/</guid>
+<link>https://magfoto.dev/music/codi-journal-melted-lick/</link>
+<title> – Melted Lick</title></item>
+<item><guid>https://magfoto.dev/music/energies-lp-4x4/</guid>
+<link>https://magfoto.dev/music/energies-lp-4x4/</link>
+<title> – 4x4</title></item>
+<item><guid>https://magfoto.dev/music/energies-lp-energy/</guid>
+<link>https://magfoto.dev/music/energies-lp-energy/</link>
+<title> – Energy</title></item>
+<item><guid>https://magfoto.dev/music/energies-lp-lighthouse/</guid>
+<link>https://magfoto.dev/music/energies-lp-lighthouse/</link>
+<title> – Lighthouse</title></item>
+<item><guid>https://magfoto.dev/music/energies-lp-submerged/</guid>
+<link>https://magfoto.dev/music/energies-lp-submerged/</link>
+<title> – Submerged</title></item>
+<item><guid>https://magfoto.dev/music/energies-lp-bella-bells-revival/</guid>
+<link>https://magfoto.dev/music/energies-lp-bella-bells-revival/</link>
+<title> – bella-bells-revival</title></item>
+<item><guid>https://magfoto.dev/music/energies-lp-la-prochaine/</guid>
+<link>https://magfoto.dev/music/energies-lp-la-prochaine/</link>
+<title> – la-prochaine</title></item>
+<item><guid>https://magfoto.dev/music/energies-lp-loulou-et-funguy/</guid>
+<link>https://magfoto.dev/music/energies-lp-loulou-et-funguy/</link>
+<title> – loulou-et-funguy</title></item>
+<item><guid>https://magfoto.dev/music/energies-lp-polyvocal/</guid>
+<link>https://magfoto.dev/music/energies-lp-polyvocal/</link>
+<title> – polyvocal</title></item>
+<item><guid>https://magfoto.dev/music/the-last-metropolis-serenade-the-last-metropolis-post-lighthouse-serenade/</guid>
+<link>https://magfoto.dev/music/the-last-metropolis-serenade-the-last-metropolis-post-lighthouse-serenade/</link>
+<title> – The Last Metropolis (Post-Lighthouse Serenade)</title></item>
+<item><guid>https://magfoto.dev/music/un-nouveau-chapitre-0000a/</guid>
+<link>https://magfoto.dev/music/un-nouveau-chapitre-0000a/</link>
+<title> – 0000A</title></item>
+<item><guid>https://magfoto.dev/music/un-nouveau-chapitre-eterna1/</guid>
+<link>https://magfoto.dev/music/un-nouveau-chapitre-eterna1/</link>
+<title> – ETERNA1_</title></item>
+<item><guid>https://magfoto.dev/music/un-nouveau-chapitre-op-z-passers/</guid>
+<link>https://magfoto.dev/music/un-nouveau-chapitre-op-z-passers/</link>
+<title> – OP-Z-PASSERS</title></item>
+<item><guid>https://magfoto.dev/music/un-nouveau-chapitre-organisme/</guid>
+<link>https://magfoto.dev/music/un-nouveau-chapitre-organisme/</link>
+<title> – Organisme</title></item>
+    </channel>
+</rss>

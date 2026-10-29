@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    
+    <generator uri="https://faircamp.org" version="2.0.1">
+        Faircamp 2.0.1 (8d96f31)
+    </generator>
+    <id>https://magfoto.dev/music/energies-lp/</id>
+    <link href="https://magfoto.dev/music/energies-lpfeed.atom" rel="self"/>
+    <logo>https://magfoto.dev/music/feed_QOs2ZevNDRA.jpg</logo>
+    
+    <title>Energies LP</title>
+    <updated>2026-10-28T16:48:02.894043+00:00</updated>
+    <entry><id>https://magfoto.dev/music/energies-lp-4x4/</id>
+<link href="https://magfoto.dev/music/energies-lp-4x4/" rel="alternate"/>
+<title> – 4x4</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/energies-lp-energy/</id>
+<link href="https://magfoto.dev/music/energies-lp-energy/" rel="alternate"/>
+<title> – Energy</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/energies-lp-lighthouse/</id>
+<link href="https://magfoto.dev/music/energies-lp-lighthouse/" rel="alternate"/>
+<title> – Lighthouse</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/energies-lp-submerged/</id>
+<link href="https://magfoto.dev/music/energies-lp-submerged/" rel="alternate"/>
+<title> – Submerged</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/energies-lp-bella-bells-revival/</id>
+<link href="https://magfoto.dev/music/energies-lp-bella-bells-revival/" rel="alternate"/>
+<title> – bella-bells-revival</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/energies-lp-la-prochaine/</id>
+<link href="https://magfoto.dev/music/energies-lp-la-prochaine/" rel="alternate"/>
+<title> – la-prochaine</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/energies-lp-loulou-et-funguy/</id>
+<link href="https://magfoto.dev/music/energies-lp-loulou-et-funguy/" rel="alternate"/>
+<title> – loulou-et-funguy</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/energies-lp-polyvocal/</id>
+<link href="https://magfoto.dev/music/energies-lp-polyvocal/" rel="alternate"/>
+<title> – polyvocal</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+</feed>

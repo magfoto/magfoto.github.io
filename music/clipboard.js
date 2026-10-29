@@ -1,16 +1,16 @@
-const copyIcon = document.querySelector('#copy_icon');
-const failedIcon = document.querySelector('#failed_icon');
-const successIcon = document.querySelector('#success_icon');
+(()=>{const copyIcon = document.querySelector('#copy_icon').content;
+const failedIcon = document.querySelector('#failed_icon').content;
+const successIcon = document.querySelector('#success_icon').content;
 
 let endFeedbackEarly = null;
 
 function copyFeedback(content, feedbackIcon, iconContainer) {
     if (endFeedbackEarly) { endFeedbackEarly(); }
 
-    iconContainer.replaceChildren(feedbackIcon.content.cloneNode(true));
+    iconContainer.replaceChildren(feedbackIcon.cloneNode(true));
 
     function endFeedback() {
-        iconContainer.replaceChildren(copyIcon.content.cloneNode(true));
+        iconContainer.replaceChildren(copyIcon.cloneNode(true));
         endFeedbackEarly = null;
     }
 
@@ -51,3 +51,4 @@ if (navigator.clipboard) {
         button.remove();
     }
 }
+})();

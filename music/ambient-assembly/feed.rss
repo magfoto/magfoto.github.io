@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" >
+    <channel>
+        <atom:link href="https://magfoto.dev/music/ambient-assemblyfeed.rss" rel="self" type="application/rss+xml"/>
+        <description>Faircamp 2.0.1</description>
+        <generator>Faircamp 2.0.1 (8d96f31)</generator>
+        <image>
+    <height>920</height>
+    <link>https://magfoto.dev/music/ambient-assembly/</link>
+    <title>Ambient Assembly cover image of Eurorack</title>
+    <url>https://magfoto.dev/music/feed_JJsq89ZM06E.jpg</url>
+    <width>920</width>
+</image>
+
+        <language>en</language>
+        <lastBuildDate>Wed, 28 Oct 2026 16:48:02 +0000</lastBuildDate>
+        <link>https://magfoto.dev/music/ambient-assembly/</link>
+        <title>Ambient Assembly</title>
+        
+        <item><guid>https://magfoto.dev/music/ambient-assembly-ambient-assembly/</guid>
+<link>https://magfoto.dev/music/ambient-assembly-ambient-assembly/</link>
+<title> – Ambient Assembly</title></item>
+    </channel>
+</rss>

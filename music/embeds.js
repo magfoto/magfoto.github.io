@@ -1,4 +1,4 @@
-const EMBEDS_JS_T = {
+(()=>{const EMBEDS_JS_T = {
     mute: 'Mute',
     playbackPosition: 'Playback position',
     unmute: 'Unmute',
@@ -127,6 +127,22 @@ function formatTimeWrittenOut(seconds) {
     }
 }
 
+// In most cases, hover capability remains constant during runtime, however
+// during testing in desktop browsers with device simulation and possibly in
+// some edge cases in real usage, hover capability might change at runtime,
+// therefore we always query this capability dynamically.
+function hoverAvailable() {
+    return window.matchMedia('(hover: hover)').matches;
+}
+
+// Pass a key event (e.g. keydown, keypress) and this returns whether the Alt,
+// Ctrl, Meta or Shift key was pressed. We use this to blanket exclude key
+// events from processing in multiple places (all our shortcuts are currently
+// only bound to key events without modifier usage).
+function modifierPressed(event) {
+    return event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
+}
+
 // Open the docked player and update its various subelements to display the
 // given track. If track.seekTo is set a seek is indicated by advancing both
 // the track's own progress indicator and the docked player progress bar to
@@ -143,7 +159,6 @@ function open(track) {
         player.titleWrapper.replaceChildren(track.title.cloneNode(true));
     }
 
-    // Not available on a track player
     if (player.number) {
         player.nextTrackButton.toggleAttribute('disabled', !track.nextTrack);
         player.number.textContent = track.number.textContent;
@@ -252,6 +267,11 @@ function play(track) {
         // flag is not set - these we know to originate from the
         // system/browser.
         track.solicitedPlayback = true;
+
+        if (player.speedButton) {
+            setSpeed(track);
+        }
+
         setVolume(track);
         track.audio.play();
     }
@@ -410,6 +430,20 @@ function seek(track, onComplete = null) {
 
 function setActive(track) {
     activeTrack = track;
+
+    if (player.speedButton) {
+        // Enable or disable speed controls and reset speed for this track
+        if (track.speedControls) {
+            player.speedButton.disabled = false;
+        } else {
+            player.speedButton.disabled = true;
+
+            if (speed !== 100) {
+                speed = 100;
+                player.speedMultiplier.textContent = (speed / 100).toFixed(1);
+            }
+        }
+    }
 }
 
 function setSpeed(track) {
@@ -541,7 +575,7 @@ function updateVolume(persist = true) {
 }
 
 player.container.addEventListener('keydown', event => {
-    if (event.target === player.volume.sliderInput) return;
+    if (modifierPressed(event)) return;
 
     if (event.key === 'ArrowLeft') {
         event.preventDefault();
@@ -580,28 +614,33 @@ if (player.previousTrackButton) {
 if (player.speedButton) {
     player.speedButton.addEventListener('auxclick', event => {
         event.preventDefault();
-        speed = 100;
-        updateSpeed();
+
+        if (activeTrack?.speedControls) {
+            speed = 100;
+            updateSpeed();
+        }
     });
 
     player.speedButton.addEventListener('click', () => {
-        if (speed < 100) {
-            speed = 100;
-        } else if (speed < 120) {
-            speed = 120;
-        } else if (speed < 140) {
-            speed = 140;
-        } else if (speed < 160) {
-            speed = 160;
-        } else if (speed < 180) {
-            speed = 180;
-        } else if (speed < 200) {
-            speed = 200;
-        } else {
-            speed = 100;
-        }
+        if (activeTrack?.speedControls) {
+            if (speed < 100) {
+                speed = 100;
+            } else if (speed < 120) {
+                speed = 120;
+            } else if (speed < 140) {
+                speed = 140;
+            } else if (speed < 160) {
+                speed = 160;
+            } else if (speed < 180) {
+                speed = 180;
+            } else if (speed < 200) {
+                speed = 200;
+            } else {
+                speed = 100;
+            }
 
-        updateSpeed();
+            updateSpeed();
+        }
     });
 
     // Prevent context menu from opening when using right-click to reset
@@ -609,28 +648,36 @@ if (player.speedButton) {
     player.speedButton.addEventListener('contextmenu', event => event.preventDefault());
 
     player.speedButton.addEventListener('keydown', event => {
-        if (event.key === 'ArrowDown' && speed > 30) {
-            speed -= 10;
-        } else if (event.key === 'ArrowUp' && speed < 300) {
-            speed += 10;
-        } else {
-            return;
-        }
+        if (modifierPressed(event)) return;
 
-        updateSpeed();
+        if (activeTrack?.speedControls) {
+            if (event.key === 'ArrowDown' && speed > 30) {
+                speed -= 10;
+            } else if (event.key === 'ArrowUp' && speed < 300) {
+                speed += 10;
+            } else {
+                return;
+            }
+
+            updateSpeed();
+        }
 
         event.preventDefault();
         event.stopPropagation();
     });
 
-    player.speedButton.addEventListener('wheel', () => {
-        if (event.deltaY < 0 && speed < 300) {
-            speed += 10;
-        } else if (event.deltaY > 0 && speed > 30) {
-            speed -= 10;
+    player.speedButton.addEventListener('wheel', event => {
+        if (activeTrack?.speedControls) {
+            if (event.deltaY < 0 && speed < 300) {
+                speed += 10;
+            } else if (event.deltaY > 0 && speed > 30) {
+                speed -= 10;
+            }
+
+            updateSpeed();
         }
 
-        updateSpeed();
+        event.preventDefault();
     });
 }
 
@@ -651,6 +698,8 @@ player.timelineInput.addEventListener('focus', () => {
 });
 
 player.timelineInput.addEventListener('keydown', event => {
+    if (modifierPressed(event)) return;
+
     if (event.key === ' ' || event.key === 'Enter') {
         event.preventDefault();
         requestPlaybackChange(activeTrack);
@@ -667,12 +716,22 @@ player.volume.container.addEventListener('auxclick', event => {
 player.volume.container.addEventListener('contextmenu', event => event.preventDefault());
 
 player.volume.container.addEventListener('mouseenter', () => {
-    player.volume.container.classList.add('hover');
+    // On Chromium we observed that in mobile device simulation, touch events
+    // on entirely unrelated elements (e.g. the global "Listen" button) could
+    // trigger mouseenter/mouseleave events on the volume container.
+    // Therefore we make sure not to process these events when there is no
+    // hover capability.
+    if (hoverAvailable()) {
+        player.volume.container.classList.add('hover');
+    }
 });
 
 player.volume.container.addEventListener('mouseleave', () => {
-    player.volume.container.classList.remove('hover');
-    player.volume.slider.classList.remove('decrease', 'increase');
+    // See note for mouseenter
+    if (hoverAvailable()) {
+        player.volume.container.classList.remove('hover');
+        player.volume.slider.classList.remove('decrease', 'increase');
+    }
 });
 
 player.volume.container.addEventListener('wheel', event => {
@@ -697,9 +756,20 @@ player.volume.container.addEventListener('wheel', event => {
     updateVolume();
 });
 
-player.volume.knob.addEventListener('click', () => toggleMute());
+player.volume.knob.addEventListener('click', () => {
+    if (hoverAvailable() || !volume.finegrained) {
+        toggleMute();
+    } else {
+        // On mobiles/tablets with finegrained volume but without hover
+        // capability, hover (for revealing the volume slider) is emulated by
+        // clicking the volume knob.
+        player.volume.container.classList.toggle('hover');
+    }
+});
 
 player.volume.knob.addEventListener('keydown', event => {
+    if (modifierPressed(event)) return;
+
     if (event.key === 'ArrowDown') {
         volume.level -= 0.02;
     } else if (event.key === 'ArrowUp') {
@@ -776,6 +846,8 @@ player.volume.sliderInput.addEventListener('input', () => {
 // This was observed to jump between 0 and 1 without a single step in between,
 // hence we disable the default behavior and handle it ourselves
 player.volume.sliderInput.addEventListener('keydown', event => {
+    if (modifierPressed(event)) return;
+
     if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
         volume.level -= 0.02;
     } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
@@ -795,6 +867,7 @@ player.volume.sliderInput.addEventListener('keydown', event => {
     updateVolume();
 
     event.preventDefault();
+    event.stopPropagation();
 });
 
 // This was observed to "scroll" between 0 and 1 without a single step in between,
@@ -818,6 +891,7 @@ for (const container of document.querySelectorAll('.track')) {
     const audio = container.querySelector('audio');
     const input = container.querySelector('input');
     const number = container.querySelector('.number');
+    const speedControls = container.hasAttribute('data-speed-controls');
     const title = container.querySelector('.title');
 
     const duration = parseFloat(container.dataset.duration);
@@ -829,6 +903,7 @@ for (const container of document.querySelectorAll('.track')) {
         duration,
         input,
         number,
+        speedControls,
         title
     };
 
@@ -912,6 +987,8 @@ for (const container of document.querySelectorAll('.track')) {
     });
 
     container.addEventListener('keydown', event => {
+        if (modifierPressed(event)) return;
+
         if (event.key === 'ArrowLeft') {
             event.preventDefault();
             const seekTo = Math.max(0, track.audio.currentTime - 5);
@@ -928,9 +1005,12 @@ for (const container of document.querySelectorAll('.track')) {
 }
 
 window.addEventListener('keydown', event => {
+    if (modifierPressed(event)) return;
+
     if (event.key === 'm') {
         const { target } = event;
 
+        // TODO: Stop propagation at source instead (event.stopPropagation())?
         if (target.tagName !== 'INPUT' || (target.type !== 'search' && target.type !== 'text')) {
             toggleMute();
             event.preventDefault();
@@ -951,3 +1031,4 @@ if (params) {
 }
 
 open(activeTrack);
+})();

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" >
+    <channel>
+        <atom:link href="https://magfoto.dev/music/alentefeed.rss" rel="self" type="application/rss+xml"/>
+        <description>Faircamp 2.0.1</description>
+        <generator>Faircamp 2.0.1 (8d96f31)</generator>
+        <image>
+    <height>920</height>
+    <link>https://magfoto.dev/music/alente/</link>
+    <title>Alente cover image</title>
+    <url>https://magfoto.dev/music/feed_0cFl8eEjV_0.jpg</url>
+    <width>920</width>
+</image>
+
+        <language>en</language>
+        <lastBuildDate>Wed, 28 Oct 2026 16:48:02 +0000</lastBuildDate>
+        <link>https://magfoto.dev/music/alente/</link>
+        <title>Alente</title>
+        
+        <item><guid>https://magfoto.dev/music/alente-alente/</guid>
+<link>https://magfoto.dev/music/alente-alente/</link>
+<title> – alente</title></item>
+    </channel>
+</rss>

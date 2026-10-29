@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    
+    <generator uri="https://faircamp.org" version="2.0.1">
+        Faircamp 2.0.1 (8d96f31)
+    </generator>
+    <id>https://magfoto.dev/music/the-last-metropolis-serenade/</id>
+    <link href="https://magfoto.dev/music/the-last-metropolis-serenadefeed.atom" rel="self"/>
+    <logo>https://magfoto.dev/music/feed_QPFePPovqxU.jpg</logo>
+    
+    <title>Last Metropolis Serenade</title>
+    <updated>2026-10-28T16:48:02.894043+00:00</updated>
+    <entry><id>https://magfoto.dev/music/the-last-metropolis-serenade-the-last-metropolis-post-lighthouse-serenade/</id>
+<link href="https://magfoto.dev/music/the-last-metropolis-serenade-the-last-metropolis-post-lighthouse-serenade/" rel="alternate"/>
+<title> – The Last Metropolis (Post-Lighthouse Serenade)</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+</feed>

@@ -1,12 +1,12 @@
-const BROWSER_JS_T = {
+(()=>{const BROWSER_JS_T = {
     nothingFoundForXxx: query => 'Nothing found for \'{query}\''.replace('{query}',query),
     showingFeaturedItems: 'Showing featured items',
     showingXxxResultsForXxx: (count,query) => 'Showing {count} results for \'{query}\''.replace('{count}',count).replace('{query}',query),
-    xxxAndOthers: (xxx,othersLink) => '{xxx} and <a href="{others_link}">others</a>'.replace('{xxx}',xxx).replace('{others_link}',othersLink)
+    xxxAndOthers: (xxx,othersLinkAttributes) => '{xxx} and <a {others_link_attributes}>others</a>'.replace('{xxx}',xxx).replace('{others_link_attributes}',othersLinkAttributes)
 };
-const LABEL_MODE = false;
 const ARTISTS = [];
-const RELEASES = [{cover:'cover_160.jpg?nIedPWj-u9o',title:'Un Nouveau Chapitre',tracks:[{number:'1.',title:'0000A',url:'un-nouveau-chapitre/1/'},{number:'2.',title:'ETERNA1_',url:'un-nouveau-chapitre/2/'},{number:'3.',title:'OP-Z-PASSERS',url:'un-nouveau-chapitre/3/'},{number:'4.',title:'Organisme',url:'un-nouveau-chapitre/4/'}],url:'un-nouveau-chapitre/'},{cover:'cover_160.jpg?E1lmUAPsnUU',title:'CODI Journal',tracks:[{number:'1.',title:'Jupiter Sine Generator',url:'codi-journal/1/'},{number:'2.',title:'Melted Lick',url:'codi-journal/2/'}],url:'codi-journal/'},{cover:'cover_160.jpg?QOs2ZevNDRA',title:'Energies LP',tracks:[{number:'1.',title:'4x4',url:'energies-lp/1/'},{number:'2.',title:'Energy',url:'energies-lp/2/'},{number:'3.',title:'Lighthouse',url:'energies-lp/3/'},{number:'4.',title:'Submerged',url:'energies-lp/4/'},{number:'5.',title:'bella-bells-revival',url:'energies-lp/5/'},{number:'6.',title:'la-prochaine',url:'energies-lp/6/'},{number:'7.',title:'loulou-et-funguy',url:'energies-lp/7/'},{number:'8.',title:'polyvocal',url:'energies-lp/8/'}],url:'energies-lp/'},{cover:'cover_160.jpg?QPFePPovqxU',title:'Last Metropolis Serenade',tracks:[{number:'1.',title:'The Last Metropolis (Post-Lighthouse Serenade)',url:'the-last-metropolis-serenade/1/'}],url:'the-last-metropolis-serenade/'},{cover:'cover_160.jpg?JJsq89ZM06E',title:'Ambient Assembly',tracks:[{number:'1.',title:'Ambient Assembly',url:'ambient-assembly/1/'}],url:'ambient-assembly/'}];
+const CATALOGS = [{imagePath:'homepage/artist_e73JtdRWXwQ_fixed_300x133.jpg',pagePrefix:'',title:'magfoto Music'}];
+const RELEASES = [{artists:[],coverPath:'alente/release_0cFl8eEjV_0_160.jpg',multitrack:true,pagePrefix:'alente/',title:'Alente',tracks:[{artists:[],pagePrefix:'alente-alente/',title:'alente'}]},{artists:[],coverPath:'ambient-assembly/release_JJsq89ZM06E_160.jpg',multitrack:true,pagePrefix:'ambient-assembly/',title:'Ambient Assembly',tracks:[{artists:[],pagePrefix:'ambient-assembly-ambient-assembly/',title:'Ambient Assembly'}]},{artists:[],coverPath:'codi-journal/release_E1lmUAPsnUU_160.jpg',multitrack:true,pagePrefix:'codi-journal/',title:'CODI Journal',tracks:[{artists:[],pagePrefix:'codi-journal-jupiter-sine-generator/',title:'Jupiter Sine Generator'},{artists:[],pagePrefix:'codi-journal-melted-lick/',title:'Melted Lick'}]},{artists:[],coverPath:'energies-lp/release_QOs2ZevNDRA_160.jpg',multitrack:true,pagePrefix:'energies-lp/',title:'Energies LP',tracks:[{artists:[],pagePrefix:'energies-lp-4x4/',title:'4x4'},{artists:[],pagePrefix:'energies-lp-energy/',title:'Energy'},{artists:[],pagePrefix:'energies-lp-lighthouse/',title:'Lighthouse'},{artists:[],pagePrefix:'energies-lp-submerged/',title:'Submerged'},{artists:[],pagePrefix:'energies-lp-bella-bells-revival/',title:'bella-bells-revival'},{artists:[],pagePrefix:'energies-lp-la-prochaine/',title:'la-prochaine'},{artists:[],pagePrefix:'energies-lp-loulou-et-funguy/',title:'loulou-et-funguy'},{artists:[],pagePrefix:'energies-lp-polyvocal/',title:'polyvocal'}]},{artists:[],coverPath:'the-last-metropolis-serenade/release_QPFePPovqxU_160.jpg',multitrack:true,pagePrefix:'the-last-metropolis-serenade/',title:'Last Metropolis Serenade',tracks:[{artists:[],pagePrefix:'the-last-metropolis-serenade-the-last-metropolis-post-lighthouse-serenade/',title:'The Last Metropolis (Post-Lighthouse Serenade)'}]},{artists:[],coverPath:'un-nouveau-chapitre/release_nIedPWj-u9o_160.jpg',multitrack:true,pagePrefix:'un-nouveau-chapitre/',title:'Un Nouveau Chapitre',tracks:[{artists:[],pagePrefix:'un-nouveau-chapitre-0000a/',title:'0000A'},{artists:[],pagePrefix:'un-nouveau-chapitre-eterna1/',title:'ETERNA1_'},{artists:[],pagePrefix:'un-nouveau-chapitre-op-z-passers/',title:'OP-Z-PASSERS'},{artists:[],pagePrefix:'un-nouveau-chapitre-organisme/',title:'Organisme'}]}];
 const browser = document.querySelector('#browser');
 const browseButtonFooter = document.querySelector('footer button.browse');
 const browseButtonHeader = document.querySelector('header button.browse');
@@ -19,170 +19,281 @@ const statusField = browser.querySelector('[role="status"]');
 const indexSuffix = window.location.pathname.endsWith('index.html') ? 'index.html' : '';
 const rootPrefix = browser.dataset.rootPrefix;
 
-function truncateArtistList(artists, othersLink)  {
+function renderArtist(artistObject) {
+    if (artistObject.externalPage) {
+        return `<a href="${artistObject.externalPage}" target="_blank">${artistObject.name}</a>`;
+    } else if (artistObject.url) {
+        return `<a href="${rootPrefix}${artistObject.url}${indexSuffix}">${artistObject.name}</a>`;
+    } else {
+        return artistObject.name;
+    }
+}
+
+function truncateArtistList(artistNames, othersLinkAttributes)  {
     const MAX_CHARS = 40;
 
-    if (artists.length > 2) {
-        const nameChars = artists.reduce((sum, artist) => sum + artist.name.length, 0);
-        const separatorChars = (artists.length - 1) * 2; // All separating ", " between the artists
-
-        if (nameChars + separatorChars > MAX_CHARS) {
-            // Here we have more than two artists, we have a char limit,
-            // and we cannot fit all artists within the limit, thus
-            // we truncate the list.
-
-            if (LABEL_MODE) {
-                // In label mode we show at least one artist, then as many
-                // additional ones as fit, e.g. "[artist],[artist] and
-                // more"
-                let charsUsed = 0;
-                const truncatedArtists = artists
-                    .filter(artist => {
-                        if (charsUsed === 0) {
-                            charsUsed += artist.name.length;
-                            return true;
-                        }
-
-                        charsUsed += artist.name.length;
-                        return charsUsed < MAX_CHARS;
-                    });
-
-                const rArtists = truncatedArtists
-                    .map(artist => {
-                        const url = artist.externalPage ?? `${rootPrefix}${artist.url}${indexSuffix}`;
-                        return `<a href="${url}">${artist.name}</a>`;
-                    })
-                    .join(", ");
-
-                return BROWSER_JS_T.xxxAndOthers(rArtists, othersLink);
+    const artistObjects = artistNames
+        .map(artistName => {
+            for (const artist of ARTISTS) {
+                if (artist.name === artistName || artist.aliases?.includes(artistName)) {
+                    return artist;
+                }
             }
 
-            // In artist mode we show only "[catalog artist] and others".
-            // Our sorting ensures the catalog artist is the first one,
-            // so we can just take that.
-            const rArtists = `<a href="${rootPrefix}${artists[0].url}${indexSuffix}">${artists[0].name}</a>`;
+            return { name: artistName };
+        });
 
-            return BROWSER_JS_T.xxxAndOthers(rArtists, othersLink);
+    if (artistObjects.length > 2) {
+        const nameChars = artistObjects.reduce((sum, artist) => sum + artist.name.length, 0);
+        const separatorChars = (artistObjects.length - 1) * 2; // All separating ", " between the artists
+
+        if (nameChars + separatorChars > MAX_CHARS) {
+            // Here we have more than two artists, we have a char limit, and
+            // we cannot fit all artists within the limit, thus we truncate
+            // the list. We show at least one artist, then as many additional
+            // ones as fit, e.g. "[artist],[artist] and others"
+            let charsUsed = 0;
+
+            const artistObjectsTruncated = artistObjects
+                .filter(artist => {
+                    if (charsUsed === 0) {
+                        charsUsed += artist.name.length;
+                        return true;
+                    }
+
+                    charsUsed += artist.name.length;
+                    return charsUsed < MAX_CHARS;
+                });
+
+            const rArtists = artistObjectsTruncated.map(renderArtist).join(", ");
+
+            return BROWSER_JS_T.xxxAndOthers(rArtists, othersLinkAttributes);
         }
     }
 
-    return artists
-        .map(artist => {
-            const url = artist.externalPage ?? `${rootPrefix}${artist.url}${indexSuffix}`;
-            return `<a href="${url}">${artist.name}</a>`;
-        })
-        .join(", ");
+    return artistObjects.map(renderArtist).join(", ");
 }
 
-for (const release of RELEASES) {
-    let imgRelease;
-    if (release.cover) {
-        imgRelease = document.createElement('img');
-        imgRelease.src = rootPrefix + release.url + release.cover;
-    } else {
-        imgRelease = document.createElement('img');
-        imgRelease.classList.add('procedural');
-        imgRelease.src = rootPrefix + release.url + release.coverProcedural;
-    }
-
-    const aText = document.createElement('a');
-    aText.href = rootPrefix + release.url + indexSuffix;
-
-    const aImage = aText.cloneNode(true);
-    aImage.tabIndex = -1;
-    aImage.appendChild(imgRelease);
-
-    aText.dataset.searchable = 'true';
-    aText.textContent = release.title;
-
-    const details = document.createElement('div');
-    details.appendChild(aText);
-
-    if (release.artists) {
-        const artists = document.createElement('div');
-        artists.classList.add('artists');
-        artists.innerHTML = truncateArtistList(release.artists, `${rootPrefix}${release.url}`);
-        details.appendChild(artists);
-    }
-
-    const row = document.createElement('div');
-    row.appendChild(aImage);
-    row.appendChild(details);
-    browseResults.appendChild(row);
-
-    for (const track of release.tracks) {
-        let imgTrack;
-        if (track.cover) {
-            imgTrack = document.createElement('img');
-            imgTrack.src = rootPrefix + track.url + track.cover;
-        } else {
-            imgTrack = imgRelease.cloneNode(true);
-        }
-
-        const number = document.createElement('span');
-        number.classList.add('number');
-        number.textContent = track.number;
-
-        const aTitle = document.createElement('a');
-        aTitle.href = rootPrefix + track.url + indexSuffix;
-
-        const aImage = aTitle.cloneNode(true);
-        aImage.tabIndex = -1;
-        aImage.appendChild(imgTrack);
-
-        aTitle.dataset.searchable = 'true';
-        aTitle.textContent = track.title;
-
-        const details = document.createElement('div');
-        details.appendChild(number);
-        details.appendChild(aTitle);
-
-        if (track.artists) {
-            const artists = document.createElement('div');
-            artists.classList.add('artists');
-            artists.innerHTML = truncateArtistList(track.artists, `${rootPrefix}${track.url}`);
-            details.appendChild(artists);
-        }
-
-        const row = document.createElement('div');
-        row.appendChild(aImage);
-        row.appendChild(details);
-        row.dataset.track = '';
-        row.style.setProperty('display', 'none');
-        browseResults.appendChild(row);
-    }
-}
-
-for (const artist of ARTISTS) {
-    const aText = document.createElement('a');
-
-    const url = artist.externalPage ?? `${rootPrefix}${artist.url}${indexSuffix}`;
-    aText.href = url;
-
+function appendArtist(artist) {
     let imageArtist;
-    if (artist.image) {
+    if (artist.imagePath) {
         imageArtist = document.createElement('img');
         imageArtist.classList.add('crop');
-        imageArtist.src = rootPrefix + artist.url + artist.image;
+        imageArtist.src = rootPrefix + artist.imagePath;
     } else {
         imageArtist = document.createElement('span');
         imageArtist.classList.add('placeholder');
+    }
+
+    const aText = document.createElement('a');
+
+    if (artist.externalPage) {
+        aText.href = artist.externalPage;
+        aText.target = '_blank';
+    } else {
+        aText.href = rootPrefix + artist.pagePrefix + indexSuffix;
     }
 
     const aImage = aText.cloneNode(true);
     aImage.tabIndex = -1;
     aImage.appendChild(imageArtist);
 
-    aText.dataset.searchable = 'true';
+    aText.dataset.featured = 'true';
     aText.textContent = artist.name;
 
     const details = document.createElement('div');
     details.appendChild(aText);
 
     const row = document.createElement('div');
+
+    row.dataset.browse = '';
+
     row.appendChild(aImage);
     row.appendChild(details);
+
     browseResults.appendChild(row);
+}
+
+function appendCatalog(catalog) {
+    let imgCatalog;
+    if (catalog.imagePath) {
+        imgCatalog = document.createElement('img');
+        imgCatalog.classList.add('crop');
+        imgCatalog.src = rootPrefix + catalog.imagePath;
+    } else {
+        imgCatalog = document.createElement('span');
+        imgCatalog.classList.add('placeholder');
+    }
+
+    const aText = document.createElement('a');
+
+    if (catalog.externalPage) {
+        aText.href = catalog.externalPage;
+        aText.target = '_blank';
+    } else {
+        aText.href = rootPrefix + catalog.pagePrefix + indexSuffix;
+    }
+
+    const aImage = aText.cloneNode(true);
+    aImage.tabIndex = -1;
+    aImage.appendChild(imgCatalog);
+
+    aText.dataset.featured = 'true';
+    aText.textContent = catalog.title;
+
+    const details = document.createElement('div');
+    details.appendChild(aText);
+
+    const row = document.createElement('div');
+
+    row.dataset.browse = '';
+
+    row.appendChild(aImage);
+    row.appendChild(details);
+
+    browseResults.appendChild(row);
+}
+
+function appendMultitrack(multitrack) {
+    let imgMultitrack;
+    if (multitrack.coverPath) {
+        imgMultitrack = document.createElement('img');
+        imgMultitrack.src = rootPrefix + multitrack.coverPath;
+    } else {
+        imgMultitrack = document.createElement('span');
+        imgMultitrack.classList.add('placeholder');
+    }
+
+    const aTitle = document.createElement('a');
+
+    if (multitrack.externalPage) {
+        aTitle.href = multitrack.externalPage;
+        aTitle.target = '_blank';
+    } else {
+        aTitle.href = rootPrefix + multitrack.pagePrefix + indexSuffix;
+    }
+
+    const aImage = aTitle.cloneNode(true);
+    aImage.tabIndex = -1;
+    aImage.appendChild(imgMultitrack);
+
+    aTitle.dataset.featured = 'true';
+    aTitle.textContent = multitrack.title;
+
+    const details = document.createElement('div');
+    details.appendChild(aTitle);
+
+    if (multitrack.artists) {
+        let othersLinkAttributes;
+
+        if (multitrack.externalPage) {
+            othersLinkAttributes = `href="${multitrack.externalPage}" target="_blank"`;
+        } else {
+            othersLinkAttributes = `href="${rootPrefix + multitrack.pagePrefix + indexSuffix}"`;
+        }
+
+        const artists = document.createElement('div');
+        artists.classList.add('artists');
+        artists.innerHTML = truncateArtistList(multitrack.artists, othersLinkAttributes);
+        details.appendChild(artists);
+    }
+
+    const row = document.createElement('div');
+
+    row.dataset.browse = '';
+
+    row.appendChild(aImage);
+    row.appendChild(details);
+
+    browseResults.appendChild(row);
+
+    for (const track of multitrack.tracks) {
+        appendTrack(track, imgMultitrack);
+    }
+}
+
+function appendTrack(track, imgMultitrack) {
+    let imgTrack;
+    if (track.coverPath) {
+        imgTrack = document.createElement('img');
+        imgTrack.src = rootPrefix + track.coverPath;
+    } else if (imgMultitrack) {
+        imgTrack = imgMultitrack.cloneNode(true);
+    } else {
+        imgTrack = document.createElement('span');
+        imgTrack.classList.add('placeholder');
+    }
+
+    const aTitle = document.createElement('a');
+
+    if (track.externalPage) {
+        aTitle.href = track.externalPage;
+        aTitle.target = '_blank';
+    } else {
+        aTitle.href = rootPrefix + track.pagePrefix + indexSuffix;
+    }
+
+    const aImage = aTitle.cloneNode(true);
+    aImage.tabIndex = -1;
+    aImage.appendChild(imgTrack);
+
+    aTitle.dataset.featured = 'true';
+    aTitle.textContent = track.title;
+
+    const details = document.createElement('div');
+
+    if (track.number) {
+        const number = document.createElement('span');
+        number.classList.add('number');
+        number.textContent = track.number;
+
+        details.appendChild(number);
+    }
+
+    details.appendChild(aTitle);
+
+    if (track.artists) {
+        let othersLinkAttributes;
+
+        if (track.externalPage) {
+            othersLinkAttributes = `href="${track.externalPage}" target="_blank"`;
+        } else {
+            othersLinkAttributes = `href="${rootPrefix + track.pagePrefix + indexSuffix}"`;
+        }
+
+        const artists = document.createElement('div');
+        artists.classList.add('artists');
+        artists.innerHTML = truncateArtistList(track.artists, othersLinkAttributes);
+        details.appendChild(artists);
+    }
+
+    const row = document.createElement('div');
+    row.appendChild(aImage);
+    row.appendChild(details);
+
+    if (imgMultitrack) {
+        row.style.setProperty('display', 'none');
+    } else {
+        row.dataset.browse = '';
+    }
+
+    browseResults.appendChild(row);
+}
+
+for (const catalog of CATALOGS) {
+    appendCatalog(catalog);
+}
+
+for (const artist of ARTISTS) {
+    appendArtist(artist);
+}
+
+for (const release of RELEASES) {
+    if (release.multitrack) {
+        appendMultitrack(release);
+    } else {
+        appendTrack(release);
+    }
 }
 
 function hideBrowser() {
@@ -195,10 +306,12 @@ function hideBrowser() {
     searchField.value = '';
     statusField.removeAttribute('aria-label');
     statusField.textContent = '';
-    for (const result of browseResults.children) {
-        const display = result.dataset.track === undefined;
-        result.style.setProperty('display', display ? null : 'none');
+
+    for (const element of browseResults.children) {
+        const display = element.dataset.browse !== undefined;
+        element.style.setProperty('display', display ? null : 'none');
     }
+
     browseButton.focus();
 }
 
@@ -246,7 +359,7 @@ searchField.addEventListener('input', () => {
         let shown = 0;
 
         for (const element of browseResults.children) {
-            const title = element.querySelector('[data-searchable]').textContent;
+            const title = element.querySelector('[data-featured]').textContent;
             const display = regexp.test(title);
             element.style.setProperty('display', display ? null : 'none');
             if (display) { shown += 1; }
@@ -261,7 +374,7 @@ searchField.addEventListener('input', () => {
         }
     } else {
         for (const element of browseResults.children) {
-            const display = element.dataset.track === undefined;
+            const display = element.dataset.browse !== undefined;
             element.style.setProperty('display', display ? null : 'none');
         }
 
@@ -269,3 +382,4 @@ searchField.addEventListener('input', () => {
         statusField.textContent = '';
     }
 });
+})();

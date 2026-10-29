@@ -1,0 +1,56 @@
+#EXTM3U
+#EXTENC:UTF-8
+#PLAYLIST:magfoto Music
+#EXTIMG:artist_e73JtdRWXwQ_fixed_300x133.jpg
+#EXTIMG:https://magfoto.dev/music/alente/release_0cFl8eEjV_0_480.jpg
+#EXTALB:Alente
+#EXTINF:295,  – alente
+https://magfoto.dev/music/alente-alente/opus-96/AADlpwYzq60/alente.opus
+
+#EXTIMG:https://magfoto.dev/music/ambient-assembly/release_JJsq89ZM06E_480.jpg
+#EXTALB:Ambient Assembly
+#EXTINF:831,  – Ambient Assembly
+https://magfoto.dev/music/ambient-assembly-ambient-assembly/opus-96/2t6kmuI8ez0/Ambient%20Assembly.opus
+
+#EXTIMG:https://magfoto.dev/music/codi-journal/release_E1lmUAPsnUU_480.jpg
+#EXTALB:CODI Journal
+#EXTINF:66,  – Jupiter Sine Generator
+https://magfoto.dev/music/codi-journal-jupiter-sine-generator/opus-96/ZvR0udZaUnY/Jupiter%20Sine%20Generator.opus
+#EXTINF:72,  – Melted Lick
+https://magfoto.dev/music/codi-journal-melted-lick/opus-96/noNW2uuEsXw/Melted%20Lick.opus
+
+#EXTIMG:https://magfoto.dev/music/energies-lp/release_QOs2ZevNDRA_480.jpg
+#EXTALB:Energies LP
+#EXTINF:305,  – 4x4
+https://magfoto.dev/music/energies-lp-4x4/opus-96/rgs0V0L56wk/4x4.opus
+#EXTINF:347,  – Energy
+https://magfoto.dev/music/energies-lp-energy/opus-96/qo4SDtZnLxA/Energy.opus
+#EXTINF:398,  – Lighthouse
+https://magfoto.dev/music/energies-lp-lighthouse/opus-96/Va_XMsFh7SI/Lighthouse.opus
+#EXTINF:323,  – Submerged
+https://magfoto.dev/music/energies-lp-submerged/opus-96/rWOJ4t9CZvc/Submerged.opus
+#EXTINF:196,  – bella-bells-revival
+https://magfoto.dev/music/energies-lp-bella-bells-revival/opus-96/N3sUtAv7lmE/bella-bells-revival.opus
+#EXTINF:334,  – la-prochaine
+https://magfoto.dev/music/energies-lp-la-prochaine/opus-96/29qGAyaWkOk/la-prochaine.opus
+#EXTINF:257,  – loulou-et-funguy
+https://magfoto.dev/music/energies-lp-loulou-et-funguy/opus-96/0QPq9Hs-Dlc/loulou-et-funguy.opus
+#EXTINF:276,  – polyvocal
+https://magfoto.dev/music/energies-lp-polyvocal/opus-96/C7NA7csfyOg/polyvocal.opus
+
+#EXTIMG:https://magfoto.dev/music/the-last-metropolis-serenade/release_QPFePPovqxU_480.jpg
+#EXTALB:Last Metropolis Serenade
+#EXTINF:134,  – The Last Metropolis (Post-Lighthouse Serenade)
+https://magfoto.dev/music/the-last-metropolis-serenade-the-last-metropolis-post-lighthouse-serenade/opus-96/tWYiWnaFX4E/The%20Last%20Metropolis%20%28Post-Lighthouse%20Serenade%29.opus
+
+#EXTIMG:https://magfoto.dev/music/un-nouveau-chapitre/release_nIedPWj-u9o_480.jpg
+#EXTALB:Un Nouveau Chapitre
+#EXTINF:610,  – 0000A
+https://magfoto.dev/music/un-nouveau-chapitre-0000a/opus-96/1BNi7-nm3x0/0000A.opus
+#EXTINF:542,  – ETERNA1_
+https://magfoto.dev/music/un-nouveau-chapitre-eterna1/opus-96/Qdf9einMJU8/ETERNA1_.opus
+#EXTINF:564,  – OP-Z-PASSERS
+https://magfoto.dev/music/un-nouveau-chapitre-op-z-passers/opus-96/sMnGK4F28-U/OP-Z-PASSERS.opus
+#EXTINF:204,  – Organisme
+https://magfoto.dev/music/un-nouveau-chapitre-organisme/opus-96/NdJPxjTn_eM/Organisme.opus
+

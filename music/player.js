@@ -1,4 +1,4 @@
-const PLAYER_JS_T = {
+(()=>{const PLAYER_JS_T = {
     listen: 'Listen',
     mute: 'Mute',
     pause: 'Pause',
@@ -180,6 +180,14 @@ function hoverAvailable() {
     return window.matchMedia('(hover: hover)').matches;
 }
 
+// Pass a key event (e.g. keydown, keypress) and this returns whether the Alt,
+// Ctrl, Meta or Shift key was pressed. We use this to blanket exclude key
+// events from processing in multiple places (all our shortcuts are currently
+// only bound to key events without modifier usage).
+function modifierPressed(event) {
+    return event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
+}
+
 // Open the docked player and update its various subelements to display the
 // given track. If track.seekTo is set a seek is indicated by advancing both
 // the track's own progress indicator and the docked player progress bar to
@@ -199,9 +207,8 @@ function open(track) {
         dockedPlayer.titleWrapper.replaceChildren(track.title.cloneNode(true));
     }
 
-    // Not available on a track player
     if (dockedPlayer.number) {
-        dockedPlayer.nextTrackButton.toggleAttribute('disabled', !track.nextTrack);
+        dockedPlayer.nextTrackButton.toggleAttribute('disabled', !track.nextStreamableTrack);
         dockedPlayer.number.textContent = track.number.textContent;
     }
 
@@ -246,7 +253,11 @@ function parseHashParams() {
     const result = {};
 
     if (trackParam === null) {
-        result.track = tracks[0];
+        if (tracks[0].audio) {
+            result.track = tracks[0];
+        } else {
+            return null;
+        }
     } else if (trackParam.match(/^[0-9]+$/)) {
         const index = parseInt(trackParam) - 1;
 
@@ -319,7 +330,11 @@ function play(track) {
         // flag is not set - these we know to originate from the
         // system/browser.
         track.solicitedPlayback = true;
-        setSpeed(track);
+
+        if (dockedPlayer.speedButton) {
+            setSpeed(track);
+        }
+
         setVolume(track);
         track.audio.play();
     }
@@ -488,6 +503,20 @@ function setActive(track) {
 
     // Emphasize active track in the track list.
     track.container.classList.add('active');
+
+    if (dockedPlayer.speedButton) {
+        // Enable or disable speed controls and reset speed for this track
+        if (track.speedControls) {
+            dockedPlayer.speedButton.disabled = false;
+        } else {
+            dockedPlayer.speedButton.disabled = true;
+
+            if (speed !== 100) {
+                speed = 100;
+                dockedPlayer.speedMultiplier.textContent = (speed / 100).toFixed(1);
+            }
+        }
+    }
 }
 
 function setSpeed(track) {
@@ -625,7 +654,7 @@ function updateVolume(persist = true) {
 }
 
 dockedPlayer.container.addEventListener('keydown', event => {
-    if (event.target === dockedPlayer.volume.sliderInput) return;
+    if (modifierPressed(event)) return;
 
     if (event.key === 'ArrowLeft') {
         event.preventDefault();
@@ -645,8 +674,8 @@ dockedPlayer.playbackButton.addEventListener('click', () => {
 // Not available on a track player
 if (dockedPlayer.nextTrackButton) {
     dockedPlayer.nextTrackButton.addEventListener('click', () => {
-        if (activeTrack.nextTrack) {
-            requestPlaybackChange(activeTrack.nextTrack);
+        if (activeTrack.nextStreamableTrack) {
+            requestPlaybackChange(activeTrack.nextStreamableTrack);
         }
     });
 }
@@ -655,28 +684,33 @@ if (dockedPlayer.nextTrackButton) {
 if (dockedPlayer.speedButton) {
     dockedPlayer.speedButton.addEventListener('auxclick', event => {
         event.preventDefault();
-        speed = 100;
-        updateSpeed();
+
+        if (activeTrack.speedControls) {
+            speed = 100;
+            updateSpeed();
+        }
     });
 
     dockedPlayer.speedButton.addEventListener('click', () => {
-        if (speed < 100) {
-            speed = 100;
-        } else if (speed < 120) {
-            speed = 120;
-        } else if (speed < 140) {
-            speed = 140;
-        } else if (speed < 160) {
-            speed = 160;
-        } else if (speed < 180) {
-            speed = 180;
-        } else if (speed < 200) {
-            speed = 200;
-        } else {
-            speed = 100;
-        }
+        if (activeTrack.speedControls) {
+            if (speed < 100) {
+                speed = 100;
+            } else if (speed < 120) {
+                speed = 120;
+            } else if (speed < 140) {
+                speed = 140;
+            } else if (speed < 160) {
+                speed = 160;
+            } else if (speed < 180) {
+                speed = 180;
+            } else if (speed < 200) {
+                speed = 200;
+            } else {
+                speed = 100;
+            }
 
-        updateSpeed();
+            updateSpeed();
+        }
     });
 
     // Prevent context menu from opening when using right-click to reset
@@ -684,28 +718,34 @@ if (dockedPlayer.speedButton) {
     dockedPlayer.speedButton.addEventListener('contextmenu', event => event.preventDefault());
 
     dockedPlayer.speedButton.addEventListener('keydown', event => {
-        if (event.key === 'ArrowDown' && speed > 30) {
-            speed -= 10;
-        } else if (event.key === 'ArrowUp' && speed < 300) {
-            speed += 10;
-        } else {
-            return;
-        }
+        if (modifierPressed(event)) return;
 
-        updateSpeed();
+        if (activeTrack.speedControls) {
+            if (event.key === 'ArrowDown' && speed > 30) {
+                speed -= 10;
+            } else if (event.key === 'ArrowUp' && speed < 300) {
+                speed += 10;
+            } else {
+                return;
+            }
+
+            updateSpeed();
+        }
 
         event.preventDefault();
         event.stopPropagation();
     });
 
     dockedPlayer.speedButton.addEventListener('wheel', event => {
-        if (event.deltaY < 0 && speed < 300) {
-            speed += 10;
-        } else if (event.deltaY > 0 && speed > 30) {
-            speed -= 10;
-        }
+        if (activeTrack.speedControls) {
+            if (event.deltaY < 0 && speed < 300) {
+                speed += 10;
+            } else if (event.deltaY > 0 && speed > 30) {
+                speed -= 10;
+            }
 
-        updateSpeed();
+            updateSpeed();
+        }
 
         event.preventDefault();
     });
@@ -728,6 +768,8 @@ dockedPlayer.timelineInput.addEventListener('focus', () => {
 });
 
 dockedPlayer.timelineInput.addEventListener('keydown', event => {
+    if (modifierPressed(event)) return;
+
     if (event.key === ' ' || event.key === 'Enter') {
         event.preventDefault();
         requestPlaybackChange(activeTrack);
@@ -796,6 +838,8 @@ dockedPlayer.volume.knob.addEventListener('click', () => {
 });
 
 dockedPlayer.volume.knob.addEventListener('keydown', event => {
+    if (modifierPressed(event)) return;
+
     if (event.key === 'ArrowDown') {
         volume.level -= 0.02;
     } else if (event.key === 'ArrowUp') {
@@ -886,6 +930,8 @@ dockedPlayer.volume.sliderInput.addEventListener('input', () => {
 // This was observed to jump between 0 and 1 without a single step in between,
 // hence we disable the default behavior and handle it ourselves
 dockedPlayer.volume.sliderInput.addEventListener('keydown', event => {
+    if (modifierPressed(event)) return;
+
     if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') {
         volume.level -= 0.02;
     } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') {
@@ -905,15 +951,18 @@ dockedPlayer.volume.sliderInput.addEventListener('keydown', event => {
     updateVolume();
 
     event.preventDefault();
+    event.stopPropagation();
 });
 
 // This was observed to "scroll" between 0 and 1 without a single step in between,
 // hence we disable the default behavior and let the event bubble up to our own handler
 dockedPlayer.volume.sliderInput.addEventListener('wheel', event => event.preventDefault());
 
-listenButton.addEventListener('click', () => {
-    requestPlaybackChange(activeTrack);
-});
+if (listenButton) {
+    listenButton.addEventListener('click', () => {
+        requestPlaybackChange(activeTrack);
+    });
+}
 
 if (navigator.mediaSession) {
     navigator.mediaSession.setActionHandler('play', () => {
@@ -934,142 +983,150 @@ const resizeObserver = new ResizeObserver(entries => {
     waveforms(minWidth);
 });
 
-let previousTrack = null;
+let previousStreamableTrack = null;
 let trackIndex = 0;
 for (const container of document.querySelectorAll('.track')) {
     const artists = container.querySelector('.artists');
-    const audio = container.querySelector('audio');
     const number = container.querySelector('.number');
-    const playbackButton = container.querySelector('.track_playback');
-    const playbackButtonIcon = container.querySelector('.track_playback .icon');
     const title = container.querySelector('.title');
 
     const duration = parseFloat(container.dataset.duration);
 
     const track = {
         artists,
-        audio,
         container,
         duration,
         number,
-        playbackButton,
-        playbackButtonIcon,
         title
     };
 
-    // We only unmute tracks right before they play, muting them again at any
-    // pause event. We do this because a bug in browsers on apple systems can
-    // trigger sporadic, unsolicited playback of tracks in certain conditions
-    // (see comment elsewhere on track.solicitedPlayback), and although we
-    // cancel this unsolicited playback right away, it would be sometimes
-    // audible for a brief moment (if we didn't keep tracks muted).
-    audio.muted = true;
+    const audio = container.querySelector('audio');
 
-    // Playback buttons start off with tabindex="-1" because if the visitor
-    // has JavaScript disabled the element should not be interacted with at
-    // all. When JavaScript is available we revert to making the button
-    // reachable by keyboard.
-    playbackButton.tabIndex = 0;
+    if (audio) {
+        track.audio = audio;
+        track.playbackButton = container.querySelector('.track_playback');
+        track.playbackButtonIcon = container.querySelector('.track_playback .icon');
+        track.speedControls = container.hasAttribute('data-speed-controls');
 
-    if (previousTrack !== null) {
-        previousTrack.nextTrack = track;
-    }
+        // We only unmute tracks right before they play, muting them again at any
+        // pause event. We do this because a bug in browsers on apple systems can
+        // trigger sporadic, unsolicited playback of tracks in certain conditions
+        // (see comment elsewhere on track.solicitedPlayback), and although we
+        // cancel this unsolicited playback right away, it would be sometimes
+        // audible for a brief moment (if we didn't keep tracks muted).
+        audio.muted = true;
 
-    previousTrack = track;
+        // Playback buttons start off with tabindex="-1" because if the visitor
+        // has JavaScript disabled the element should not be interacted with at
+        // all. When JavaScript is available we revert to making the button
+        // reachable by keyboard.
+        track.playbackButton.tabIndex = 0;
 
-    audio.addEventListener('ended', event => {
-        if (track.nextTrack) {
-            requestPlaybackChange(track.nextTrack);
-        } else {
-            reset(track);
-            // Hide docked player
-            document.body.classList.remove('player_active');
-            dockedPlayer.status.setAttribute('aria-label', PLAYER_JS_T.playerClosed);
-            setActive(tracks[0]);
+        if (previousStreamableTrack !== null) {
+            previousStreamableTrack.nextStreamableTrack = track;
         }
-    });
 
-    audio.addEventListener('pause', event => {
-        if (!track.solicitedPlayback) { return; }
+        previousStreamableTrack = track;
 
-        delete track.solicitedPlayback;
-        track.audio.muted = true;
+        audio.addEventListener('ended', event => {
+            if (track.nextStreamableTrack) {
+                requestPlaybackChange(track.nextStreamableTrack);
+            } else {
+                reset(track);
+                // Hide docked player
+                document.body.classList.remove('player_active');
+                dockedPlayer.status.setAttribute('aria-label', PLAYER_JS_T.playerClosed);
 
-        clearInterval(globalUpdatePlayHeadInterval);
+                const firstStreamableTrack = tracks.find(track => track.audio);
+                setActive(firstStreamableTrack);
+            }
+        });
 
-        container.classList.remove('playing');
-        dockedPlayer.playbackButton.replaceChildren(playIcon.cloneNode(true));
-        listenButtonIcon.replaceChildren(playIcon.cloneNode(true));
-        listenButtonLabel.textContent = PLAYER_JS_T.listen;
-        track.playbackButtonIcon.replaceChildren(playIcon.cloneNode(true));
+        audio.addEventListener('pause', event => {
+            if (!track.solicitedPlayback) { return; }
 
-        if (track.onPause) {
-            track.onPause();
-            delete track.onPause;
-        } else {
+            delete track.solicitedPlayback;
+            track.audio.muted = true;
+
+            clearInterval(globalUpdatePlayHeadInterval);
+
+            container.classList.remove('playing');
+            dockedPlayer.playbackButton.replaceChildren(playIcon.cloneNode(true));
+            listenButtonIcon.replaceChildren(playIcon.cloneNode(true));
+            listenButtonLabel.textContent = PLAYER_JS_T.listen;
+            track.playbackButtonIcon.replaceChildren(playIcon.cloneNode(true));
+
+            if (track.onPause) {
+                track.onPause();
+                delete track.onPause;
+            } else {
+                updatePlayhead(track);
+                announcePlayhead(track);
+            }
+        });
+
+        audio.addEventListener('play', event => {
+            if (!track.solicitedPlayback) {
+                // Unsolicited playback triggered by Apple/Safari (see comment
+                // elsewhere regarding track.solicitedPlayback), we cancel it
+                // immediately.
+                audio.pause();
+                return;
+            }
+
+            container.classList.add('playing');
+            dockedPlayer.playbackButton.replaceChildren(pauseIcon.cloneNode(true));
+            listenButtonIcon.replaceChildren(pauseIcon.cloneNode(true));
+            listenButtonLabel.textContent = PLAYER_JS_T.pause;
+            track.playbackButtonIcon.replaceChildren(pauseIcon.cloneNode(true));
+
+            globalUpdatePlayHeadInterval = setInterval(() => updatePlayhead(track), 1000 / 24);
             updatePlayhead(track);
             announcePlayhead(track);
-        }
-    });
+        });
 
-    audio.addEventListener('play', event => {
-        if (!track.solicitedPlayback) {
-            // Unsolicited playback triggered by Apple/Safari (see comment
-            // elsewhere regarding track.solicitedPlayback), we cancel it
-            // immediately.
-            audio.pause();
-            return;
-        }
+        audio.addEventListener('playing', event => {
+            if (!track.solicitedPlayback) { return; }
 
-        container.classList.add('playing');
-        dockedPlayer.playbackButton.replaceChildren(pauseIcon.cloneNode(true));
-        listenButtonIcon.replaceChildren(pauseIcon.cloneNode(true));
-        listenButtonLabel.textContent = PLAYER_JS_T.pause;
-        track.playbackButtonIcon.replaceChildren(pauseIcon.cloneNode(true));
+            dockedPlayer.playbackButton.replaceChildren(pauseIcon.cloneNode(true));
+            listenButtonIcon.replaceChildren(pauseIcon.cloneNode(true));
+            listenButtonLabel.textContent = PLAYER_JS_T.pause;
+            track.playbackButtonIcon.replaceChildren(pauseIcon.cloneNode(true));
+        });
 
-        globalUpdatePlayHeadInterval = setInterval(() => updatePlayhead(track), 1000 / 24);
-        updatePlayhead(track);
-        announcePlayhead(track);
-    });
+        audio.addEventListener('waiting', event => {
+            if (!track.solicitedPlayback) { return; }
 
-    audio.addEventListener('playing', event => {
-        if (!track.solicitedPlayback) { return; }
+            // TODO: Eventually we could augment various screenreader labels here to
+            //       indicate the loading state too
+            dockedPlayer.playbackButton.replaceChildren(loadingIcon.cloneNode(true));
+            listenButtonIcon.replaceChildren(loadingIcon.cloneNode(true));
+            listenButtonLabel.textContent = PLAYER_JS_T.pause;
+            track.playbackButtonIcon.replaceChildren(loadingIcon.cloneNode(true));
+        });
 
-        dockedPlayer.playbackButton.replaceChildren(pauseIcon.cloneNode(true));
-        listenButtonIcon.replaceChildren(pauseIcon.cloneNode(true));
-        listenButtonLabel.textContent = PLAYER_JS_T.pause;
-        track.playbackButtonIcon.replaceChildren(pauseIcon.cloneNode(true));
-    });
-
-    audio.addEventListener('waiting', event => {
-        if (!track.solicitedPlayback) { return; }
-
-        // TODO: Eventually we could augment various screenreader labels here to
-        //       indicate the loading state too
-        dockedPlayer.playbackButton.replaceChildren(loadingIcon.cloneNode(true));
-        listenButtonIcon.replaceChildren(loadingIcon.cloneNode(true));
-        listenButtonLabel.textContent = PLAYER_JS_T.pause;
-        track.playbackButtonIcon.replaceChildren(loadingIcon.cloneNode(true));
-    });
-
-    track.playbackButton.addEventListener('click', event => {
-        event.preventDefault();
-        requestPlaybackChange(track);
-    });
-
-    container.addEventListener('keydown', event => {
-        if (event.key === 'ArrowLeft') {
+        track.playbackButton.addEventListener('click', event => {
             event.preventDefault();
-            const seekTo = Math.max(0, track.audio.currentTime - 5);
-            requestSeek(track, seekTo);
-        } else if (event.key === 'ArrowRight') {
-            event.preventDefault();
-            const seekTo = Math.min(track.duration - 1, track.audio.currentTime + 5);
-            requestSeek(track, seekTo);
-        }
-    });
+            requestPlaybackChange(track);
+        });
+
+        container.addEventListener('keydown', event => {
+            if (modifierPressed(event)) return;
+
+            if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                const seekTo = Math.max(0, track.audio.currentTime - 5);
+                requestSeek(track, seekTo);
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                const seekTo = Math.min(track.duration - 1, track.audio.currentTime + 5);
+                requestSeek(track, seekTo);
+            }
+        });
+    }
 
     const waveformContainer = container.querySelector('.waveform');
+
     if (waveformContainer) {
         const input = waveformContainer.querySelector('.waveform input');
         const svg = waveformContainer.querySelector('.waveform svg');
@@ -1083,43 +1140,47 @@ for (const container of document.querySelectorAll('.track')) {
             svg
         };
 
-        track.waveform.container.addEventListener('click', event => {
-            const factor = (event.clientX - track.waveform.input.getBoundingClientRect().x) / track.waveform.input.getBoundingClientRect().width;
-            const seekTo = factor * track.waveform.input.max
-            requestSeek(track, seekTo);
-            track.waveform.input.classList.add('focus_from_click');
-            track.waveform.input.focus();
-        });
+        if (audio) {
+            track.waveform.container.addEventListener('click', event => {
+                const factor = (event.clientX - track.waveform.input.getBoundingClientRect().x) / track.waveform.input.getBoundingClientRect().width;
+                const seekTo = factor * track.waveform.input.max
+                requestSeek(track, seekTo);
+                track.waveform.input.classList.add('focus_from_click');
+                track.waveform.input.focus();
+            });
 
-        track.waveform.container.addEventListener('mouseenter', event => {
-            track.waveform.container.classList.add('seek');
-        });
+            track.waveform.container.addEventListener('mouseenter', event => {
+                track.waveform.container.classList.add('seek');
+            });
 
-        track.waveform.container.addEventListener('mousemove', event => {
-            const factor = (event.clientX - track.waveform.container.getBoundingClientRect().x) / track.waveform.container.getBoundingClientRect().width;
-            // TODO: Pre-store the two querySelector results
-            track.waveform.svg.querySelector('linearGradient.seek stop:nth-child(1)').setAttribute('offset', factor);
-            track.waveform.svg.querySelector('linearGradient.seek stop:nth-child(2)').setAttribute('offset', factor + 0.0001);
-        });
+            track.waveform.container.addEventListener('mousemove', event => {
+                const factor = (event.clientX - track.waveform.container.getBoundingClientRect().x) / track.waveform.container.getBoundingClientRect().width;
+                // TODO: Pre-store the two querySelector results
+                track.waveform.svg.querySelector('linearGradient.seek stop:nth-child(1)').setAttribute('offset', factor);
+                track.waveform.svg.querySelector('linearGradient.seek stop:nth-child(2)').setAttribute('offset', factor + 0.0001);
+            });
 
-        track.waveform.container.addEventListener('mouseout', event => {
-            track.waveform.container.classList.remove('seek');
-        });
+            track.waveform.container.addEventListener('mouseout', event => {
+                track.waveform.container.classList.remove('seek');
+            });
 
-        track.waveform.input.addEventListener('blur', () => {
-            track.waveform.input.classList.remove('focus_from_click');
-        });
+            track.waveform.input.addEventListener('blur', () => {
+                track.waveform.input.classList.remove('focus_from_click');
+            });
 
-        track.waveform.input.addEventListener('focus', () => {
-            announcePlayhead(track);
-        });
+            track.waveform.input.addEventListener('focus', () => {
+                announcePlayhead(track);
+            });
 
-        track.waveform.input.addEventListener('keydown', event => {
-            if (event.key === ' ' || event.key === 'Enter') {
-                event.preventDefault();
-                requestPlaybackChange(track);
-            }
-        });
+            track.waveform.input.addEventListener('keydown', event => {
+                if (modifierPressed(event)) return;
+
+                if (event.key === ' ' || event.key === 'Enter') {
+                    event.preventDefault();
+                    requestPlaybackChange(track);
+                }
+            });
+        }
 
         // Initialize playback/seek gradients
         const SVG_XMLNS = 'http://www.w3.org/2000/svg';
@@ -1134,7 +1195,7 @@ for (const container of document.querySelectorAll('.track')) {
         playbackGradient.id = `gradient_playback_${trackIndex}`;
         const playbackGradientStop1 = document.createElementNS(SVG_XMLNS, 'stop');
         playbackGradientStop1.setAttribute('offset', '0');
-        playbackGradientStop1.setAttribute('stop-color', 'var(--fg-1)');
+        playbackGradientStop1.setAttribute('stop-color', 'var(--f1)');
         const playbackGradientStop2 = document.createElementNS(SVG_XMLNS, 'stop');
         playbackGradientStop2.setAttribute('offset', '0.000001');
         playbackGradientStop2.setAttribute('stop-color', 'hsla(0, 0%, 0%, 0)');
@@ -1145,7 +1206,7 @@ for (const container of document.querySelectorAll('.track')) {
         seekGradient.id = `gradient_seek_${trackIndex}`;
         const seekGradientStop1 = document.createElementNS(SVG_XMLNS, 'stop');
         seekGradientStop1.setAttribute('offset', '0');
-        seekGradientStop1.setAttribute('stop-color', 'var(--fg-3)');
+        seekGradientStop1.setAttribute('stop-color', 'var(--f3)');
         const seekGradientStop2 = document.createElementNS(SVG_XMLNS, 'stop');
         seekGradientStop2.setAttribute('offset', '0.000001');
         seekGradientStop2.setAttribute('stop-color', 'hsla(0, 0%, 0%, 0)');
@@ -1183,9 +1244,12 @@ window.addEventListener('hashchange', event => {
 });
 
 window.addEventListener('keydown', event => {
+    if (modifierPressed(event)) return;
+
     if (event.key === 'm') {
         const { target } = event;
 
+        // TODO: Stop propagation at source instead (event.stopPropagation())?
         if (target.tagName !== 'INPUT' || (target.type !== 'search' && target.type !== 'text')) {
             toggleMute();
             event.preventDefault();
@@ -1207,7 +1271,11 @@ if (params) {
     // Announce to screenreaders that the docked player is present
     dockedPlayer.status.setAttribute('aria-label', PLAYER_JS_T.playerOpenWithXxx(params.track.title.textContent));
 } else {
-    setActive(tracks[0]);
+    const firstStreamableTrack = tracks.find(track => track.audio);
+
+    if (firstStreamableTrack) {
+        setActive(firstStreamableTrack);
+    }
 }
 
 const waveformRenderState = { widthRem: 0 };
@@ -1228,6 +1296,8 @@ function waveforms(minWidth) {
     const longestTrackDuration = parseFloat(document.querySelector('[data-longest-duration]').dataset.longestDuration);
 
     for (const track of tracks) {
+        if (!track.waveform) { continue; }
+
         const peaks = track.waveform.peaks;
         const trackDuration = parseFloat(track.waveform.input.max);
 
@@ -1287,3 +1357,4 @@ function waveforms(minWidth) {
 
     waveformRenderState.widthRem = maxWaveformWidthRem;
 }
+})();

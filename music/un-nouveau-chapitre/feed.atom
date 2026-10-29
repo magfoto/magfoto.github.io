@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    
+    <generator uri="https://faircamp.org" version="2.0.1">
+        Faircamp 2.0.1 (8d96f31)
+    </generator>
+    <id>https://magfoto.dev/music/un-nouveau-chapitre/</id>
+    <link href="https://magfoto.dev/music/un-nouveau-chapitrefeed.atom" rel="self"/>
+    <logo>https://magfoto.dev/music/feed_nIedPWj-u9o.jpg</logo>
+    
+    <title>Un Nouveau Chapitre</title>
+    <updated>2026-10-28T16:48:02.894043+00:00</updated>
+    <entry><id>https://magfoto.dev/music/un-nouveau-chapitre-0000a/</id>
+<link href="https://magfoto.dev/music/un-nouveau-chapitre-0000a/" rel="alternate"/>
+<title> – 0000A</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/un-nouveau-chapitre-eterna1/</id>
+<link href="https://magfoto.dev/music/un-nouveau-chapitre-eterna1/" rel="alternate"/>
+<title> – ETERNA1_</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/un-nouveau-chapitre-op-z-passers/</id>
+<link href="https://magfoto.dev/music/un-nouveau-chapitre-op-z-passers/" rel="alternate"/>
+<title> – OP-Z-PASSERS</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+<entry><id>https://magfoto.dev/music/un-nouveau-chapitre-organisme/</id>
+<link href="https://magfoto.dev/music/un-nouveau-chapitre-organisme/" rel="alternate"/>
+<title> – Organisme</title>
+<updated>2026-10-28T16:48:02.894043+00:00</updated></entry>
+</feed>
